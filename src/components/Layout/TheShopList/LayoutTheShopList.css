@@ -1,0 +1,158 @@
+@import "../../Base/Styles/BaseExtend.css";
+
+/* @import "../TheGrid/LayoutTheGrid.css"; */
+
+.TheShopList {
+  @extend .ContentWrapper;
+  max-width: 820px;
+}
+.TheShopListHeader {
+  display: flex;
+  width: 100%;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+}
+.TheShopListContent {
+  width: 100%;
+  margin: 1px;
+}
+.TheShopListInner {
+  display: flex;
+  align-items: center;
+}
+.TheShopListTitle {
+  @extend .BaseTitle;
+  margin: 15px;
+}
+
+.TheShopListHeaderBtn {
+  margin-top: 5px;
+  background-color: transparent;
+  border: none;
+  height: 23px;
+  padding: 0;
+  & span {
+    order: 2;
+    color: #b6b6b6;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 19px;
+  }
+}
+
+/* footer */
+.TheShopListFooter {
+  width: 100%;
+}
+.TheShopListFooterStats {
+}
+.TheShopListFooterStats {
+  margin-top: 40px;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+.TheShopListFooterAllPizas {
+  @extend .BaseTitle;
+  font-weight: normal;
+  font-size: 22px;
+  line-height: 27px;
+  & span {
+    font-weight: bold;
+  }
+}
+.TheShopListFooterAllSum {
+  @extend .TheShopListFooterAllPizas;
+  & span {
+    font-weight: bold;
+    color: var(--accent-color);
+  }
+}
+
+.TheShopListFooterBtns {
+  display: flex;
+  margin-top: 40px;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+.TheShopListFooterBtnBack {
+  min-height: 55px;
+  --btn-color: #cacaca;
+  border: 1px solid var(--btn-color);
+  background-color: transparent;
+  margin: 5px;
+  & span {
+    order: 2;
+    color: var(--btn-color);
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 19px;
+    text-align: center;
+  }
+}
+.TheShopListFooterBtnBackIcon {
+  order: 1;
+}
+.TheShopListFooterBtnPay {
+  min-height: 55px;
+  margin: 5px;
+  background-color: var(--accent-color);
+  border: 1px solid var(--accent-color);
+}
+
+/* empty */
+.TheShopListEmpty {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 550px;
+  width: 100%;
+  padding: 5px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.TheShopListEmptyTitle {
+  @extend .BaseTitle;
+}
+
+.TheShopListEmptyCopy {
+  @extend .BaseTitle;
+  margin-top: 10px;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 145.4%;
+  text-align: center;
+  letter-spacing: 0.01em;
+  color: #777777;
+}
+.TheShopListEmptyLogo {
+  margin-top: 50px;
+  max-width: 300px;
+  width: 100%;
+  max-height: 255px;
+  height: 100%;
+}
+.TheShopListEmptyBtn {
+  margin-top: 60px;
+  border: none;
+}
+
+@media (max-width: 425px) {
+  .TheShopList {
+    padding: 20px 30px;
+  }
+  .TheShopListFooterBtns {
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+@media (max-width: 375px) {
+  .TheShopList {
+    padding: 10px 10px;
+  }
+}

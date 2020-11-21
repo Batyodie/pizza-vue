@@ -1,0 +1,135 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`General testing DropDown component Testing opened dropdown popUp 1`] = `
+<div
+  class="DropDown"
+>
+  <div
+    style="display: flex; align-items: center;"
+  >
+    <img
+      alt="Arrow top"
+      height="6"
+      src=""
+      width="10"
+    />
+     
+    <span
+      class="DropDownLabel"
+    >
+      Сортировка по:
+    </span>
+     
+    <button
+      class="DropDownBtn"
+    >
+      
+        популярности
+      
+    </button>
+  </div>
+   
+  <div
+    class="DropDownPopUp"
+    style=""
+  >
+    <ul
+      class="DropDownList"
+    >
+      <li
+        class="DropDownItemActive DropDownItem"
+      >
+        
+          популярности
+        
+      </li>
+      <li
+        class="DropDownItem"
+      >
+        
+          по цене
+        
+      </li>
+      <li
+        class="DropDownItem"
+      >
+        
+          по алфавиту
+        
+      </li>
+    </ul>
+  </div>
+</div>
+`;
+
+exports[`General testing DropDown component Testing render dropdown component 1`] = `
+<div
+  class="DropDown"
+>
+  <div
+    style="display: flex; align-items: center;"
+  >
+    <img
+      alt="Arrow top"
+      height="6"
+      src=""
+      width="10"
+    />
+     
+    <span
+      class="DropDownLabel"
+    >
+      Сортировка по:
+    </span>
+     
+    <button
+      class="DropDownBtn"
+    >
+      
+        популярности
+      
+    </button>
+  </div>
+   
+  <div
+    class="DropDownPopUp"
+    style="display: none;"
+  >
+    <ul
+      class="DropDownList"
+    >
+      <li
+        class="DropDownItemActive DropDownItem"
+      >
+        
+          популярности
+        
+      </li>
+      <li
+        class="DropDownItem"
+      >
+        
+          по цене
+        
+      </li>
+      <li
+        class="DropDownItem"
+      >
+        
+          по алфавиту
+        
+      </li>
+    </ul>
+  </div>
+</div>
+`;
+
+exports[`General testing DropDown component Testing selected dropdown popUp item 1`] = `"популярности"`;
+
+exports[`General testing DropDown component Testing selected dropdown popUp item 2`] = `"по цене"`;
+
+exports[`General testing DropDown component Testing selected dropdown popUp item 3`] = `"по алфавиту"`;
+
+exports[`General testing DropDown component Testing selected dropdown popUp item 4`] = `"по алфавиту"`;
+
+exports[`General testing DropDown component Testing selected dropdown popUp item 5`] = `"по алфави"`;
