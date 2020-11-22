@@ -175,8 +175,5 @@ export default {
       getBasketFlag: "getBasketFlag",
     }),
   },
-  mounted() {
-    console.log(this.$modal);
-  },
 };
 </script>

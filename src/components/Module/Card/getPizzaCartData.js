@@ -19,6 +19,7 @@ class Data {
       [this.#pizzaObj.id]: {
         items: newItem,
         totalPrice: newItem.reduce((sum, obj) => obj.price + sum, 0),
+        activeBtn: false,
       },
     };
   }

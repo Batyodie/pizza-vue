@@ -13,6 +13,9 @@ const getters = {
   getCards: (state) => {
     return state.cards;
   },
+  getCardsActiveBtn: (state) => {
+    return state.pizzaItems;
+  },
   getCardsTags: (state) => {
     return state.cardsTypeTags;
   },

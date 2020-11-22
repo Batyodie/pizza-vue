@@ -44,10 +44,10 @@
       <h3 :class="CardStyles.CardPizzaPrice">от {{ card.price }} ₽</h3>
       <template>
         <Button
-          @click.native="[onClickAddPizza(pizzaObj), getChangeStyle()]"
+          @click.native="[onClickAddPizza(pizzaObj)]"
           :class="[
             CardStyles.CardAddBtn,
-            changeStyle ? [CardStyles.CardAddBtnSelected] : '',
+            ActiveBtnFlag ? [CardStyles.CardAddBtnSelected] : '',
           ]"
         >
           <template slot="Icon">
@@ -106,6 +106,9 @@ export default {
       type: Function,
       rquired: false,
     },
+    ActiveBtnFlag: {
+      type: Boolean,
+    },
     pizzaCardCount: {
       type: Number,
     },
@@ -116,7 +119,6 @@ export default {
       cardItem: true,
       activeType: this.card.types[0],
       activeSize: this.card.sizes[0],
-      changeStyle: false,
     };
   },
   methods: {
@@ -126,9 +128,13 @@ export default {
     setActiveSizeTag(CardSizeIndex) {
       this.activeSize = CardSizeIndex;
     },
-    getChangeStyle() {
-      this.changeStyle = true;
-    },
+    // getChangeStyle() {
+    //   const data = {
+    //     CARD_ID: this.card.id,
+    //     BtnActive: this.card.activeBtn,
+    //   };
+    //   this.getChangedStyle(data);
+    // },
   },
   computed: {
     CardStyles() {
@@ -145,6 +151,7 @@ export default {
         price: this.card.price,
         size: this.activeSize,
         type: this.activeType,
+        activeBtn: this.card.activeBtn,
       };
     },
   },

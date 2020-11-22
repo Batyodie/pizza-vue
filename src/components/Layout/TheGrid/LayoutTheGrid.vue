@@ -31,6 +31,7 @@
           :pizzaCardCount="
             pizzaCardCount[card.id] && pizzaCardCount[card.id].items.length
           "
+          :ActiveBtnFlag="pizzaItems[card.id] && pizzaItems[card.id].activeBtn"
         >
         </Card>
       </template>
@@ -57,6 +58,7 @@ export default {
     },
     ...mapGetters({
       cards: "getCards",
+      pizzaItems: "getCardsActiveBtn",
       cardsTypeTags: "getCardsTags",
       cardsSizesTags: "getCardsSizesTags",
       isLoaded: "getPizzasLoadedFlag",

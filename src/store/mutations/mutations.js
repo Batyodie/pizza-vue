@@ -28,11 +28,17 @@ const mutations = {
   setLoaded(state) {
     state.isLoaded = false;
   },
+  // CHANGED_STYLE_ADD_BTN(state, payLoad) {
+  //   console.log(state);
+  //   payLoad.activeBtn = true;
+  //   console.log(payLoad);
+  // },
   ADD_PIZZA_CART(state, payLoad) {
     state.pizzaItems = payLoad.newPizzaObj;
     state.pizzaItemsCount = payLoad.allPizzasCount.length;
     state.totalPrice = payLoad.totalPrice;
     state.BasketItems = true;
+    state.pizzaItems[payLoad.contextObjID].activeBtn = true;
   },
   CLEAR_PIZZA_ITEMS(state) {
     state.pizzaItems = {};

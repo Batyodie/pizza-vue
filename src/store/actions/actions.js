@@ -31,9 +31,13 @@ const actions = {
         commit("SetContentLoaded", data);
       });
   },
+  // getChangedActiveBtn({ commit }, payLoad) {
+  //   commit("CHANGED_STYLE_ADD_BTN", payLoad);
+  // },
   addPizzaToCart({ commit, state }, pizzaObj) {
     // import function get pizza cart data
     const payLoad = getPizzaCartData(state, pizzaObj);
+    payLoad.contextObjID = pizzaObj.id;
     commit("ADD_PIZZA_CART", payLoad);
   },
   removePizzaItems({ commit }) {
