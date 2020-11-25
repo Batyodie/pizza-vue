@@ -7,9 +7,9 @@
 </template>
 
 <script>
-import LayoutTheBar from "../components/Layout/TheBar/LayoutTheBar.vue";
-import LayoutTheGrid from "../components/Layout/TheGrid/LayoutTheGrid.vue";
-import LayoutTheHeader from "../components/Layout/TheHeader/LayoutTheHeader.vue";
+import LayoutTheBar from "@/Layout/TheBar/LayoutTheBar.vue";
+import LayoutTheGrid from "@/Layout/TheGrid/LayoutTheGrid.vue";
+import LayoutTheHeader from "@/Layout/TheHeader/LayoutTheHeader.vue";
 export default {
   components: { LayoutTheHeader, LayoutTheGrid, LayoutTheBar },
   name: "Market",
@@ -21,5 +21,3 @@ export default {
   },
 };
 </script>
-
-<style></style>

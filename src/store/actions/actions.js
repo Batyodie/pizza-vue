@@ -1,4 +1,4 @@
-import getPizzaCartData from "../../components/Module/Card/getPizzaCartData";
+import getPizzaCartData from "../../components/Card/getPizzaCartData";
 import axios from "axios";
 const actions = {
   // dropdown actions

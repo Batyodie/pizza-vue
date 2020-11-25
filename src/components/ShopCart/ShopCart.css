@@ -1,0 +1,136 @@
+@import "../../style/Base/Extend/BaseExtend.css";
+
+.ShopCart {
+  /* margin-top: 30px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between; */
+  border-top: 1px solid #f4f4f4;
+  display: grid;
+  grid-template-rows: 1fr;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  grid-gap: 10px;
+  min-height: 111px;
+  align-items: center;
+}
+.ShopCartTyph {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  min-width: 290px;
+}
+
+.ShopCartTitle {
+  @extend .BaseTitle;
+  font-size: 21px;
+  line-height: 27px;
+}
+.ShopCartSubTitle {
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 22px;
+  letter-spacing: 0.01em;
+  color: #8d8d8d;
+}
+.ShopCartCounter {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+.ShopCartCounterBtn {
+  background-color: transparent;
+  padding: 0;
+  width: 32px;
+  height: 32px;
+  border: 2px solid var(--accent-color);
+  transition: background-color 0.15s ease-in-out;
+  & span {
+    color: var(--accent-color);
+  }
+  &:active {
+    background-color: var(--accent-color);
+    & span {
+      color: #fff;
+    }
+  }
+  &:hover {
+    background-color: var(--accent-color);
+    & span {
+      color: #fff;
+    }
+  }
+}
+.ShopCartTotalContainer {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-end;
+}
+.ShopCartTotalPrice,
+.ShopCartReset {
+  @extend .ShopCartCounter;
+}
+.ShopCartResetBtn {
+  @extend .ShopCartCounterBtn;
+  --btn-color: #d0d0d0;
+  border: 2px solid var(--btn-color);
+  & span {
+    color: var(--btn-color);
+  }
+  &:active {
+    background-color: black;
+    & span {
+      color: #fff;
+    }
+  }
+  &:hover {
+    background-color: black;
+    & span {
+      color: #fff;
+    }
+  }
+}
+.ShopCartTotalPrice {
+  @extend .BaseTitle;
+  font-size: 22px;
+  line-height: 27px;
+}
+
+@media (max-width: 960px) {
+  .ShopCart {
+    grid-auto-rows: minmax(50px, auto);
+    grid-template-columns: 1fr;
+    margin: 0 auto;
+    max-width: 330px;
+    align-self: center;
+    align-items: center;
+    grid-gap: 0;
+    padding: 10px;
+    & picture {
+      & img {
+        margin: 0 auto;
+      }
+    }
+  }
+  .ShopCartCounter {
+    justify-content: center;
+  }
+  .ShopCartTotalContainer {
+    justify-content: center;
+  }
+
+  .ShopCartTyph {
+    align-items: center;
+    min-width: initial;
+    text-align: center;
+  }
+}
+
+@media (max-width: 425px) {
+  .ShopCart {
+    max-width: 300px;
+  }
+}

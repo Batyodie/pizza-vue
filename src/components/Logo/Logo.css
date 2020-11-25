@@ -1,0 +1,26 @@
+@import "../../style/Base/Extend/BaseExtend.css";
+.Inner {
+  display: flex;
+  align-items: center;
+  max-width: 350px;
+  min-height: 80px;
+}
+.Image {
+  margin-right: 17px;
+}
+.SloganTitle {
+  @extend .MainTitle;
+}
+.SloganText {
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 19px;
+  color: #7b7b7b;
+}
+
+@media (max-width: 374px) {
+  .Logo {
+    align-items: flex-start;
+  }
+}

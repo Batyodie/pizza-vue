@@ -4,8 +4,8 @@
   </div>
 </template>
 <script>
-import BaseApp from "@/components/Base/Styles/BaseApp.css";
-import BaseView from "@/components/Base/Styles/BaseExtend.css";
+import BaseApp from "@/style/Base/App/BaseApp.css";
+import BaseView from "@/style/Base/Extend/BaseExtend.css";
 export default {
   components: {},
   computed: {
