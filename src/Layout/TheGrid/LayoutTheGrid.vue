@@ -1,15 +1,17 @@
 <template>
   <main :class="TheGridStyle.TheGrid">
     <div style="margin-bottom: 35px;">
-      <h1 :class="TheGridStyle">Все пиццы</h1>
+      <h1 :class="TheGridStyle.Title">Все пиццы</h1>
     </div>
-    <div :class="TheGridStyle.TheGridLayout">
+    <div :class="TheGridStyle.Layout">
       <template v-if="!isLoaded">
         <content-loader
           style="min-width: 280px"
           :width="284"
           :height="523"
           :speed="2"
+          v-for="(i, _i) in cards.length || 12"
+          :key="_i"
           primaryColor="#f3f3f3"
           secondaryColor="#ecebeb"
         >
@@ -40,18 +42,14 @@
 </template>
 
 <script>
+import { Card } from "@/components";
 import { ContentLoader } from "vue-content-loader";
-import Card from "@/components/Card/Card.vue";
 import { mapGetters, mapActions } from "vuex";
-import TheGridStyle from "./LayoutTheGrid.css";
+
+import { TheGridStyle } from "@/Layout/style";
 export default {
   components: { Card, ContentLoader },
   name: "LayoutBaseMarket",
-  data() {
-    return {
-      pizzaCounter: null,
-    };
-  },
   computed: {
     TheGridStyle() {
       return TheGridStyle;
@@ -62,16 +60,16 @@ export default {
       cardsTypeTags: "getCardsTags",
       cardsSizesTags: "getCardsSizesTags",
       isLoaded: "getPizzasLoadedFlag",
-      pizzaCardCount: "getPizzaItemsCount",
-    }),
+      pizzaCardCount: "getPizzaItemsCount"
+    })
   },
   methods: {
     ...mapActions({
-      addPizza: "addPizzaToCart",
+      addPizza: "addPizzaToCart"
     }),
     onClickAddPizza(obj) {
       this.addPizza(obj);
-    },
-  },
+    }
+  }
 };
 </script>

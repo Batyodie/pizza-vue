@@ -6,8 +6,7 @@
 </template>
 
 <script>
-import LayoutTheShopList from "@/Layout/TheShopList/LayoutTheShopList.vue";
-import LayoutTheHeader from "@/Layout/TheHeader/LayoutTheHeader.vue";
+import { LayoutTheShopList, LayoutTheHeader } from "@/Layout";
 
 export default {
   components: { LayoutTheHeader, LayoutTheShopList },
@@ -15,8 +14,8 @@ export default {
   data() {
     return {
       HeaderButton: false,
-      title: "Самая реактивная пицца",
+      title: "Самая реактивная пицца"
     };
-  },
+  }
 };
 </script>

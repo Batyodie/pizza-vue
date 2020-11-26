@@ -1,8 +1,8 @@
 module.exports = {
   css: {
-    requireModuleExtension: false,
+    requireModuleExtension: false
   },
   devServer: {
-    proxy: "http://localhost:3001",
-  },
+    proxy: "http://localhost:3001"
+  }
 };

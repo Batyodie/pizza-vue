@@ -51,7 +51,7 @@ const actions = {
   },
   removePizzaCartItem({ commit }, payLoad) {
     commit("MINUS_PIZZA_CART_ITEM", payLoad);
-  },
+  }
 };
 
 export default actions;

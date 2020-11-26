@@ -6,27 +6,27 @@ export default {
       { id: 3, text: "Вегетарианская", class: "" },
       { id: 4, text: "Гриль", class: "" },
       { id: 5, text: "Острые", class: "" },
-      { id: 6, text: "Закрытые", class: "" },
+      { id: 6, text: "Закрытые", class: "" }
     ],
-    isActiveTag: "Все",
+    isActiveTag: "Все"
   },
   mutations: {
     changesActiveTag(ctx, tag) {
       ctx.isActiveTag = tag.innerText;
-    },
+    }
   },
 
   actions: {
     TheBarSelectedTag(ctx, tagEvent) {
       ctx.commit("changesActiveTag", tagEvent.target);
-    },
+    }
   },
   getters: {
-    getTags: (state) => {
+    getTags: state => {
       return state.tags;
     },
-    getIsActiveTag: (state) => {
+    getIsActiveTag: state => {
       return state.isActiveTag;
-    },
-  },
+    }
+  }
 };

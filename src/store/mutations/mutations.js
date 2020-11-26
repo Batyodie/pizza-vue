@@ -61,19 +61,19 @@ const mutations = {
   PLUS_PIZZA_CART_ITEM(state, payLoad) {
     const newItem = { ...state.pizzaItems };
     const lastGroupItem = state.pizzaItems[payLoad.ID].items.length - 1;
-    const groupItemTotalPrice = (arr) =>
+    const groupItemTotalPrice = arr =>
       arr.reduce((sum, obj) => obj.price + sum, 0);
-    const concated = (arr) => [].concat.apply([], Object.values(arr));
+    const concated = arr => [].concat.apply([], Object.values(arr));
     newItem[payLoad.ID].items = [
       ...state.pizzaItems[payLoad.ID].items,
-      state.pizzaItems[payLoad.ID].items[lastGroupItem],
+      state.pizzaItems[payLoad.ID].items[lastGroupItem]
     ];
     newItem[payLoad.ID].totalPrice = groupItemTotalPrice(
       newItem[payLoad.ID].items
     );
     state.pizzaItems = newItem;
 
-    const obj = Object.keys(state.pizzaItems).map((key) => {
+    const obj = Object.keys(state.pizzaItems).map(key => {
       return state.pizzaItems[key].items;
     });
     const count = concated(obj);
@@ -84,18 +84,18 @@ const mutations = {
   },
   MINUS_PIZZA_CART_ITEM(state, payLoad) {
     const newItem = { ...state.pizzaItems };
-    const groupItemTotalPrice = (arr) =>
+    const groupItemTotalPrice = arr =>
       arr.reduce((sum, obj) => obj.price + sum, 0);
-    const concated = (arr) => [].concat.apply([], Object.values(arr));
+    const concated = arr => [].concat.apply([], Object.values(arr));
 
     if (state.pizzaItems[payLoad.ID].items.length > 1) {
       newItem[payLoad.ID].items = [
-        ...state.pizzaItems[payLoad.ID].items.slice(1),
+        ...state.pizzaItems[payLoad.ID].items.slice(1)
       ];
       newItem[payLoad.ID].totalPrice = groupItemTotalPrice(
         newItem[payLoad.ID].items
       );
-      const obj = Object.keys(state.pizzaItems).map((key) => {
+      const obj = Object.keys(state.pizzaItems).map(key => {
         return state.pizzaItems[key].items;
       });
       const count = concated(obj);
@@ -105,10 +105,10 @@ const mutations = {
       state.totalPrice = groupItemTotalPrice(Array);
     } else {
       return {
-        ...state.pizzaItems[payLoad.ID].items,
+        ...state.pizzaItems[payLoad.ID].items
       };
     }
-  },
+  }
 };
 
 export default mutations;

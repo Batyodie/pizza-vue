@@ -24,25 +24,26 @@
 </template>
 
 <script>
-import logo from "@/assets/img/pizza-logo.svg";
-import LogoStyle from "./Logo.css";
+import { pizzaLogo } from "@/assets";
+import { LogoStyle } from "@/components/style";
+
 export default {
   name: "Logo",
   props: {
     title: {
       type: String,
-      required: true,
-    },
+      required: true
+    }
   },
   data: function() {
     return {
-      logo: logo,
+      logo: pizzaLogo
     };
   },
   computed: {
     LogoStyle() {
       return LogoStyle;
-    },
-  },
+    }
+  }
 };
 </script>

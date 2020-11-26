@@ -13,6 +13,9 @@
 }
 .TagMargin {
   margin: 10px;
+  &:first-child {
+    margin-left: 0;
+  }
 }
 
 .IsSelected {
@@ -23,5 +26,13 @@
   & span {
     --color-text: white;
     color: var(--color-text);
+  }
+}
+
+@media (max-width: 350px) {
+  .SortingBar {
+    justify-content: flex-end;
+    padding-left: 0;
+    padding-right: 0;
   }
 }

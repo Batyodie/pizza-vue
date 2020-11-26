@@ -7,7 +7,7 @@
         :class="[
           getIsActiveTag === tag.id ? [TheBarStyle.IsSelected] : '',
           TheBarStyle.TagMargin,
-          BtnTag.Tag,
+          BtnTag.Tag
         ]"
         :index="tag.id"
         :TagStyleBody="BtnTag.Body"
@@ -23,32 +23,33 @@
     <div v-else :class="TheBarStyle.TagGroup">
       <div :class="DropDownStyle.DropDown">
         <div style="display: flex; align-items: center;">
-          <!-- <img width="10" height="6" :src="icon" alt="Arrow top" /> -->
-
-          <span :class="DropDownStyle.DropDownLabel">
+          <span :class="DropDownStyle.Label">
             Сортировка по:
           </span>
-          <button @click="DropDownTagsOpen" :class="DropDownStyle.DropDownBtn">
+          <button @click="DropDownTagsOpen" :class="DropDownStyle.Btn">
             Категориям
           </button>
         </div>
         <div
           v-show="DropDownTagsIsOpen"
-          :class="DropDownStyle.DropDownPopUp"
-          style="max-width: 160px"
+          :class="DropDownStyle.PopUp"
+          style="max-width: 180px"
         >
           <div
-            :class="DropDownStyle.DropDownList"
+            :class="DropDownStyle.List"
             style="padding-left: 10px; padding-right: 10px;"
           >
             <Button
               v-for="tag in getTags"
               :key="tag.id"
               :class="[
-                getIsActiveTag === tag.text ? [TheBarStyle.IsSelected] : '',
+                getIsActiveTag === tag.id ? [TheBarStyle.IsSelected] : '',
                 TheBarStyle.TagMargin,
-                BtnTag.Tag,
+                BtnTag.Tag
               ]"
+              :index="tag.id"
+              :TagStyleBody="BtnTag.Body"
+              @TheBarTagindex="getSelectTagIndex"
               @select="getSelectTag"
             >
               <template slot="ButtonText">
@@ -66,21 +67,19 @@
 </template>
 
 <script>
-import Button from "@/components/Button/Button.vue";
-import BtnTag from "@/components/Button/Button.css";
-
-import DropDown from "@/components/DropDown/DropDown.vue";
-import DropDownStyle from "@/components/DropDown/DropDown.css";
+import { Button, DropDown } from "@/components";
+import { BtnTag, DropDownStyle } from "@/components/style";
 
 import { mapGetters, mapActions } from "vuex";
-import TheBarStyle from "./LayoutTheBar.css";
+
+import { TheBarStyle } from "@/Layout/style";
 export default {
   components: { DropDown, Button },
   name: "SortingSideBar",
   data() {
     return {
       DropDownTagsIsOpen: false,
-      TheBarTagIndex: null,
+      TheBarTagIndex: null
     };
   },
   computed: {
@@ -96,13 +95,13 @@ export default {
     ...mapGetters({
       getTags: "getTags",
       getIsActiveTag: "getIsActiveTag",
-      getState: "getStateDropdown",
-    }),
+      getState: "getStateDropdown"
+    })
   },
   methods: {
     ...mapActions({
       selectedTag: "TheBarSelectedTag",
-      sortPizzas: "GetThePizzas",
+      sortPizzas: "GetThePizzas"
     }),
     getSelectTag(TagIndex) {
       this.selectedTag(TagIndex);
@@ -113,7 +112,7 @@ export default {
     },
     getSelectTagIndex(index) {
       this.TheBarTagIndex = index;
-    },
-  },
+    }
+  }
 };
 </script>

@@ -19,15 +19,15 @@ class Data {
       [this.#pizzaObj.id]: {
         items: newItem,
         totalPrice: newItem.reduce((sum, obj) => obj.price + sum, 0),
-        activeBtn: false,
-      },
+        activeBtn: false
+      }
     };
   }
   getAllPizzas() {
     return [].concat.call([], Object.values(this.getNewObj()));
   }
   getTotalCout() {
-    const obj = Object.keys(this.getNewObj()).map((key) => {
+    const obj = Object.keys(this.getNewObj()).map(key => {
       return this.getNewObj()[key].items;
     });
     return [].concat.apply([], Object.values(obj));
@@ -40,7 +40,7 @@ class Data {
       newPizzaObj: this.getNewObj(),
       allPizzasCount: this.getTotalCout(),
       allPizzas: this.getAllPizzas(),
-      totalPrice: this.getTotalPrice(),
+      totalPrice: this.getTotalPrice()
     });
   }
 }

@@ -11,33 +11,30 @@
 </template>
 
 <script>
-import Button from "./Button.css";
+import { Button } from "@/components/style";
 export default {
   name: "Button",
   props: {
     CardTagTypeIndex: {
       type: Number,
       required: false,
-      default: null,
+      default: null
     },
     index: {
       type: Number,
       required: false,
-      default: null,
+      default: null
     },
     CardTagSizeIndex: {
       type: Number,
       required: false,
-      default: null,
-    },
+      default: null
+    }
   },
   computed: {
     Button() {
       return Button;
-    },
-    Tag() {
-      return this.TagStyle;
-    },
+    }
   },
   methods: {
     selectTag() {
@@ -45,7 +42,7 @@ export default {
       this.$emit("TheBarTagindex", this.theBarTagIndex);
       this.$emit("selectCardTag", this.CardTagTypeIndex);
       this.$emit("selectCardSizeTag", this.CardTagSizeIndex);
-    },
-  },
+    }
+  }
 };
 </script>
