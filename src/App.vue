@@ -14,10 +14,10 @@ export default {
     },
     BaseView() {
       return BaseView;
-    },
+    }
   },
   async created() {
     await this.$store.dispatch("GetThePizzas");
-  },
+  }
 };
 </script>

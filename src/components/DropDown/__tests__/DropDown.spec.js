@@ -12,7 +12,7 @@ describe("General testing DropDown component", () => {
   let store = createStore();
   const wrapper = shallowMount(DropDown, {
     store,
-    localVue,
+    localVue
   });
   const btn = wrapper.find(".DropDownBtn");
   const PopUp = wrapper.find(".DropDownPopUp");
@@ -59,7 +59,7 @@ describe("General testing DropDown component", () => {
     expect(popUpListItem.isVisible()).toBe(true);
 
     // select all dropdown items
-    popUpListItem.wrappers.forEach((e) => {
+    popUpListItem.wrappers.forEach(e => {
       // click dropdown item
       e.trigger("click");
       // label text in btn dropdown

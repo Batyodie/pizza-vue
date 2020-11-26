@@ -1,46 +1,46 @@
 const getters = {
   // getters dropdown
-  getStateDropdown: (state) => {
+  getStateDropdown: state => {
     return state;
   },
   // getters thebar
-  getTags: (state) => {
+  getTags: state => {
     return state.tags;
   },
-  getIsActiveTag: (state) => {
+  getIsActiveTag: state => {
     return state.isActiveTag;
   },
-  getCards: (state) => {
+  getCards: state => {
     return state.cards;
   },
-  getCardsActiveBtn: (state) => {
+  getCardsActiveBtn: state => {
     return state.pizzaItems;
   },
-  getCardsTags: (state) => {
+  getCardsTags: state => {
     return state.cardsTypeTags;
   },
-  getCardsSizesTags: (state) => {
+  getCardsSizesTags: state => {
     return state.cardsSizesTags;
   },
-  getPizzasLoadedFlag: (state) => {
+  getPizzasLoadedFlag: state => {
     return state.isLoaded;
   },
-  getPizzaItemsCount: (state) => {
+  getPizzaItemsCount: state => {
     return state.pizzaItems;
   },
-  getGroupPizzas: (state) => {
-    return Object.keys(state.pizzaItems).map((key) => {
+  getGroupPizzas: state => {
+    return Object.keys(state.pizzaItems).map(key => {
       return state.pizzaItems[key];
     });
   },
-  getGroupPizzasPrice: (state) => {
-    return Object.keys(state.pizzaItems).map((key) => {
+  getGroupPizzasPrice: state => {
+    return Object.keys(state.pizzaItems).map(key => {
       return state.pizzaItems[key];
     });
   },
-  getBasketFlag: (state) => {
+  getBasketFlag: state => {
     return state.totalPrice === 0 ? false : true;
-  },
+  }
 };
 
 export default getters;

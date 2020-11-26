@@ -96,17 +96,11 @@
 </template>
 
 <script>
-import ShopCart from "@/components/ShopCart/ShopCart.vue";
-import Button from "@/components/Button/Button.vue";
-
-// images
-import CartIcon from "@/assets/img/shopping-cart.svg";
-import TrashIcon from "@/assets/img/trash.svg";
-import arrow from "@/assets/img/grey-arrow-left.svg";
-import EmptyCart from "@/assets/img/empty-cart.png";
-
-import TheShopListStyle from "./LayoutTheShopList.css";
+import { Button, ShopCart } from "@/components";
 import { mapState, mapGetters, mapActions } from "vuex";
+
+import { CartIcon, TrashIcon, arrow, EmptyCart } from "@/assets";
+import { TheShopListStyle } from "@/Layout/style";
 export default {
   name: "LayoutTheShopList",
   components: { Button, ShopCart },
@@ -115,12 +109,12 @@ export default {
       CartIcon: CartIcon,
       TrashIcon: TrashIcon,
       arrow: arrow,
-      EmptyCart: EmptyCart,
+      EmptyCart: EmptyCart
     };
   },
   methods: {
     ...mapActions({
-      removeItems: "removePizzaItems",
+      removeItems: "removePizzaItems"
     }),
     getClearPizzas() {
       this.$modal.show("dialog", {
@@ -131,15 +125,15 @@ export default {
             title: "Нет",
             handler: () => {
               this.$modal.hide("dialog");
-            },
+            }
           },
           {
             title: "Да",
             handler: () => {
               this.removeItems();
-            },
-          },
-        ],
+            }
+          }
+        ]
       });
     },
     handlerPayOut() {
@@ -154,11 +148,11 @@ export default {
               this.$modal.hide("dialog");
               console.log(this.items);
               this.removeItems();
-            },
-          },
-        ],
+            }
+          }
+        ]
       });
-    },
+    }
   },
   computed: {
     TheShopListStyle() {
@@ -167,13 +161,13 @@ export default {
     ...mapState({
       totalPrice: "totalPrice",
       itemsCount: "pizzaItemsCount",
-      items: "pizzaItems",
+      items: "pizzaItems"
     }),
     ...mapGetters({
       groupPizzaItem: "getGroupPizzas",
       groupTotalPrice: "getGroupPizzasPrice",
-      getBasketFlag: "getBasketFlag",
-    }),
-  },
+      getBasketFlag: "getBasketFlag"
+    })
+  }
 };
 </script>

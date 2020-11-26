@@ -62,39 +62,39 @@
 </template>
 
 <script>
-import Button from "../Button/Button.vue";
-// import pizzaSmallWebP from "@/assets/img/pizza-small.webp";
-import pizzaSmall from "@/assets/img/pizza-small.svg";
+import { Button } from "@/components";
 import { mapActions, mapGetters, mapState } from "vuex";
-import ShopCartStyle from "./ShopCart.css?module";
+
+import { pizzaSmall } from "@/assets";
+import { ShopCartStyle } from "@/components/style";
 export default {
   name: "ShopCart",
   components: {
-    Button,
+    Button
   },
   props: {
     shopCart: {
-      type: Object,
+      type: Object
     },
     groupTotalPrice: {
-      type: Object,
+      type: Object
     },
     index: {
-      type: Number,
-    },
+      type: Number
+    }
   },
   data() {
     return {
       //   pizzaSmallWebP: pizzaSmallWebP,
       pizzaSmall: pizzaSmall,
-      price: null,
+      price: null
     };
   },
   methods: {
     ...mapActions({
       removeItem: "removePizzaItem",
       plusCartItem: "addPizzaCartItem",
-      minusCartItem: "removePizzaCartItem",
+      minusCartItem: "removePizzaCartItem"
     }),
     removeGroupItem(id) {
       this.$modal.show("dialog", {
@@ -105,41 +105,41 @@ export default {
             title: "Нет",
             handler: () => {
               this.$modal.hide("dialog");
-            },
+            }
           },
           {
             title: "Да",
             handler: () => {
               this.removeItem(id);
               this.$modal.hide("dialog");
-            },
-          },
-        ],
+            }
+          }
+        ]
       });
     },
     handlerAddPizzaCartItem(data) {
       const payLoad = {
         ID: data,
-        index: this.index,
+        index: this.index
       };
       this.plusCartItem(payLoad);
     },
     handlerRemovePizzaCartItem(data) {
       const payLoad = {
         ID: data,
-        index: this.index,
+        index: this.index
       };
       this.minusCartItem(payLoad);
-    },
+    }
   },
   computed: {
     ...mapGetters({}),
     ...mapState({
-      test: "groupPizzasTotalPrice",
+      test: "groupPizzasTotalPrice"
     }),
     ShopCartStyle() {
       return ShopCartStyle;
-    },
-  },
+    }
+  }
 };
 </script>

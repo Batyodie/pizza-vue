@@ -26,34 +26,31 @@
 </template>
 
 <script>
-import LayoutTheHeader from "./LayoutTheHeader.css";
-
-// button
-import Button from "@/components/Button/Button.vue";
-import BtnStyle from "@/components/Button/Button.css";
-
-import Logo from "@/components/Logo/Logo.vue";
-import icon from "@/assets/img/iconfinder.svg";
+import { Button, Logo } from "@/components";
+import { BtnStyle } from "@/components/style";
 import { mapState } from "vuex";
 
+import { iconfinder } from "@/assets";
+
+import { LayoutTheHeader } from "@/Layout/style";
 export default {
   components: { Logo, Button },
   props: {
     HeaderButton: {
       type: Boolean,
-      required: true,
+      required: true
     },
     title: {
       type: String,
-      required: false,
-    },
+      required: false
+    }
   },
   name: "LayoutTheHeader",
   data() {
     return {
-      icon: icon,
+      icon: iconfinder,
       IsActiveButton: this.HeaderButton,
-      LogoTitle: this.title,
+      LogoTitle: this.title
     };
   },
   computed: {
@@ -65,8 +62,8 @@ export default {
     },
     ...mapState({
       totalPrice: "totalPrice",
-      itemsCount: "pizzaItemsCount",
-    }),
-  },
+      itemsCount: "pizzaItemsCount"
+    })
+  }
 };
 </script>

@@ -19,7 +19,7 @@
             getState.DropDownItemIsActive.type === DropDownItem.type
               ? [DropDownStyle.ItemActive]
               : '',
-            DropDownStyle.Item,
+            DropDownStyle.Item
           ]"
           v-for="DropDownItem in getState.DropDownItems"
           :key="DropDownItem.id"
@@ -35,15 +35,16 @@
 </template>
 
 <script>
-import icon from "@/assets/img/arrow-top.svg";
-import DropDownStyle from "./DropDown.css";
 import { mapGetters, mapActions } from "vuex";
+
+import { arrowTop } from "@/assets";
+import { DropDownStyle } from "@/components/style";
 
 export default {
   name: "DropDown",
-  data: function() {
+  data() {
     return {
-      icon: icon,
+      icon: arrowTop
     };
   },
   methods: {
@@ -52,7 +53,7 @@ export default {
       open: "DropDownOpened",
       closeGlobal: "DropDownGlobalClosed",
       selection: "DropDownSelected",
-      sortPizzas: "GetThePizzas",
+      sortPizzas: "GetThePizzas"
     }),
     DropDownOpened(label) {
       // open DropDown
@@ -68,21 +69,21 @@ export default {
       // select DropDown item
       this.selection(DropDownItem);
       this.sortPizzas();
-    },
+    }
   },
   computed: {
     DropDownStyle() {
       return DropDownStyle;
     },
     ...mapGetters({
-      getState: "getStateDropdown",
-    }),
+      getState: "getStateDropdown"
+    })
   },
   mounted() {
     document.body.addEventListener("click", this.DropDownGlobalWindowClosed);
   },
   beforeDestroy() {
     document.body.removeEventListener("click", this.DropDownGlobalWindowClosed);
-  },
+  }
 };
 </script>

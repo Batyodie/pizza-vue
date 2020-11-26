@@ -18,7 +18,7 @@
           activeType === index ? [CardStyles.TagsItemActive] : '',
           !card.types.includes(index) ? [CardStyles.TagsDisable] : '',
           CardStyles.TagsItem,
-          BtnTag.Tag,
+          BtnTag.Tag
         ]"
       >
         <template slot="ButtonText"> {{ TagType }} </template>
@@ -32,7 +32,7 @@
           activeSize === tagSize ? [CardStyles.TagsItemActive] : '',
           !card.sizes.includes(tagSize) ? [CardStyles.TagsDisable] : '',
           CardStyles.TagsItem,
-          BtnTag.Tag,
+          BtnTag.Tag
         ]"
       >
         <template slot="ButtonText"> {{ tagSize }} см. </template>
@@ -45,7 +45,7 @@
           @click.native="[onClickAddPizza(pizzaObj)]"
           :class="[
             CardStyles.AddBtn,
-            ActiveBtnFlag ? [CardStyles.AddBtnSelected] : '',
+            ActiveBtnFlag ? [CardStyles.AddBtnSelected] : ''
           ]"
         >
           <template slot="Icon">
@@ -81,42 +81,41 @@
 </template>
 
 <script>
-import Button from "../Button/Button.vue";
-import BtnTag from "../Button/Button.css";
+import { Button } from "@/components";
 
-import CardStyle from "./Card.css";
+import { BtnTag, CardStyle } from "@/components/style";
 export default {
   components: { Button },
   props: {
     card: {
       type: Object,
-      required: true,
+      required: true
     },
     cardsTypeTags: {
       type: Array,
-      required: true,
+      required: true
     },
     cardsSizesTags: {
       type: Array,
-      required: true,
+      required: true
     },
     onClickAddPizza: {
       type: Function,
-      rquired: false,
+      rquired: false
     },
     ActiveBtnFlag: {
-      type: Boolean,
+      type: Boolean
     },
     pizzaCardCount: {
-      type: Number,
-    },
+      type: Number
+    }
   },
   name: "Card",
   data() {
     return {
       cardItem: true,
       activeType: this.card.types[0],
-      activeSize: this.card.sizes[0],
+      activeSize: this.card.sizes[0]
     };
   },
   methods: {
@@ -125,7 +124,7 @@ export default {
     },
     setActiveSizeTag(CardSizeIndex) {
       this.activeSize = CardSizeIndex;
-    },
+    }
   },
   computed: {
     CardStyles() {
@@ -142,9 +141,9 @@ export default {
         price: this.card.price,
         size: this.activeSize,
         type: this.activeType,
-        activeBtn: this.card.activeBtn,
+        activeBtn: this.card.activeBtn
       };
-    },
-  },
+    }
+  }
 };
 </script>
