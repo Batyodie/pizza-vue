@@ -13,7 +13,7 @@
   min-height: 111px;
   align-items: center;
 }
-.ShopCartTyph {
+.Typh {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -22,12 +22,12 @@
   min-width: 290px;
 }
 
-.ShopCartTitle {
+.Title {
   @extend .BaseTitle;
   font-size: 21px;
   line-height: 27px;
 }
-.ShopCartSubTitle {
+.SubTitle {
   font-style: normal;
   font-weight: normal;
   font-size: 18px;
@@ -35,12 +35,12 @@
   letter-spacing: 0.01em;
   color: #8d8d8d;
 }
-.ShopCartCounter {
+.Counter {
   display: flex;
   align-items: center;
   justify-content: flex-end;
 }
-.ShopCartCounterBtn {
+.CounterBtn {
   background-color: transparent;
   padding: 0;
   width: 32px;
@@ -63,18 +63,18 @@
     }
   }
 }
-.ShopCartTotalContainer {
+.TotalContainer {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   justify-content: flex-end;
 }
-.ShopCartTotalPrice,
-.ShopCartReset {
-  @extend .ShopCartCounter;
+.TotalPrice,
+.Reset {
+  @extend .Counter;
 }
-.ShopCartResetBtn {
-  @extend .ShopCartCounterBtn;
+.ResetBtn {
+  @extend .CounterBtn;
   --btn-color: #d0d0d0;
   border: 2px solid var(--btn-color);
   & span {
@@ -93,7 +93,7 @@
     }
   }
 }
-.ShopCartTotalPrice {
+.TotalPrice {
   @extend .BaseTitle;
   font-size: 22px;
   line-height: 27px;
@@ -115,14 +115,14 @@
       }
     }
   }
-  .ShopCartCounter {
+  .Counter {
     justify-content: center;
   }
-  .ShopCartTotalContainer {
+  .TotalContainer {
     justify-content: center;
   }
 
-  .ShopCartTyph {
+  .Typh {
     align-items: center;
     min-width: initial;
     text-align: center;

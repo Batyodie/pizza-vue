@@ -14,17 +14,17 @@
         alt="ShopCart pizza image"
       />
     </picture>
-    <div :class="ShopCartStyle.ShopCartTyph">
-      <h3 :class="ShopCartStyle.ShopCartTitle">{{ shopCart.items[0].name }}</h3>
-      <p :class="ShopCartStyle.ShopCartSubTitle">
+    <div :class="ShopCartStyle.Typh">
+      <h3 :class="ShopCartStyle.Title">{{ shopCart.items[0].name }}</h3>
+      <p :class="ShopCartStyle.SubTitle">
         {{ shopCart.items[0].type === 0 ? " тонкое " : " традиционное " }}
         тесто, {{ shopCart.items[0].size }} см.
       </p>
     </div>
-    <div :class="ShopCartStyle.ShopCartCounter">
+    <div :class="ShopCartStyle.Counter">
       <Button
         @click.native="handlerRemovePizzaCartItem(shopCart.items[0].id)"
-        :class="ShopCartStyle.ShopCartCounterBtn"
+        :class="ShopCartStyle.CounterBtn"
       >
         <template slot="ButtonText">
           -
@@ -35,22 +35,22 @@
       </span>
       <Button
         @click.native="handlerAddPizzaCartItem(shopCart.items[0].id)"
-        :class="ShopCartStyle.ShopCartCounterBtn"
+        :class="ShopCartStyle.CounterBtn"
       >
         <template slot="ButtonText">
           +
         </template>
       </Button>
     </div>
-    <div :class="ShopCartStyle.ShopCartTotalContainer">
-      <div :class="ShopCartStyle.ShopCartTotalPrice">
+    <div :class="ShopCartStyle.TotalContainer">
+      <div :class="ShopCartStyle.TotalPrice">
         <span> {{ groupTotalPrice.totalPrice }} ₽ </span>
       </div>
     </div>
-    <div :class="ShopCartStyle.ShopCartReset">
+    <div :class="ShopCartStyle.Reset">
       <Button
         @click.native="removeGroupItem(shopCart.items[0].id)"
-        :class="ShopCartStyle.ShopCartResetBtn"
+        :class="ShopCartStyle.ResetBtn"
       >
         <template slot="ButtonText">
           x
@@ -141,6 +141,5 @@ export default {
       return ShopCartStyle;
     },
   },
-  mounted() {},
 };
 </script>

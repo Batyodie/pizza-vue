@@ -3,7 +3,7 @@
     <div style="margin-bottom: 35px;">
       <h1 :class="TheGridStyle">Все пиццы</h1>
     </div>
-    <div :class="TheGridStyle.TheGridLayout">
+    <div :class="TheGridStyle.Layout">
       <template v-if="!isLoaded">
         <content-loader
           style="min-width: 280px"

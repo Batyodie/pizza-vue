@@ -2,14 +2,14 @@
   <div :class="TheShopListStyle.TheShopList">
     <template v-if="getBasketFlag">
       <v-dialog />
-      <header :class="TheShopListStyle.TheShopListHeader">
-        <div :class="TheShopListStyle.TheShopListInner">
+      <header :class="TheShopListStyle.Header">
+        <div :class="TheShopListStyle.Inner">
           <img :src="CartIcon" alt="Trash icon" />
-          <h2 :class="TheShopListStyle.TheShopListTitle">Корзина</h2>
+          <h2 :class="TheShopListStyle.Title">Корзина</h2>
         </div>
         <Button
           @click.native="getClearPizzas"
-          :class="TheShopListStyle.TheShopListHeaderBtn"
+          :class="TheShopListStyle.HeaderBtn"
         >
           <template slot="Icon">
             <img style="order: 1;" :src="TrashIcon" alt="Trash icon" />
@@ -19,7 +19,7 @@
           </template>
         </Button>
       </header>
-      <div :class="TheShopListStyle.TheShopListContent">
+      <div :class="TheShopListStyle.Content">
         <ShopCart
           v-for="(shopCart, index) in groupPizzaItem"
           :shopCart="shopCart"
@@ -28,28 +28,28 @@
           :groupTotalPrice="groupTotalPrice[index]"
         />
       </div>
-      <footer :class="TheShopListStyle.TheShopListFooter">
-        <div :class="TheShopListStyle.TheShopListFooterStats">
+      <footer :class="TheShopListStyle.Footer">
+        <div :class="TheShopListStyle.FooterStats">
           <div>
-            <p :class="TheShopListStyle.TheShopListFooterAllPizas">
+            <p :class="TheShopListStyle.FooterAllPizas">
               Всего пицц: <span>{{ itemsCount }}</span>
             </p>
           </div>
           <div>
-            <p :class="TheShopListStyle.TheShopListFooterAllSum">
+            <p :class="TheShopListStyle.FooterAllSum">
               Сумма заказа: <span>{{ totalPrice }}</span>
             </p>
           </div>
         </div>
-        <div :class="TheShopListStyle.TheShopListFooterBtns">
+        <div :class="TheShopListStyle.FooterBtns">
           <router-link to="/" style="text-decoration: none">
-            <Button :class="TheShopListStyle.TheShopListFooterBtnBack">
+            <Button :class="TheShopListStyle.FooterBtnBack">
               <template slot="ButtonText">
                 Вернуться назад
               </template>
               <template slot="Icon">
                 <img
-                  :class="TheShopListStyle.TheShopListFooterBtnBackIcon"
+                  :class="TheShopListStyle.FooterBtnBackIcon"
                   :src="arrow"
                   alt="arrow left icon"
                 />
@@ -57,7 +57,7 @@
           ></router-link>
           <Button
             @click.native="handlerPayOut"
-            :class="TheShopListStyle.TheShopListFooterBtnPay"
+            :class="TheShopListStyle.FooterBtnPay"
           >
             <template slot="ButtonText">
               Оплатить сейчас
@@ -68,22 +68,22 @@
       </footer>
     </template>
     <template v-else>
-      <div :class="TheShopListStyle.TheShopListContent">
-        <div :class="TheShopListStyle.TheShopListEmpty">
-          <h2 :class="TheShopListStyle.TheShopListEmptyTitle">
+      <div :class="TheShopListStyle.Content">
+        <div :class="TheShopListStyle.Empty">
+          <h2 :class="TheShopListStyle.EmptyTitle">
             Корзина пустая 😕
           </h2>
-          <p :class="TheShopListStyle.TheShopListEmptyCopy">
+          <p :class="TheShopListStyle.EmptyCopy">
             Вероятней всего, вы не заказывали ещё пиццу. Для того, чтобы
             заказать пиццу, перейди на главную страницу.
           </p>
           <img
-            :class="TheShopListStyle.TheShopListEmptyLogo"
+            :class="TheShopListStyle.EmptyLogo"
             :src="EmptyCart"
             alt="Empty image"
           />
           <router-link to="/">
-            <Button :class="TheShopListStyle.TheShopListEmptyBtn">
+            <Button :class="TheShopListStyle.EmptyBtn">
               <template slot="ButtonText">
                 Вернуться назад
               </template>
