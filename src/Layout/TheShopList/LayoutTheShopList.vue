@@ -97,7 +97,7 @@
 
 <script>
 import { Button, ShopCart } from "@/components";
-import { mapState, mapGetters, mapActions } from "vuex";
+import { mapGetters, mapActions } from "vuex";
 
 import { CartIcon, TrashIcon, arrow, EmptyCart } from "@/assets";
 import { TheShopListStyle } from "@/Layout/style";
@@ -109,12 +109,12 @@ export default {
       CartIcon: CartIcon,
       TrashIcon: TrashIcon,
       arrow: arrow,
-      EmptyCart: EmptyCart
+      EmptyCart: EmptyCart,
     };
   },
   methods: {
     ...mapActions({
-      removeItems: "removePizzaItems"
+      removeItems: "removePizzaItems",
     }),
     getClearPizzas() {
       this.$modal.show("dialog", {
@@ -125,15 +125,15 @@ export default {
             title: "Нет",
             handler: () => {
               this.$modal.hide("dialog");
-            }
+            },
           },
           {
             title: "Да",
             handler: () => {
               this.removeItems();
-            }
-          }
-        ]
+            },
+          },
+        ],
       });
     },
     handlerPayOut() {
@@ -148,26 +148,24 @@ export default {
               this.$modal.hide("dialog");
               console.log(this.items);
               this.removeItems();
-            }
-          }
-        ]
+            },
+          },
+        ],
       });
-    }
+    },
   },
   computed: {
     TheShopListStyle() {
       return TheShopListStyle;
     },
-    ...mapState({
-      totalPrice: "totalPrice",
-      itemsCount: "pizzaItemsCount",
-      items: "pizzaItems"
-    }),
     ...mapGetters({
+      items: "getPizzaItemsCount",
+      totalPrice: "getTotalPrice",
+      itemsCount: "getItemsCount",
       groupPizzaItem: "getGroupPizzas",
       groupTotalPrice: "getGroupPizzasPrice",
-      getBasketFlag: "getBasketFlag"
-    })
-  }
+      getBasketFlag: "getBasketFlag",
+    }),
+  },
 };
 </script>

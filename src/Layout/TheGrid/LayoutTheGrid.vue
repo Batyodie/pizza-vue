@@ -49,7 +49,7 @@ import { mapGetters, mapActions } from "vuex";
 import { TheGridStyle } from "@/Layout/style";
 export default {
   components: { Card, ContentLoader },
-  name: "LayoutBaseMarket",
+  name: "LayoutTheGrid",
   computed: {
     TheGridStyle() {
       return TheGridStyle;
@@ -60,16 +60,16 @@ export default {
       cardsTypeTags: "getCardsTags",
       cardsSizesTags: "getCardsSizesTags",
       isLoaded: "getPizzasLoadedFlag",
-      pizzaCardCount: "getPizzaItemsCount"
-    })
+      pizzaCardCount: "getPizzaItemsCount",
+    }),
   },
   methods: {
     ...mapActions({
-      addPizza: "addPizzaToCart"
+      addPizza: "addPizzaToCart",
     }),
     onClickAddPizza(obj) {
       this.addPizza(obj);
-    }
-  }
+    },
+  },
 };
 </script>

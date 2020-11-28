@@ -28,7 +28,7 @@
 <script>
 import { Button, Logo } from "@/components";
 import { BtnStyle } from "@/components/style";
-import { mapState } from "vuex";
+import { mapGetters } from "vuex";
 
 import { iconfinder } from "@/assets";
 
@@ -38,32 +38,33 @@ export default {
   props: {
     HeaderButton: {
       type: Boolean,
-      required: true
+      required: true,
     },
     title: {
       type: String,
-      required: false
-    }
+      required: true,
+      default: "",
+    },
   },
   name: "LayoutTheHeader",
   data() {
     return {
       icon: iconfinder,
       IsActiveButton: this.HeaderButton,
-      LogoTitle: this.title
+      LogoTitle: this.title,
     };
   },
   computed: {
+    ...mapGetters({
+      totalPrice: "getTotalPrice",
+      itemsCount: "getItemsCount",
+    }),
     BtnStyle() {
       return BtnStyle;
     },
     LayoutTheHeader() {
       return LayoutTheHeader;
     },
-    ...mapState({
-      totalPrice: "totalPrice",
-      itemsCount: "pizzaItemsCount"
-    })
-  }
+  },
 };
 </script>

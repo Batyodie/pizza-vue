@@ -7,7 +7,7 @@
         :class="[
           getIsActiveTag === tag.id ? [TheBarStyle.IsSelected] : '',
           TheBarStyle.TagMargin,
-          BtnTag.Tag
+          BtnTag.Tag,
         ]"
         :index="tag.id"
         :TagStyleBody="BtnTag.Body"
@@ -45,7 +45,7 @@
               :class="[
                 getIsActiveTag === tag.id ? [TheBarStyle.IsSelected] : '',
                 TheBarStyle.TagMargin,
-                BtnTag.Tag
+                BtnTag.Tag,
               ]"
               :index="tag.id"
               :TagStyleBody="BtnTag.Body"
@@ -79,7 +79,7 @@ export default {
   data() {
     return {
       DropDownTagsIsOpen: false,
-      TheBarTagIndex: null
+      TheBarTagIndex: null,
     };
   },
   computed: {
@@ -95,13 +95,13 @@ export default {
     ...mapGetters({
       getTags: "getTags",
       getIsActiveTag: "getIsActiveTag",
-      getState: "getStateDropdown"
-    })
+      getState: "getStateDropdown",
+    }),
   },
   methods: {
     ...mapActions({
       selectedTag: "TheBarSelectedTag",
-      sortPizzas: "GetThePizzas"
+      sortPizzas: "fetchPizzas",
     }),
     getSelectTag(TagIndex) {
       this.selectedTag(TagIndex);
@@ -112,7 +112,7 @@ export default {
     },
     getSelectTagIndex(index) {
       this.TheBarTagIndex = index;
-    }
-  }
+    },
+  },
 };
 </script>
