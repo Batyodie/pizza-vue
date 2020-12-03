@@ -119,7 +119,7 @@ export default {
     getClearPizzas() {
       this.$modal.show("dialog", {
         title: "Очистить корзину пицц",
-        text: "Вы действительно хотите отчистить корзиону",
+        text: "Вы действительно хотите отчистить корзину",
         buttons: [
           {
             title: "Нет",

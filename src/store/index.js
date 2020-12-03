@@ -8,13 +8,7 @@ import modules from "./modules";
 Vue.use(Vuex);
 
 export default new Vuex.Store({
-  state: {
-    // pizzaItems: {},
-    // totalPrice: 0,
-    // pizzaItemsCount: 0,
-    // pizzaItemID: null,
-    // groupPizzasTotalPrice: null,
-  },
+  state: {},
   mutations,
   actions,
   getters,
