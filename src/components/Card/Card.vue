@@ -15,10 +15,10 @@
         :CardTagTypeIndex="index"
         @selectCardTag="setActiveTypeTag"
         :class="[
-          activeType === index ? [CardStyles.TagsItemActive] : '',
-          !card.types.includes(index) ? [CardStyles.TagsDisable] : '',
+          getTagItemActive(activeType, index),
+          getTagDisable(card.types, index),
           CardStyles.TagsItem,
-          BtnTag.Tag
+          BtnTag.Tag,
         ]"
       >
         <template slot="ButtonText"> {{ TagType }} </template>
@@ -29,10 +29,10 @@
         :CardTagSizeIndex="tagSize"
         @selectCardSizeTag="setActiveSizeTag"
         :class="[
-          activeSize === tagSize ? [CardStyles.TagsItemActive] : '',
-          !card.sizes.includes(tagSize) ? [CardStyles.TagsDisable] : '',
+          getTagItemActive(activeSize, tagSize),
+          getTagDisable(card.sizes, tagSize),
           CardStyles.TagsItem,
-          BtnTag.Tag
+          BtnTag.Tag,
         ]"
       >
         <template slot="ButtonText"> {{ tagSize }} см. </template>
@@ -43,10 +43,7 @@
       <template>
         <Button
           @click.native="[onClickAddPizza(pizzaObj)]"
-          :class="[
-            CardStyles.AddBtn,
-            ActiveBtnFlag ? [CardStyles.AddBtnSelected] : ''
-          ]"
+          :class="[CardStyles.AddBtn, getAddBtnSelected()]"
         >
           <template slot="Icon">
             <svg
@@ -89,33 +86,33 @@ export default {
   props: {
     card: {
       type: Object,
-      required: true
+      required: true,
     },
     cardsTypeTags: {
       type: Array,
-      required: true
+      required: true,
     },
     cardsSizesTags: {
       type: Array,
-      required: true
+      required: true,
     },
     onClickAddPizza: {
       type: Function,
-      rquired: false
+      rquired: false,
     },
     ActiveBtnFlag: {
-      type: Boolean
+      type: Boolean,
     },
     pizzaCardCount: {
-      type: Number
-    }
+      type: Number,
+    },
   },
   name: "Card",
   data() {
     return {
       cardItem: true,
       activeType: this.card.types[0],
-      activeSize: this.card.sizes[0]
+      activeSize: this.card.sizes[0],
     };
   },
   methods: {
@@ -124,7 +121,7 @@ export default {
     },
     setActiveSizeTag(CardSizeIndex) {
       this.activeSize = CardSizeIndex;
-    }
+    },
   },
   computed: {
     CardStyles() {
@@ -141,9 +138,19 @@ export default {
         price: this.card.price,
         size: this.activeSize,
         type: this.activeType,
-        activeBtn: this.card.activeBtn
       };
-    }
-  }
+    },
+    getTagItemActive() {
+      return (btnType, options) =>
+        btnType === options ? [this.CardStyles.TagsItemActive] : "";
+    },
+    getTagDisable() {
+      return (cardType, options) =>
+        !cardType.includes(options) ? [this.CardStyles.TagsDisable] : "";
+    },
+    getAddBtnSelected() {
+      return () => (this.ActiveBtnFlag ? [this.CardStyles.AddBtnSelected] : "");
+    },
+  },
 };
 </script>

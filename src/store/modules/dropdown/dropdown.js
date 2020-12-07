@@ -39,8 +39,12 @@ export default {
     },
   },
   getters: {
-    getStateDropdown: (state) => {
-      return state;
+    getStateDropdown: ({
+      DropDownIsOpen,
+      DropDownItemIsActive,
+      DropDownItems,
+    }) => {
+      return { DropDownIsOpen, DropDownItemIsActive, DropDownItems };
     },
   },
 };

@@ -32,7 +32,6 @@ export default {
         const tagCategoryID = rootState.tags.isActiveTag;
         const dropDownActive = rootState.dropdown.DropDownItemIsActive;
         const products = await getProducts(tagCategoryID, dropDownActive);
-
         commit("SetThePizzas", products);
         commit("SetContentLoaded");
       } catch (err) {

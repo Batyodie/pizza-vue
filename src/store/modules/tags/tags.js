@@ -12,8 +12,8 @@ export default {
     TheBarTagIndex: undefined,
   },
   mutations: {
-    changesActiveTag(ctx, TagIndex) {
-      ctx.isActiveTag = TagIndex;
+    changesActiveTag(state, TagIndex) {
+      state.isActiveTag = TagIndex;
     },
   },
   actions: {
@@ -22,11 +22,7 @@ export default {
     },
   },
   getters: {
-    getTags: (state) => {
-      return state.tags;
-    },
-    getIsActiveTag: (state) => {
-      return state.isActiveTag;
-    },
+    getTags: ({ tags }) => tags,
+    getIsActiveTag: ({ isActiveTag }) => isActiveTag,
   },
 };

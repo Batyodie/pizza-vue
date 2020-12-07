@@ -4,11 +4,7 @@
       <Button
         v-for="tag in getTags"
         :key="tag.id"
-        :class="[
-          getIsActiveTag === tag.id ? [TheBarStyle.IsSelected] : '',
-          TheBarStyle.TagMargin,
-          BtnTag.Tag,
-        ]"
+        :class="[getSelected(tag.id), TheBarStyle.TagMargin, BtnTag.Tag]"
         :index="tag.id"
         :TagStyleBody="BtnTag.Body"
         @TheBarTagindex="getSelectTagIndex"
@@ -21,7 +17,7 @@
     </div>
 
     <div v-else :class="TheBarStyle.TagGroup">
-      <div :class="DropDownStyle.DropDown">
+      <div ref="DropDownBlock2" :class="DropDownStyle.DropDown">
         <div style="display: flex; align-items: center;">
           <span :class="DropDownStyle.Label">
             Сортировка по:
@@ -42,11 +38,7 @@
             <Button
               v-for="tag in getTags"
               :key="tag.id"
-              :class="[
-                getIsActiveTag === tag.id ? [TheBarStyle.IsSelected] : '',
-                TheBarStyle.TagMargin,
-                BtnTag.Tag,
-              ]"
+              :class="[getSelected(tag.id), TheBarStyle.TagMargin, BtnTag.Tag]"
               :index="tag.id"
               :TagStyleBody="BtnTag.Body"
               @TheBarTagindex="getSelectTagIndex"
@@ -94,14 +86,20 @@ export default {
     },
     ...mapGetters({
       getTags: "getTags",
-      getIsActiveTag: "getIsActiveTag",
+      activeTag: "getIsActiveTag",
       getState: "getStateDropdown",
     }),
+    getSelected() {
+      return (tagID) => {
+        return this.activeTag === tagID ? [TheBarStyle.IsSelected] : "";
+      };
+    },
   },
   methods: {
     ...mapActions({
       selectedTag: "TheBarSelectedTag",
       sortPizzas: "fetchPizzas",
+      closeGlobal: "DropDownGlobalClosed",
     }),
     getSelectTag(TagIndex) {
       this.selectedTag(TagIndex);

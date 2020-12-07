@@ -20,37 +20,19 @@ export default {
   actions: {
     addPizzaToCart({ commit, state }, pizzaObj) {
       const payLoad = getCartData(state, pizzaObj);
-
       payLoad.getAllPayLoad.contextObjID = pizzaObj.id;
       commit("ADD_PIZZA_CART", payLoad.getAllPayLoad);
     },
   },
   getters: {
-    getCardsActiveBtn: (state) => {
-      return state.pizzaItems;
-    },
-    getPizzaItemsCount: (state) => {
-      return state.pizzaItems;
-    },
-    getGroupPizzas: (state) => {
-      return Object.keys(state.pizzaItems).map((key) => {
-        return state.pizzaItems[key];
-      });
-    },
-    getGroupPizzasPrice: (state) => {
-      return Object.keys(state.pizzaItems).map((key) => {
-        return state.pizzaItems[key];
-      });
-    },
-    getBasketFlag: (state) => {
-      return state.totalPrice === 0 ? false : true;
-    },
-    getTotalPrice: (state) => {
-      return state.totalPrice;
-    },
-    getItemsCount: (state) => {
-      return state.pizzaItemsCount;
-    },
+    getCart: ({ pizzaItems }) => pizzaItems,
+    getMap: ({ pizzaItems }) =>
+      Object.keys(pizzaItems).map((key) => {
+        return pizzaItems[key];
+      }),
+    getBasketFlag: ({ totalPrice }) => (totalPrice === 0 ? false : true),
+    getTotalPrice: ({ totalPrice }) => totalPrice,
+    getItemsCount: ({ pizzaItemsCount }) => pizzaItemsCount,
   },
   modules: {
     basket,

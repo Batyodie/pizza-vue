@@ -146,7 +146,7 @@ export default {
             title: "Закрыть",
             handler: () => {
               this.$modal.hide("dialog");
-              console.log(this.items);
+              console.log(this.cart);
               this.removeItems();
             },
           },
@@ -159,11 +159,11 @@ export default {
       return TheShopListStyle;
     },
     ...mapGetters({
-      items: "getPizzaItemsCount",
+      cart: "getCart",
       totalPrice: "getTotalPrice",
       itemsCount: "getItemsCount",
-      groupPizzaItem: "getGroupPizzas",
-      groupTotalPrice: "getGroupPizzasPrice",
+      groupPizzaItem: "getMap",
+      groupTotalPrice: "getMap",
       getBasketFlag: "getBasketFlag",
     }),
   },

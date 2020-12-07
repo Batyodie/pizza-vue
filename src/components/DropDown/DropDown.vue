@@ -12,15 +12,10 @@
         </slot>
       </button>
     </div>
-    <div v-show="getState.DropDownIsOpen" :class="DropDownStyle.PopUp">
+    <div v-if="getState.DropDownIsOpen" :class="DropDownStyle.PopUp">
       <ul :class="DropDownStyle.List">
         <li
-          :class="[
-            getState.DropDownItemIsActive.type === DropDownItem.type
-              ? [DropDownStyle.ItemActive]
-              : '',
-            DropDownStyle.Item
-          ]"
+          :class="[getDropDownActive(DropDownItem.type), DropDownStyle.Item]"
           v-for="DropDownItem in getState.DropDownItems"
           :key="DropDownItem.id"
           @click="DropDownTurned(DropDownItem)"
@@ -44,7 +39,7 @@ export default {
   name: "DropDown",
   data() {
     return {
-      icon: arrowTop
+      icon: arrowTop,
     };
   },
   methods: {
@@ -53,7 +48,7 @@ export default {
       open: "DropDownOpened",
       closeGlobal: "DropDownGlobalClosed",
       selection: "DropDownSelected",
-      sortPizzas: "fetchPizzas"
+      sortPizzas: "fetchPizzas",
     }),
     DropDownOpened(label) {
       // open DropDown
@@ -62,6 +57,8 @@ export default {
     DropDownGlobalWindowClosed(e) {
       if (!e.path.includes(this.$refs.DropDownBlock)) {
         this.closeGlobal();
+      } else {
+        return null;
       }
     },
 
@@ -69,21 +66,27 @@ export default {
       // select DropDown item
       this.selection(DropDownItem);
       this.sortPizzas();
-    }
+    },
   },
   computed: {
     DropDownStyle() {
       return DropDownStyle;
     },
     ...mapGetters({
-      getState: "getStateDropdown"
-    })
+      getState: "getStateDropdown",
+    }),
+    getDropDownActive() {
+      return (type) =>
+        this.getState.DropDownItemIsActive.type === type
+          ? DropDownStyle.ItemActive
+          : "";
+    },
   },
   mounted() {
     document.body.addEventListener("click", this.DropDownGlobalWindowClosed);
   },
-  beforeDestroy() {
+  destroyed() {
     document.body.removeEventListener("click", this.DropDownGlobalWindowClosed);
-  }
+  },
 };
 </script>

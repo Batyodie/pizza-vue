@@ -45,7 +45,6 @@ export default {
           cartStatsUpdate,
         });
       } catch (err) {
-        console.log(err);
         commit("PLUS_PIZZA_CART_ITEM_ERROR", err);
       }
     },

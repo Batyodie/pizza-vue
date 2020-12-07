@@ -17,7 +17,7 @@
     <div :class="ShopCartStyle.Typh">
       <h3 :class="ShopCartStyle.Title">{{ shopCart.items[0].name }}</h3>
       <p :class="ShopCartStyle.SubTitle">
-        {{ shopCart.items[0].type === 0 ? " тонкое " : " традиционное " }}
+        {{ getShopCartType() }}
         тесто, {{ shopCart.items[0].size }} см.
       </p>
     </div>
@@ -63,7 +63,7 @@
 
 <script>
 import { Button } from "@/components";
-import { mapActions, mapGetters, mapState } from "vuex";
+import { mapActions } from "vuex";
 
 import { pizzaSmall } from "@/assets";
 import { ShopCartStyle } from "@/components/style";
@@ -85,7 +85,6 @@ export default {
   },
   data() {
     return {
-      //   pizzaSmallWebP: pizzaSmallWebP,
       pizzaSmall: pizzaSmall,
       price: null,
     };
@@ -133,12 +132,12 @@ export default {
     },
   },
   computed: {
-    ...mapGetters({}),
-    ...mapState({
-      test: "groupPizzasTotalPrice",
-    }),
     ShopCartStyle() {
       return ShopCartStyle;
+    },
+    getShopCartType() {
+      return () =>
+        this.shopCart.items[0].type === 0 ? " тонкое " : " традиционное ";
     },
   },
 };
