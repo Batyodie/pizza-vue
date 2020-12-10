@@ -1,3 +1,110 @@
+<script>
+import { Button } from "@/components";
+
+import { BtnTag, CardStyle } from "@/components/style";
+import { mapGetters } from "vuex";
+export default {
+  name: "Card",
+  components: { Button },
+
+  props: {
+    card: {
+      type: Object,
+      required: true,
+    },
+
+    cardIndex: {
+      type: Number,
+    },
+
+    onClickAddPizza: {
+      type: Function,
+      required: true,
+      default: () => Object,
+    },
+    tags: {
+      type: Object,
+      default: null,
+    },
+  },
+  data() {
+    return {
+      activeType: this.tags === null ? this.card.types[0] : this.tags.type,
+      activeSize: this.tags === null ? this.card.sizes[0] : this.tags.size,
+      cardCount: null,
+      activeBtnFlag: false,
+      cardTypeData: {
+        cardItems: "items",
+        activeBtn: "activeBtn",
+      },
+      cardsTypeTags: ["тонкое", "традиционное"],
+      cardsSizesTags: [26, 30, 40],
+    };
+  },
+
+  computed: {
+    ...mapGetters({
+      getCartItemType: "getCartItemType",
+    }),
+
+    CardStyles() {
+      return CardStyle;
+    },
+
+    BtnTag() {
+      return BtnTag;
+    },
+
+    pizzaObj() {
+      return {
+        id: this.card.id,
+        name: this.card.name,
+        imageUrl: this.card.imageUrl,
+        price: this.card.price,
+        size: this.activeSize,
+        type: this.activeType,
+      };
+    },
+
+    getTagItemActive() {
+      return (btnType, options) =>
+        btnType === options ? [this.CardStyles.TagsItemActive] : "";
+    },
+
+    getTagDisable() {
+      return (cardType, options) =>
+        !cardType.includes(options) ? [this.CardStyles.TagsDisable] : "";
+    },
+
+    getAddBtnSelected() {
+      return () => (this.activeBtnFlag ? [this.CardStyles.AddBtnSelected] : "");
+    },
+  },
+
+  mounted() {
+    this.handlerCardItemCounter(this.cardIndex, this.cardTypeData);
+  },
+
+  methods: {
+    setActiveTypeTag(CardTypeIndex) {
+      this.activeType = CardTypeIndex;
+    },
+
+    setActiveSizeTag(CardSizeIndex) {
+      this.activeSize = CardSizeIndex;
+    },
+
+    handlerCardItemCounter(cardIndex, objType) {
+      const count = this.getCartItemType(cardIndex, objType.cardItems);
+      const flag = this.getCartItemType(cardIndex, objType.activeBtn);
+
+      this.cardCount = count !== null ? count.length : count;
+      this.activeBtnFlag = flag !== null ? flag : false;
+    },
+  },
+};
+</script>
+
 <template>
   <div :class="CardStyles.Card">
     <picture :class="CardStyles.Image">
@@ -18,7 +125,7 @@
           getTagItemActive(activeType, index),
           getTagDisable(card.types, index),
           CardStyles.TagsItem,
-          BtnTag.Tag
+          BtnTag.Tag,
         ]"
       >
         <template slot="ButtonText"> {{ TagType }} </template>
@@ -32,7 +139,7 @@
           getTagItemActive(activeSize, tagSize),
           getTagDisable(card.sizes, tagSize),
           CardStyles.TagsItem,
-          BtnTag.Tag
+          BtnTag.Tag,
         ]"
       >
         <template slot="ButtonText"> {{ tagSize }} см. </template>
@@ -45,7 +152,7 @@
           @click.native="
             [
               onClickAddPizza(pizzaObj),
-              handlerCardItemCounter(cardIndex, cardTypeData)
+              handlerCardItemCounter(cardIndex, cardTypeData),
             ]
           "
           :class="[CardStyles.AddBtn, getAddBtnSelected()]"
@@ -80,92 +187,3 @@
     </div>
   </div>
 </template>
-
-<script>
-import { Button } from "@/components";
-
-import { BtnTag, CardStyle } from "@/components/style";
-import { mapGetters } from "vuex";
-export default {
-  components: { Button },
-  props: {
-    card: {
-      type: Object,
-      required: true
-    },
-    cardIndex: {
-      type: Number
-    },
-    onClickAddPizza: {
-      type: Function,
-      required: true,
-      default: () => Object
-    }
-  },
-  name: "Card",
-  data() {
-    return {
-      activeType: this.card.types[0],
-      activeSize: this.card.sizes[0],
-      cardCount: null,
-      activeBtnFlag: false,
-      cardTypeData: {
-        cardItems: "items",
-        activeBtn: "activeBtn"
-      },
-      cardsTypeTags: ["тонкое", "традиционное"],
-      cardsSizesTags: [26, 30, 40]
-    };
-  },
-  methods: {
-    setActiveTypeTag(CardTypeIndex) {
-      this.activeType = CardTypeIndex;
-    },
-    setActiveSizeTag(CardSizeIndex) {
-      this.activeSize = CardSizeIndex;
-    },
-    handlerCardItemCounter(cardIndex, objType) {
-      const count = this.getCartItemType(cardIndex, objType.cardItems);
-      const flag = this.getCartItemType(cardIndex, objType.activeBtn);
-
-      this.cardCount = count !== null ? count.length : count;
-      this.activeBtnFlag = flag !== null ? flag : false;
-    }
-  },
-  computed: {
-    ...mapGetters({
-      getCartItemType: "getCartItemType"
-    }),
-    CardStyles() {
-      return CardStyle;
-    },
-    BtnTag() {
-      return BtnTag;
-    },
-    pizzaObj() {
-      return {
-        id: this.card.id,
-        name: this.card.name,
-        imageUrl: this.card.imageUrl,
-        price: this.card.price,
-        size: this.activeSize,
-        type: this.activeType
-      };
-    },
-    getTagItemActive() {
-      return (btnType, options) =>
-        btnType === options ? [this.CardStyles.TagsItemActive] : "";
-    },
-    getTagDisable() {
-      return (cardType, options) =>
-        !cardType.includes(options) ? [this.CardStyles.TagsDisable] : "";
-    },
-    getAddBtnSelected() {
-      return () => (this.activeBtnFlag ? [this.CardStyles.AddBtnSelected] : "");
-    }
-  },
-  mounted() {
-    this.handlerCardItemCounter(this.cardIndex, this.cardTypeData);
-  }
-};
-</script>

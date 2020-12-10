@@ -1,3 +1,28 @@
+<script>
+import { Button } from "@/components";
+
+import { EmptyCart } from "@/assets";
+import { TheShopListStyle } from "@/Layout/style";
+export default {
+  name: "LayoutTheShopListEmpty",
+  components: {
+    Button,
+  },
+
+  data() {
+    return {
+      EmptyCart: EmptyCart,
+    };
+  },
+
+  computed: {
+    TheShopListStyle() {
+      return TheShopListStyle;
+    },
+  },
+};
+</script>
+
 <template>
   <div :class="TheShopListStyle.Content">
     <div :class="TheShopListStyle.Empty">
@@ -23,26 +48,3 @@
     </div>
   </div>
 </template>
-
-<script>
-import { Button } from "@/components";
-
-import { EmptyCart } from "@/assets";
-import { TheShopListStyle } from "@/Layout/style";
-export default {
-  name: "LayoutTheShopListEmpty",
-  components: {
-    Button
-  },
-  data() {
-    return {
-      EmptyCart: EmptyCart
-    };
-  },
-  computed: {
-    TheShopListStyle() {
-      return TheShopListStyle;
-    }
-  }
-};
-</script>

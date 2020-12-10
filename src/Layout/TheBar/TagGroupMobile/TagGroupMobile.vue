@@ -1,3 +1,73 @@
+<script>
+import { Button } from "@/components";
+
+import { BtnTag, DropDownStyle } from "@/components/style";
+import { TheBarStyle } from "@/Layout/style";
+
+import { mapActions } from "vuex";
+export default {
+  name: "TagGroupMobile",
+  components: {
+    Button,
+  },
+
+  props: {
+    getTags: {
+      type: Array,
+    },
+    activeTag: {
+      type: Number,
+      default: null,
+    },
+  },
+
+  data() {
+    return {
+      DropDownTagsIsOpen: false,
+      TheBarTagIndex: null,
+    };
+  },
+  computed: {
+    TheBarStyle() {
+      return TheBarStyle;
+    },
+
+    BtnTag() {
+      return BtnTag;
+    },
+
+    DropDownStyle() {
+      return DropDownStyle;
+    },
+
+    getSelected() {
+      return (tagID) => {
+        return this.activeTag === tagID ? [TheBarStyle.IsSelected] : "";
+      };
+    },
+  },
+  methods: {
+    ...mapActions({
+      selectedTag: "TheBarSelectedTag",
+      filterPizzas: "fetchProducts",
+    }),
+
+    getSelectTag(TagIndex) {
+      this.selectedTag(TagIndex);
+      this.filterPizzas();
+    },
+
+    DropDownTagsOpen() {
+      this.DropDownTagsIsOpen = !this.DropDownTagsIsOpen;
+    },
+
+    getSelectTagIndex(index) {
+      this.TheBarTagIndex = index;
+    },
+  },
+};
+</script>
+
 <template>
   <div :class="DropDownStyle.DropDown">
     <div style="display: flex; align-items: center;">
@@ -34,65 +104,3 @@
     </div>
   </div>
 </template>
-
-<script>
-import { Button } from "@/components";
-
-import { BtnTag, DropDownStyle } from "@/components/style";
-import { TheBarStyle } from "@/Layout/style";
-
-import { mapActions } from "vuex";
-export default {
-  name: "TagGroupMobile",
-  components: {
-    Button
-  },
-  props: {
-    getTags: {
-      type: Array
-    },
-    activeTag: {
-      type: Number,
-      default: null
-    }
-  },
-  data() {
-    return {
-      DropDownTagsIsOpen: false,
-      TheBarTagIndex: null
-    };
-  },
-  computed: {
-    TheBarStyle() {
-      return TheBarStyle;
-    },
-    BtnTag() {
-      return BtnTag;
-    },
-    DropDownStyle() {
-      return DropDownStyle;
-    },
-    getSelected() {
-      return tagID => {
-        return this.activeTag === tagID ? [TheBarStyle.IsSelected] : "";
-      };
-    }
-  },
-  methods: {
-    ...mapActions({
-      selectedTag: "TheBarSelectedTag",
-      filterPizzas: "fetchProducts"
-    }),
-    getSelectTag(TagIndex) {
-      this.selectedTag(TagIndex);
-      this.filterPizzas();
-    },
-    DropDownTagsOpen() {
-      this.DropDownTagsIsOpen = !this.DropDownTagsIsOpen;
-    },
-    getSelectTagIndex(index) {
-      this.TheBarTagIndex = index;
-    }
-  }
-};
-</script>

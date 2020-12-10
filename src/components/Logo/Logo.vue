@@ -1,3 +1,31 @@
+<script>
+import { pizzaLogo } from "@/assets";
+import { LogoStyle } from "@/components/style";
+
+export default {
+  name: "Logo",
+
+  props: {
+    title: {
+      type: String,
+      required: true,
+    },
+  },
+
+  data() {
+    return {
+      logo: pizzaLogo,
+    };
+  },
+
+  computed: {
+    LogoStyle() {
+      return LogoStyle;
+    },
+  },
+};
+</script>
+
 <template>
   <router-link to="/" style="text-decoration: none">
     <div :class="LogoStyle.Inner">
@@ -22,28 +50,3 @@
     </div>
   </router-link>
 </template>
-
-<script>
-import { pizzaLogo } from "@/assets";
-import { LogoStyle } from "@/components/style";
-
-export default {
-  name: "Logo",
-  props: {
-    title: {
-      type: String,
-      required: true
-    }
-  },
-  data: function() {
-    return {
-      logo: pizzaLogo
-    };
-  },
-  computed: {
-    LogoStyle() {
-      return LogoStyle;
-    }
-  }
-};
-</script>

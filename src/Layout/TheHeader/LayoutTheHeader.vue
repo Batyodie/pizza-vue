@@ -1,3 +1,53 @@
+<script>
+import { Button, Logo } from "@/components";
+import { BtnStyle } from "@/components/style";
+import { mapGetters } from "vuex";
+
+import { iconfinder } from "@/assets";
+
+import { LayoutTheHeader } from "@/Layout/style";
+export default {
+  name: "LayoutTheHeader",
+  components: { Logo, Button },
+
+  props: {
+    HeaderButton: {
+      type: Boolean,
+      required: true,
+    },
+
+    title: {
+      type: String,
+      required: true,
+      default: "",
+    },
+  },
+
+  data() {
+    return {
+      icon: iconfinder,
+      IsActiveButton: this.HeaderButton,
+      LogoTitle: this.title,
+    };
+  },
+
+  computed: {
+    ...mapGetters({
+      totalPrice: "getTotalPrice",
+      itemsCount: "getItemsCount",
+    }),
+
+    BtnStyle() {
+      return BtnStyle;
+    },
+
+    LayoutTheHeader() {
+      return LayoutTheHeader;
+    },
+  },
+};
+</script>
+
 <template>
   <header :class="LayoutTheHeader.Wrapper">
     <div :class="LayoutTheHeader.BorderBottom"></div>
@@ -24,47 +74,3 @@
     </template>
   </header>
 </template>
-
-<script>
-import { Button, Logo } from "@/components";
-import { BtnStyle } from "@/components/style";
-import { mapGetters } from "vuex";
-
-import { iconfinder } from "@/assets";
-
-import { LayoutTheHeader } from "@/Layout/style";
-export default {
-  components: { Logo, Button },
-  props: {
-    HeaderButton: {
-      type: Boolean,
-      required: true
-    },
-    title: {
-      type: String,
-      required: true,
-      default: ""
-    }
-  },
-  name: "LayoutTheHeader",
-  data() {
-    return {
-      icon: iconfinder,
-      IsActiveButton: this.HeaderButton,
-      LogoTitle: this.title
-    };
-  },
-  computed: {
-    ...mapGetters({
-      totalPrice: "getTotalPrice",
-      itemsCount: "getItemsCount"
-    }),
-    BtnStyle() {
-      return BtnStyle;
-    },
-    LayoutTheHeader() {
-      return LayoutTheHeader;
-    }
-  }
-};
-</script>

@@ -1,3 +1,73 @@
+<script>
+import { mapGetters, mapActions } from "vuex";
+
+import { arrowTop } from "@/assets";
+import { DropDownStyle } from "@/components/style";
+
+export default {
+  name: "DropDown",
+
+  data() {
+    return {
+      icon: arrowTop,
+    };
+  },
+
+  computed: {
+    DropDownStyle() {
+      return DropDownStyle;
+    },
+
+    ...mapGetters({
+      getState: "getStateDropdown",
+    }),
+
+    getDropDownActive() {
+      return (type) =>
+        this.getState.DropDownItemIsActive.type === type
+          ? DropDownStyle.ItemActive
+          : "";
+    },
+  },
+
+  mounted() {
+    document.body.addEventListener("click", this.DropDownGlobalWindowClosed);
+  },
+  destroyed() {
+    document.body.removeEventListener("click", this.DropDownGlobalWindowClosed);
+  },
+
+  methods: {
+    ...mapActions({
+      // proxies  `this.open()` into `this.$store.dispatch('DropDownOpened')`
+      open: "DropDownOpened",
+      closeGlobal: "DropDownGlobalClosed",
+      selection: "DropDownSelected",
+      sortPizzas: "fetchProducts",
+    }),
+
+    DropDownOpened(label) {
+      // open DropDown
+      this.open(label);
+    },
+
+    DropDownGlobalWindowClosed(e) {
+      if (!e.path.includes(this.$refs.DropDownBlock)) {
+        this.closeGlobal();
+      } else {
+        return null;
+      }
+    },
+
+    DropDownTurned(DropDownItem) {
+      // select DropDown item
+      this.selection(DropDownItem);
+      this.sortPizzas();
+    },
+  },
+};
+</script>
+
 <template>
   <div ref="DropDownBlock" :class="DropDownStyle.DropDown">
     <div style="display: flex; align-items: center;">
@@ -28,65 +98,3 @@
     </div>
   </div>
 </template>
-
-<script>
-import { mapGetters, mapActions } from "vuex";
-
-import { arrowTop } from "@/assets";
-import { DropDownStyle } from "@/components/style";
-
-export default {
-  name: "DropDown",
-  data() {
-    return {
-      icon: arrowTop
-    };
-  },
-  methods: {
-    ...mapActions({
-      // proxies  `this.open()` into `this.$store.dispatch('DropDownOpened')`
-      open: "DropDownOpened",
-      closeGlobal: "DropDownGlobalClosed",
-      selection: "DropDownSelected",
-      sortPizzas: "fetchProducts"
-    }),
-    DropDownOpened(label) {
-      // open DropDown
-      this.open(label);
-    },
-    DropDownGlobalWindowClosed(e) {
-      if (!e.path.includes(this.$refs.DropDownBlock)) {
-        this.closeGlobal();
-      } else {
-        return null;
-      }
-    },
-
-    DropDownTurned(DropDownItem) {
-      // select DropDown item
-      this.selection(DropDownItem);
-      this.sortPizzas();
-    }
-  },
-  computed: {
-    DropDownStyle() {
-      return DropDownStyle;
-    },
-    ...mapGetters({
-      getState: "getStateDropdown"
-    }),
-    getDropDownActive() {
-      return type =>
-        this.getState.DropDownItemIsActive.type === type
-          ? DropDownStyle.ItemActive
-          : "";
-    }
-  },
-  mounted() {
-    document.body.addEventListener("click", this.DropDownGlobalWindowClosed);
-  },
-  destroyed() {
-    document.body.removeEventListener("click", this.DropDownGlobalWindowClosed);
-  }
-};
-</script>

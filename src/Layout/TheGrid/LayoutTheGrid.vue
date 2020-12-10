@@ -1,3 +1,44 @@
+<script>
+import { Card } from "@/components";
+import { ContentLoader } from "vue-content-loader";
+import { mapGetters, mapActions } from "vuex";
+
+import { TheGridStyle } from "@/Layout/style";
+export default {
+  name: "LayoutTheGrid",
+  components: { Card, ContentLoader },
+  data() {
+    return {};
+  },
+
+  computed: {
+    TheGridStyle() {
+      return TheGridStyle;
+    },
+
+    ...mapGetters({
+      cards: "getCards",
+      cart: "getCart",
+      getCartItem: "getCartItem",
+      isLoaded: "getPizzasLoadedFlag",
+    }),
+    getLastCardTags() {
+      return (id) => (this.getCartItem(id) ? this.getCartItem(id).tags : null);
+    },
+  },
+
+  methods: {
+    ...mapActions({
+      addPizza: "addPizzaToCart",
+    }),
+
+    onClickAddPizza(obj) {
+      this.addPizza(obj);
+    },
+  },
+};
+</script>
+
 <template>
   <main :class="TheGridStyle.TheGrid">
     <div style="margin-bottom: 35px;">
@@ -29,39 +70,10 @@
           :onClickAddPizza="onClickAddPizza"
           :card="card"
           :cardIndex="card.id"
+          :tags="getLastCardTags(card.id)"
         >
         </Card>
       </template>
     </div>
   </main>
 </template>
-
-<script>
-import { Card } from "@/components";
-import { ContentLoader } from "vue-content-loader";
-import { mapGetters, mapActions } from "vuex";
-
-import { TheGridStyle } from "@/Layout/style";
-export default {
-  components: { Card, ContentLoader },
-  name: "LayoutTheGrid",
-  computed: {
-    TheGridStyle() {
-      return TheGridStyle;
-    },
-    ...mapGetters({
-      cards: "getCards",
-      cart: "getCart",
-      isLoaded: "getPizzasLoadedFlag"
-    })
-  },
-  methods: {
-    ...mapActions({
-      addPizza: "addPizzaToCart"
-    }),
-    onClickAddPizza(obj) {
-      this.addPizza(obj);
-    }
-  }
-};
-</script>

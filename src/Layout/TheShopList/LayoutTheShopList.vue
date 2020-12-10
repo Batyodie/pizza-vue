@@ -1,3 +1,87 @@
+<!-- Layout the shop list component -->
+<script>
+import { Button, ShopCart } from "@/components";
+import { mapGetters, mapActions } from "vuex";
+
+import { CartIcon, TrashIcon, arrow, EmptyCart } from "@/assets";
+import { TheShopListStyle } from "@/Layout/style";
+import LayoutTheShopListEmpty from "../TheShopList/LayoutTheShopListEmpty.vue";
+export default {
+  name: "LayoutTheShopList",
+  components: {
+    Button,
+    ShopCart,
+    LayoutTheShopListEmpty,
+  },
+
+  data() {
+    return {
+      CartIcon: CartIcon,
+      TrashIcon: TrashIcon,
+      arrow: arrow,
+      EmptyCart: EmptyCart,
+    };
+  },
+  computed: {
+    TheShopListStyle() {
+      return TheShopListStyle;
+    },
+
+    ...mapGetters({
+      cart: "getCart",
+      totalPrice: "getTotalPrice",
+      itemsCount: "getItemsCount",
+      pizzaItem: "getPizzaItem",
+      getBasketFlag: "getBasketFlag",
+    }),
+  },
+
+  methods: {
+    ...mapActions({
+      removeItems: "removePizzaItems",
+    }),
+    getClearPizzas() {
+      this.$modal.show("dialog", {
+        title: "Очистить корзину пицц",
+        text: "Вы действительно хотите отчистить корзину",
+        buttons: [
+          {
+            title: "Нет",
+            handler: () => {
+              this.$modal.hide("dialog");
+            },
+          },
+          {
+            title: "Да",
+            handler: () => {
+              this.removeItems();
+            },
+          },
+        ],
+      });
+    },
+
+    handlerPayOut() {
+      this.$modal.show("dialog", {
+        title: "Спасибо за покупку!",
+        text: `Вы приобрели ${this.itemsCount} пицц, по цене ${this.totalPrice} рублей.
+        \n Спасибо за покупку, приходите еще!`,
+        buttons: [
+          {
+            title: "Закрыть",
+            handler: () => {
+              this.$modal.hide("dialog");
+              console.log(this.cart);
+              this.removeItems();
+            },
+          },
+        ],
+      });
+    },
+  },
+};
+</script>
+
 <template>
   <div :class="TheShopListStyle.TheShopList">
     <template v-if="getBasketFlag">
@@ -73,82 +157,3 @@
     </template>
   </div>
 </template>
-
-<script>
-import { Button, ShopCart } from "@/components";
-import { mapGetters, mapActions } from "vuex";
-
-import { CartIcon, TrashIcon, arrow, EmptyCart } from "@/assets";
-import { TheShopListStyle } from "@/Layout/style";
-import LayoutTheShopListEmpty from "../TheShopList/LayoutTheShopListEmpty.vue";
-export default {
-  name: "LayoutTheShopList",
-  components: {
-    Button,
-    ShopCart,
-    LayoutTheShopListEmpty
-  },
-  data() {
-    return {
-      CartIcon: CartIcon,
-      TrashIcon: TrashIcon,
-      arrow: arrow,
-      EmptyCart: EmptyCart
-    };
-  },
-  methods: {
-    ...mapActions({
-      removeItems: "removePizzaItems"
-    }),
-    getClearPizzas() {
-      this.$modal.show("dialog", {
-        title: "Очистить корзину пицц",
-        text: "Вы действительно хотите отчистить корзину",
-        buttons: [
-          {
-            title: "Нет",
-            handler: () => {
-              this.$modal.hide("dialog");
-            }
-          },
-          {
-            title: "Да",
-            handler: () => {
-              this.removeItems();
-            }
-          }
-        ]
-      });
-    },
-    handlerPayOut() {
-      this.$modal.show("dialog", {
-        title: "Спасибо за покупку!",
-        text: `Вы приобрели ${this.itemsCount} пицц, по цене ${this.totalPrice} рублей.
-        \n Спасибо за покупку, приходите еще!`,
-        buttons: [
-          {
-            title: "Закрыть",
-            handler: () => {
-              this.$modal.hide("dialog");
-              console.log(this.cart);
-              this.removeItems();
-            }
-          }
-        ]
-      });
-    }
-  },
-  computed: {
-    TheShopListStyle() {
-      return TheShopListStyle;
-    },
-    ...mapGetters({
-      cart: "getCart",
-      totalPrice: "getTotalPrice",
-      itemsCount: "getItemsCount",
-      pizzaItem: "getPizzaItem",
-      getBasketFlag: "getBasketFlag"
-    })
-  }
-};
-</script>
