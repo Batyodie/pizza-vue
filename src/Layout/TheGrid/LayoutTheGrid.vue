@@ -20,22 +20,22 @@ export default {
       cards: "getCards",
       cart: "getCart",
       getCartItem: "getCartItem",
-      isLoaded: "getPizzasLoadedFlag",
+      isLoaded: "getPizzasLoadedFlag"
     }),
     getLastCardTags() {
-      return (id) => (this.getCartItem(id) ? this.getCartItem(id).tags : null);
-    },
+      return id => (this.getCartItem(id) ? this.getCartItem(id).tags : null);
+    }
   },
 
   methods: {
     ...mapActions({
-      addPizza: "addPizzaToCart",
+      addPizza: "addPizzaToCart"
     }),
 
     onClickAddPizza(obj) {
       this.addPizza(obj);
-    },
-  },
+    }
+  }
 };
 </script>
 

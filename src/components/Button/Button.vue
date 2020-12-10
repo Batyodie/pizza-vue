@@ -6,21 +6,21 @@ export default {
   props: {
     tagIndex: {
       type: Number,
-      default: null,
-    },
+      default: null
+    }
   },
 
   computed: {
     Button() {
       return Button;
-    },
+    }
   },
 
   methods: {
     selectTag() {
       this.$emit("selectTag", this.tagIndex);
-    },
-  },
+    }
+  }
 };
 </script>
 

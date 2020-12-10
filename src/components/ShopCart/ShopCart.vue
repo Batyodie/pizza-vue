@@ -7,38 +7,38 @@ import { ShopCartStyle } from "@/components/style";
 export default {
   name: "ShopCart",
   components: {
-    Button,
+    Button
   },
 
   props: {
     shopCart: {
       type: Array,
       required: true,
-      default: () => [],
+      default: () => []
     },
 
     groupCartItems: {
       type: Array,
       required: true,
-      default: () => [],
+      default: () => []
     },
 
     groupCartItemsPrice: {
       type: Number,
       required: true,
-      default: 0,
+      default: 0
     },
 
     index: {
       type: Number,
-      required: true,
-    },
+      required: true
+    }
   },
 
   data() {
     return {
       pizzaSmall: pizzaSmall,
-      price: null,
+      price: null
     };
   },
 
@@ -50,14 +50,14 @@ export default {
     getShopCartType() {
       return () =>
         this.shopCart[0].type === 0 ? " тонкое " : " традиционное ";
-    },
+    }
   },
 
   methods: {
     ...mapActions({
       removeItem: "removePizzaItem",
       plusCartItem: "plusCartItem",
-      minusCartItem: "minusCartItem",
+      minusCartItem: "minusCartItem"
     }),
 
     removeGroupItem(id) {
@@ -69,23 +69,23 @@ export default {
             title: "Нет",
             handler: () => {
               this.$modal.hide("dialog");
-            },
+            }
           },
           {
             title: "Да",
             handler: () => {
               this.removeItem(id);
               this.$modal.hide("dialog");
-            },
-          },
-        ],
+            }
+          }
+        ]
       });
     },
 
     handlerAddPizzaCartItem(data) {
       const payLoad = {
         ID: data,
-        index: this.index,
+        index: this.index
       };
       this.plusCartItem(payLoad);
     },
@@ -93,11 +93,11 @@ export default {
     handlerRemovePizzaCartItem(data) {
       const payLoad = {
         ID: data,
-        index: this.index,
+        index: this.index
       };
       this.minusCartItem(payLoad);
-    },
-  },
+    }
+  }
 };
 </script>
 

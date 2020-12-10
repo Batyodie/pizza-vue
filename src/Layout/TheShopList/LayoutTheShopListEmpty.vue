@@ -6,20 +6,20 @@ import { TheShopListStyle } from "@/Layout/style";
 export default {
   name: "LayoutTheShopListEmpty",
   components: {
-    Button,
+    Button
   },
 
   data() {
     return {
-      EmptyCart: EmptyCart,
+      EmptyCart: EmptyCart
     };
   },
 
   computed: {
     TheShopListStyle() {
       return TheShopListStyle;
-    },
-  },
+    }
+  }
 };
 </script>
 

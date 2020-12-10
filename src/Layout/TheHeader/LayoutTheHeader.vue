@@ -13,28 +13,28 @@ export default {
   props: {
     HeaderButton: {
       type: Boolean,
-      required: true,
+      required: true
     },
 
     title: {
       type: String,
       required: true,
-      default: "",
-    },
+      default: ""
+    }
   },
 
   data() {
     return {
       icon: iconfinder,
       IsActiveButton: this.HeaderButton,
-      LogoTitle: this.title,
+      LogoTitle: this.title
     };
   },
 
   computed: {
     ...mapGetters({
       totalPrice: "getTotalPrice",
-      itemsCount: "getItemsCount",
+      itemsCount: "getItemsCount"
     }),
 
     BtnStyle() {
@@ -43,8 +43,8 @@ export default {
 
     LayoutTheHeader() {
       return LayoutTheHeader;
-    },
-  },
+    }
+  }
 };
 </script>
 

@@ -12,7 +12,7 @@ export default {
 
   data() {
     return {
-      DropDownTagsIsOpen: false,
+      DropDownTagsIsOpen: false
     };
   },
 
@@ -32,20 +32,20 @@ export default {
     ...mapGetters({
       getTags: "getTags",
       activeTag: "getIsActiveTag",
-      getState: "getStateDropdown",
+      getState: "getStateDropdown"
     }),
 
     getSelected() {
-      return (tagID) => {
+      return tagID => {
         return this.activeTag === tagID ? [TheBarStyle.IsSelected] : "";
       };
-    },
+    }
   },
   methods: {
     ...mapActions({
       selectedTag: "TheBarSelectedTag",
       filterPizzas: "fetchProducts",
-      closeGlobal: "DropDownGlobalClosed",
+      closeGlobal: "DropDownGlobalClosed"
     }),
 
     getSelectTag(TagIndex) {
@@ -55,8 +55,8 @@ export default {
 
     DropDownTagsOpen() {
       this.DropDownTagsIsOpen = !this.DropDownTagsIsOpen;
-    },
-  },
+    }
+  }
 };
 </script>
 
