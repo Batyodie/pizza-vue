@@ -21,6 +21,7 @@ export default {
       state.addPizzaCartError = error;
     }
   },
+
   actions: {
     addPizzaToCart({ commit, state }, pizzaObj) {
       try {
