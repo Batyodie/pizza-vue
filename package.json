@@ -16,8 +16,8 @@
     }
   },
   "lint-staged": {
-    "*.vue": ["eslint --fix", "git add"],
-    "*.js": ["eslint --fix", "git add"]
+    "*.vue": ["eslint --fix", "git add ."],
+    "*.js": ["eslint --fix", "git add ."]
   },
   "dependencies": {
     "core-js": "^3.6.5",
