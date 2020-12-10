@@ -10,8 +10,8 @@ import { mapActions } from "vuex";
 export default {
   methods: {
     ...mapActions({
-      fetchProducts: "fetchProducts",
-    }),
+      fetchProducts: "fetchProducts"
+    })
   },
   computed: {
     BaseApp() {
@@ -19,10 +19,10 @@ export default {
     },
     BaseView() {
       return BaseView;
-    },
+    }
   },
   created() {
     this.fetchProducts();
-  },
+  }
 };
 </script>

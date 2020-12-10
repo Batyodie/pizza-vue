@@ -52,16 +52,16 @@ export default {
     ...mapGetters({
       cards: "getCards",
       cart: "getCart",
-      isLoaded: "getPizzasLoadedFlag",
-    }),
+      isLoaded: "getPizzasLoadedFlag"
+    })
   },
   methods: {
     ...mapActions({
-      addPizza: "addPizzaToCart",
+      addPizza: "addPizzaToCart"
     }),
     onClickAddPizza(obj) {
       this.addPizza(obj);
-    },
-  },
+    }
+  }
 };
 </script>

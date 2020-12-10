@@ -86,19 +86,19 @@ export default {
   components: {
     Button,
     ShopCart,
-    LayoutTheShopListEmpty,
+    LayoutTheShopListEmpty
   },
   data() {
     return {
       CartIcon: CartIcon,
       TrashIcon: TrashIcon,
       arrow: arrow,
-      EmptyCart: EmptyCart,
+      EmptyCart: EmptyCart
     };
   },
   methods: {
     ...mapActions({
-      removeItems: "removePizzaItems",
+      removeItems: "removePizzaItems"
     }),
     getClearPizzas() {
       this.$modal.show("dialog", {
@@ -109,15 +109,15 @@ export default {
             title: "Нет",
             handler: () => {
               this.$modal.hide("dialog");
-            },
+            }
           },
           {
             title: "Да",
             handler: () => {
               this.removeItems();
-            },
-          },
-        ],
+            }
+          }
+        ]
       });
     },
     handlerPayOut() {
@@ -132,11 +132,11 @@ export default {
               this.$modal.hide("dialog");
               console.log(this.cart);
               this.removeItems();
-            },
-          },
-        ],
+            }
+          }
+        ]
       });
-    },
+    }
   },
   computed: {
     TheShopListStyle() {
@@ -147,8 +147,8 @@ export default {
       totalPrice: "getTotalPrice",
       itemsCount: "getItemsCount",
       pizzaItem: "getPizzaItem",
-      getBasketFlag: "getBasketFlag",
-    }),
-  },
+      getBasketFlag: "getBasketFlag"
+    })
+  }
 };
 </script>

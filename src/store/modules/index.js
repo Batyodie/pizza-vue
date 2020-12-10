@@ -6,7 +6,7 @@ const modules = {
   dropdown,
   tags,
   products,
-  cart,
+  cart
 };
 
 export default modules;

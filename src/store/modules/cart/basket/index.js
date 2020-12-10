@@ -7,21 +7,21 @@ export default {
     itemsError: null,
     itemError: null,
     plusItemError: null,
-    minusItemError: null,
+    minusItemError: null
   },
   getters: {
     getUpdateStatsCart: () => {
-      return (stateObj) => {
+      return stateObj => {
         const pizzaObjData = getCartMethod.getTotalCout(stateObj);
         return {
           pizzaItemsCount: pizzaObjData.length,
-          totalPrice: getCartMethod.getTotalPrice(pizzaObjData, "price"),
+          totalPrice: getCartMethod.getTotalPrice(pizzaObjData, "price")
         };
       };
-    },
+    }
   },
   modules: {
     mutations,
-    actions,
-  },
+    actions
+  }
 };

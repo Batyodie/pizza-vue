@@ -12,12 +12,12 @@ class Data {
     const id = this.#pizzaObj.id;
     const state = this.#state;
     const obj = this.#pizzaObj;
-    return produce(state.pizzaItems, (draft) => {
+    return produce(state.pizzaItems, draft => {
       const currentItems = !draft[id] ? [obj] : [...draft[id].items, obj];
       draft[id] = {
         items: currentItems,
         totalPrice: this.getTotalPrice(currentItems, "price"),
-        activeBtn: true,
+        activeBtn: true
       };
     });
   }
@@ -26,7 +26,7 @@ class Data {
     return [].concat.apply([], Object.values(obj));
   }
   getTotalCout(obj) {
-    const newObj = Object.keys(obj).map((key) => {
+    const newObj = Object.keys(obj).map(key => {
       return obj[key].items;
     });
     return this.getAllPizzas(newObj);
@@ -41,7 +41,7 @@ class Data {
       newPizzaObj: obj,
       allPizzasCount: this.getTotalCout(obj),
       allPizzas: this.getAllPizzas(obj),
-      totalPrice: this.getTotalPrice(this.getAllPizzas(obj), "totalPrice"),
+      totalPrice: this.getTotalPrice(this.getAllPizzas(obj), "totalPrice")
     });
   }
 }

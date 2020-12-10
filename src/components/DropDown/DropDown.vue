@@ -39,7 +39,7 @@ export default {
   name: "DropDown",
   data() {
     return {
-      icon: arrowTop,
+      icon: arrowTop
     };
   },
   methods: {
@@ -48,7 +48,7 @@ export default {
       open: "DropDownOpened",
       closeGlobal: "DropDownGlobalClosed",
       selection: "DropDownSelected",
-      sortPizzas: "fetchProducts",
+      sortPizzas: "fetchProducts"
     }),
     DropDownOpened(label) {
       // open DropDown
@@ -66,27 +66,27 @@ export default {
       // select DropDown item
       this.selection(DropDownItem);
       this.sortPizzas();
-    },
+    }
   },
   computed: {
     DropDownStyle() {
       return DropDownStyle;
     },
     ...mapGetters({
-      getState: "getStateDropdown",
+      getState: "getStateDropdown"
     }),
     getDropDownActive() {
-      return (type) =>
+      return type =>
         this.getState.DropDownItemIsActive.type === type
           ? DropDownStyle.ItemActive
           : "";
-    },
+    }
   },
   mounted() {
     document.body.addEventListener("click", this.DropDownGlobalWindowClosed);
   },
   destroyed() {
     document.body.removeEventListener("click", this.DropDownGlobalWindowClosed);
-  },
+  }
 };
 </script>

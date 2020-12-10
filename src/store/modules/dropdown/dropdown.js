@@ -4,13 +4,13 @@ export default {
     DropDownItems: [
       { id: 5, text: "популярности", type: "rating", order: "desc" },
       { id: 6, text: "по цене", type: "price", order: "desc" },
-      { id: 7, text: "по алфавиту", type: "name", order: "asc" },
+      { id: 7, text: "по алфавиту", type: "name", order: "asc" }
     ],
     DropDownItemIsActive: {
       text: "популярности",
       type: "rating",
-      order: "desc",
-    },
+      order: "desc"
+    }
   },
   mutations: {
     DropDownOpened(state, label) {
@@ -25,7 +25,7 @@ export default {
     },
     DropDownGlobalClose(state) {
       state.DropDownIsOpen = false;
-    },
+    }
   },
   actions: {
     DropDownOpened(ctx, label) {
@@ -36,15 +36,15 @@ export default {
     },
     DropDownSelected({ commit }, DropDownItem) {
       commit("DropDownSelected", DropDownItem);
-    },
+    }
   },
   getters: {
     getStateDropdown: ({
       DropDownIsOpen,
       DropDownItemIsActive,
-      DropDownItems,
+      DropDownItems
     }) => {
       return { DropDownIsOpen, DropDownItemIsActive, DropDownItems };
-    },
-  },
+    }
+  }
 };

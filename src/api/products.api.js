@@ -5,7 +5,7 @@ const getProducts = (tagCategoryID, dropDownActive) =>
     url: `${tagCategoryID !== null ? `category=${tagCategoryID}` : ""}&_sort=${
       dropDownActive.type
     }&_order=${dropDownActive.order}`,
-    method: "get",
+    method: "get"
   });
 
 export { getProducts };

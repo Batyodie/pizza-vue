@@ -18,7 +18,7 @@
           getTagItemActive(activeType, index),
           getTagDisable(card.types, index),
           CardStyles.TagsItem,
-          BtnTag.Tag,
+          BtnTag.Tag
         ]"
       >
         <template slot="ButtonText"> {{ TagType }} </template>
@@ -32,7 +32,7 @@
           getTagItemActive(activeSize, tagSize),
           getTagDisable(card.sizes, tagSize),
           CardStyles.TagsItem,
-          BtnTag.Tag,
+          BtnTag.Tag
         ]"
       >
         <template slot="ButtonText"> {{ tagSize }} см. </template>
@@ -45,7 +45,7 @@
           @click.native="
             [
               onClickAddPizza(pizzaObj),
-              handlerCardItemCounter(cardIndex, cardTypeData),
+              handlerCardItemCounter(cardIndex, cardTypeData)
             ]
           "
           :class="[CardStyles.AddBtn, getAddBtnSelected()]"
@@ -91,16 +91,16 @@ export default {
   props: {
     card: {
       type: Object,
-      required: true,
+      required: true
     },
     cardIndex: {
-      type: Number,
+      type: Number
     },
     onClickAddPizza: {
       type: Function,
       required: true,
-      default: () => Object,
-    },
+      default: () => Object
+    }
   },
   name: "Card",
   data() {
@@ -111,10 +111,10 @@ export default {
       activeBtnFlag: false,
       cardTypeData: {
         cardItems: "items",
-        activeBtn: "activeBtn",
+        activeBtn: "activeBtn"
       },
       cardsTypeTags: ["тонкое", "традиционное"],
-      cardsSizesTags: [26, 30, 40],
+      cardsSizesTags: [26, 30, 40]
     };
   },
   methods: {
@@ -130,11 +130,11 @@ export default {
 
       this.cardCount = count !== null ? count.length : count;
       this.activeBtnFlag = flag !== null ? flag : false;
-    },
+    }
   },
   computed: {
     ...mapGetters({
-      getCartItemType: "getCartItemType",
+      getCartItemType: "getCartItemType"
     }),
     CardStyles() {
       return CardStyle;
@@ -149,7 +149,7 @@ export default {
         imageUrl: this.card.imageUrl,
         price: this.card.price,
         size: this.activeSize,
-        type: this.activeType,
+        type: this.activeType
       };
     },
     getTagItemActive() {
@@ -162,10 +162,10 @@ export default {
     },
     getAddBtnSelected() {
       return () => (this.activeBtnFlag ? [this.CardStyles.AddBtnSelected] : "");
-    },
+    }
   },
   mounted() {
     this.handlerCardItemCounter(this.cardIndex, this.cardTypeData);
-  },
+  }
 };
 </script>

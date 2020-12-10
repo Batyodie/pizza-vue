@@ -3,13 +3,13 @@ import {
   SET_DISCHARGE,
   SET_LOADED,
   SET_PRODUCTS,
-  SET_PRODUCTS_ERROR,
+  SET_PRODUCTS_ERROR
 } from "../../mutation-types";
 export default {
   state: {
     loadedProducts: false,
     products: [],
-    productError: null,
+    productError: null
   },
   mutations: {
     [SET_PRODUCTS](state, products) {
@@ -23,7 +23,7 @@ export default {
     },
     [SET_PRODUCTS_ERROR](state, error) {
       state.productError = error;
-    },
+    }
   },
   actions: {
     async fetchProducts({ commit, state, rootState }) {
@@ -41,10 +41,10 @@ export default {
       } catch (err) {
         commit("SET_PRODUCTS_ERROR", err);
       }
-    },
+    }
   },
   getters: {
     getCards: ({ products }) => products,
-    getPizzasLoadedFlag: ({ loadedProducts }) => loadedProducts,
-  },
+    getPizzasLoadedFlag: ({ loadedProducts }) => loadedProducts
+  }
 };

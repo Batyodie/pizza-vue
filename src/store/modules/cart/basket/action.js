@@ -13,7 +13,7 @@ export default {
     },
     removePizzaItem({ commit, rootState }, deleteItemID) {
       try {
-        const updateCart = produce(rootState.cart, (draft) => {
+        const updateCart = produce(rootState.cart, draft => {
           const cartItem = draft.pizzaItems[deleteItemID];
 
           delete draft.pizzaItems[deleteItemID];
@@ -30,7 +30,7 @@ export default {
     },
     plusCartItem({ commit, rootState, getters }, payLoad) {
       try {
-        const addItem = produce(rootState.cart.pizzaItems, (draft) => {
+        const addItem = produce(rootState.cart.pizzaItems, draft => {
           const cartItem = draft[payLoad.ID];
           const lastGroupItem = cartItem.items.length - 1;
           const addObj = [...cartItem.items, cartItem.items[lastGroupItem]];
@@ -42,7 +42,7 @@ export default {
         commit("PLUS_CART_ITEM", {
           rootState: rootState.cart,
           addItem,
-          cartStatsUpdate,
+          cartStatsUpdate
         });
       } catch (err) {
         commit("PLUS_PIZZA_CART_ITEM_ERROR", err);
@@ -50,7 +50,7 @@ export default {
     },
     minusCartItem({ commit, rootState, getters }, payLoad) {
       try {
-        const removeItem = produce(rootState.cart.pizzaItems, (draft) => {
+        const removeItem = produce(rootState.cart.pizzaItems, draft => {
           const cartItem = draft[payLoad.ID];
           if (cartItem.items.length > 1) {
             cartItem.items.pop();
@@ -66,11 +66,11 @@ export default {
         commit("MINUS_CART_ITEM", {
           rootState: rootState.cart,
           removeItem,
-          cartStatsUpdate,
+          cartStatsUpdate
         });
       } catch (err) {
         commit("MINUS_CART_ITEM_ERROR", err);
       }
-    },
-  },
+    }
+  }
 };

@@ -45,21 +45,21 @@ import { mapActions } from "vuex";
 export default {
   name: "TagGroupMobile",
   components: {
-    Button,
+    Button
   },
   props: {
     getTags: {
-      type: Array,
+      type: Array
     },
     activeTag: {
       type: Number,
-      default: null,
-    },
+      default: null
+    }
   },
   data() {
     return {
       DropDownTagsIsOpen: false,
-      TheBarTagIndex: null,
+      TheBarTagIndex: null
     };
   },
   computed: {
@@ -73,15 +73,15 @@ export default {
       return DropDownStyle;
     },
     getSelected() {
-      return (tagID) => {
+      return tagID => {
         return this.activeTag === tagID ? [TheBarStyle.IsSelected] : "";
       };
-    },
+    }
   },
   methods: {
     ...mapActions({
       selectedTag: "TheBarSelectedTag",
-      filterPizzas: "fetchProducts",
+      filterPizzas: "fetchProducts"
     }),
     getSelectTag(TagIndex) {
       this.selectedTag(TagIndex);
@@ -92,7 +92,7 @@ export default {
     },
     getSelectTagIndex(index) {
       this.TheBarTagIndex = index;
-    },
-  },
+    }
+  }
 };
 </script>

@@ -6,23 +6,23 @@ export default {
       { id: 1, text: "Вегетарианская", type: "vengry" },
       { id: 2, text: "Гриль", type: "grill" },
       { id: 3, text: "Острые", type: "sharp" },
-      { id: 4, text: "Закрытые", type: "closed" },
+      { id: 4, text: "Закрытые", type: "closed" }
     ],
     isActiveTag: null,
-    TheBarTagIndex: undefined,
+    TheBarTagIndex: undefined
   },
   mutations: {
     changesActiveTag(state, TagIndex) {
       state.isActiveTag = TagIndex;
-    },
+    }
   },
   actions: {
     TheBarSelectedTag({ commit }, TagIndex) {
       commit("changesActiveTag", TagIndex);
-    },
+    }
   },
   getters: {
     getTags: ({ tags }) => tags,
-    getIsActiveTag: ({ isActiveTag }) => isActiveTag,
-  },
+    getIsActiveTag: ({ isActiveTag }) => isActiveTag
+  }
 };

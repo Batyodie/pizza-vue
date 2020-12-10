@@ -38,33 +38,33 @@ export default {
   props: {
     HeaderButton: {
       type: Boolean,
-      required: true,
+      required: true
     },
     title: {
       type: String,
       required: true,
-      default: "",
-    },
+      default: ""
+    }
   },
   name: "LayoutTheHeader",
   data() {
     return {
       icon: iconfinder,
       IsActiveButton: this.HeaderButton,
-      LogoTitle: this.title,
+      LogoTitle: this.title
     };
   },
   computed: {
     ...mapGetters({
       totalPrice: "getTotalPrice",
-      itemsCount: "getItemsCount",
+      itemsCount: "getItemsCount"
     }),
     BtnStyle() {
       return BtnStyle;
     },
     LayoutTheHeader() {
       return LayoutTheHeader;
-    },
-  },
+    }
+  }
 };
 </script>
