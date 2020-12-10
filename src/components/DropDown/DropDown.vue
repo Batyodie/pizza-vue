@@ -48,7 +48,7 @@ export default {
       open: "DropDownOpened",
       closeGlobal: "DropDownGlobalClosed",
       selection: "DropDownSelected",
-      sortPizzas: "fetchPizzas",
+      sortPizzas: "fetchProducts",
     }),
     DropDownOpened(label) {
       // open DropDown

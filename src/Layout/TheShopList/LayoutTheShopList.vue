@@ -21,11 +21,12 @@
       </header>
       <div :class="TheShopListStyle.Content">
         <ShopCart
-          v-for="(shopCart, index) in groupPizzaItem"
-          :shopCart="shopCart"
+          v-for="(shopCart, index) in pizzaItem"
+          :shopCart="shopCart.items"
           :key="shopCart.id"
           :index="index"
-          :groupTotalPrice="groupTotalPrice[index]"
+          :groupCartItems="pizzaItem[index].items"
+          :groupCartItemsPrice="pizzaItem[index].totalPrice"
         />
       </div>
       <footer :class="TheShopListStyle.Footer">
@@ -68,29 +69,7 @@
       </footer>
     </template>
     <template v-else>
-      <div :class="TheShopListStyle.Content">
-        <div :class="TheShopListStyle.Empty">
-          <h2 :class="TheShopListStyle.EmptyTitle">
-            Корзина пустая 😕
-          </h2>
-          <p :class="TheShopListStyle.EmptyCopy">
-            Вероятней всего, вы не заказывали ещё пиццу. Для того, чтобы
-            заказать пиццу, перейди на главную страницу.
-          </p>
-          <img
-            :class="TheShopListStyle.EmptyLogo"
-            :src="EmptyCart"
-            alt="Empty image"
-          />
-          <router-link to="/">
-            <Button :class="TheShopListStyle.EmptyBtn">
-              <template slot="ButtonText">
-                Вернуться назад
-              </template>
-            </Button>
-          </router-link>
-        </div>
-      </div>
+      <LayoutTheShopListEmpty />
     </template>
   </div>
 </template>
@@ -101,9 +80,14 @@ import { mapGetters, mapActions } from "vuex";
 
 import { CartIcon, TrashIcon, arrow, EmptyCart } from "@/assets";
 import { TheShopListStyle } from "@/Layout/style";
+import LayoutTheShopListEmpty from "../TheShopList/LayoutTheShopListEmpty.vue";
 export default {
   name: "LayoutTheShopList",
-  components: { Button, ShopCart },
+  components: {
+    Button,
+    ShopCart,
+    LayoutTheShopListEmpty,
+  },
   data() {
     return {
       CartIcon: CartIcon,
@@ -162,8 +146,7 @@ export default {
       cart: "getCart",
       totalPrice: "getTotalPrice",
       itemsCount: "getItemsCount",
-      groupPizzaItem: "getMap",
-      groupTotalPrice: "getMap",
+      pizzaItem: "getPizzaItem",
       getBasketFlag: "getBasketFlag",
     }),
   },

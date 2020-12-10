@@ -1,48 +1,50 @@
 import { getProducts } from "@/api/products.api";
+import {
+  SET_DISCHARGE,
+  SET_LOADED,
+  SET_PRODUCTS,
+  SET_PRODUCTS_ERROR,
+} from "../../mutation-types";
 export default {
   state: {
     loadedProducts: false,
-    cards: [],
-    cardsTypeTags: ["тонкое", "традиционное"],
-    cardsSizesTags: [26, 30, 40],
+    products: [],
     productError: null,
   },
   mutations: {
-    SetThePizzas(state, products) {
-      state.cards = products;
+    [SET_PRODUCTS](state, products) {
+      state.products = products;
     },
-    SetContentLoaded(state) {
-      if (state.cards.length) {
-        state.loadedProducts = true;
-      } else {
-        state.loadedProducts = false;
-      }
+    [SET_LOADED](state) {
+      state.loadedProducts = true;
     },
-    setLoaded(state) {
+    [SET_DISCHARGE](state) {
       state.loadedProducts = false;
     },
-    setProductError(state, error) {
+    [SET_PRODUCTS_ERROR](state, error) {
       state.productError = error;
     },
   },
   actions: {
-    async fetchPizzas({ commit, rootState }) {
-      commit("setLoaded");
+    async fetchProducts({ commit, state, rootState }) {
+      commit("SET_DISCHARGE");
       try {
         const tagCategoryID = rootState.tags.isActiveTag;
         const dropDownActive = rootState.dropdown.DropDownItemIsActive;
         const products = await getProducts(tagCategoryID, dropDownActive);
-        commit("SetThePizzas", products);
-        commit("SetContentLoaded");
+        commit("SET_PRODUCTS", products);
+        if (state.products.length) {
+          commit("SET_LOADED");
+        } else {
+          commit("SET_DISCHARGE");
+        }
       } catch (err) {
-        commit("setProductError", err);
+        commit("SET_PRODUCTS_ERROR", err);
       }
     },
   },
   getters: {
-    getCards: ({ cards }) => cards,
-    getCardsTags: ({ cardsTypeTags }) => cardsTypeTags,
-    getCardsSizesTags: ({ cardsSizesTags }) => cardsSizesTags,
+    getCards: ({ products }) => products,
     getPizzasLoadedFlag: ({ loadedProducts }) => loadedProducts,
   },
 };

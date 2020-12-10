@@ -6,8 +6,13 @@
 <script>
 import BaseApp from "@/style/Base/App/BaseApp.css";
 import BaseView from "@/style/Base/Extend/BaseExtend.css";
+import { mapActions } from "vuex";
 export default {
-  components: {},
+  methods: {
+    ...mapActions({
+      fetchProducts: "fetchProducts",
+    }),
+  },
   computed: {
     BaseApp() {
       return BaseApp;
@@ -16,8 +21,8 @@ export default {
       return BaseView;
     },
   },
-  async created() {
-    await this.$store.dispatch("fetchPizzas");
+  created() {
+    this.fetchProducts();
   },
 };
 </script>

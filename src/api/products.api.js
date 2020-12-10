@@ -8,6 +8,4 @@ const getProducts = (tagCategoryID, dropDownActive) =>
     method: "get",
   });
 
-// const getProduct = () => request({ url: ``, method: "get" });
-
 export { getProducts };

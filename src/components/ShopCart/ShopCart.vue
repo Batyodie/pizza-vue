@@ -2,28 +2,28 @@
   <div :class="ShopCartStyle.ShopCart">
     <picture>
       <source
-        :srcset="shopCart.items[0].imageUrl"
+        :srcset="shopCart[0].imageUrl"
         width="80"
         height="80"
         type="image/svg"
       />
       <img
-        :src="shopCart.items[0].imageUrl"
+        :src="shopCart[0].imageUrl"
         width="80"
         height="80"
         alt="ShopCart pizza image"
       />
     </picture>
     <div :class="ShopCartStyle.Typh">
-      <h3 :class="ShopCartStyle.Title">{{ shopCart.items[0].name }}</h3>
+      <h3 :class="ShopCartStyle.Title">{{ shopCart[0].name }}</h3>
       <p :class="ShopCartStyle.SubTitle">
         {{ getShopCartType() }}
-        тесто, {{ shopCart.items[0].size }} см.
+        тесто, {{ shopCart[0].size }} см.
       </p>
     </div>
     <div :class="ShopCartStyle.Counter">
       <Button
-        @click.native="handlerRemovePizzaCartItem(shopCart.items[0].id)"
+        @click.native="handlerRemovePizzaCartItem(shopCart[0].id)"
         :class="ShopCartStyle.CounterBtn"
       >
         <template slot="ButtonText">
@@ -31,10 +31,10 @@
         </template>
       </Button>
       <span style="margin: 0 12px 0 12px;">
-        {{ groupTotalPrice.items.length }}
+        {{ groupCartItems.length }}
       </span>
       <Button
-        @click.native="handlerAddPizzaCartItem(shopCart.items[0].id)"
+        @click.native="handlerAddPizzaCartItem(shopCart[0].id)"
         :class="ShopCartStyle.CounterBtn"
       >
         <template slot="ButtonText">
@@ -44,12 +44,12 @@
     </div>
     <div :class="ShopCartStyle.TotalContainer">
       <div :class="ShopCartStyle.TotalPrice">
-        <span> {{ groupTotalPrice.totalPrice }} ₽ </span>
+        <span> {{ groupCartItemsPrice }} ₽ </span>
       </div>
     </div>
     <div :class="ShopCartStyle.Reset">
       <Button
-        @click.native="removeGroupItem(shopCart.items[0].id)"
+        @click.native="removeGroupItem(shopCart[0].id)"
         :class="ShopCartStyle.ResetBtn"
       >
         <template slot="ButtonText">
@@ -74,13 +74,23 @@ export default {
   },
   props: {
     shopCart: {
-      type: Object,
+      type: Array,
+      required: true,
+      default: () => [],
     },
-    groupTotalPrice: {
-      type: Object,
+    groupCartItems: {
+      type: Array,
+      required: true,
+      default: () => [],
+    },
+    groupCartItemsPrice: {
+      type: Number,
+      required: true,
+      default: 0,
     },
     index: {
       type: Number,
+      required: true,
     },
   },
   data() {
@@ -137,7 +147,7 @@ export default {
     },
     getShopCartType() {
       return () =>
-        this.shopCart.items[0].type === 0 ? " тонкое " : " традиционное ";
+        this.shopCart[0].type === 0 ? " тонкое " : " традиционное ";
     },
   },
 };

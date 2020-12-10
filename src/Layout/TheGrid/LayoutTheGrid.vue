@@ -27,11 +27,8 @@
           v-for="card in cards"
           :key="card.id"
           :onClickAddPizza="onClickAddPizza"
-          :cardsTypeTags="cardsTypeTags"
-          :cardsSizesTags="cardsSizesTags"
           :card="card"
-          :pizzaCardCount="cart[card.id] && cart[card.id].items.length"
-          :ActiveBtnFlag="cart[card.id] && cart[card.id].activeBtn"
+          :cardIndex="card.id"
         >
         </Card>
       </template>
@@ -55,8 +52,6 @@ export default {
     ...mapGetters({
       cards: "getCards",
       cart: "getCart",
-      cardsTypeTags: "getCardsTags",
-      cardsSizesTags: "getCardsSizesTags",
       isLoaded: "getPizzasLoadedFlag",
     }),
   },

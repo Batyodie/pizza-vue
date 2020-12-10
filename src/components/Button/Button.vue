@@ -15,34 +15,20 @@ import { Button } from "@/components/style";
 export default {
   name: "Button",
   props: {
-    CardTagTypeIndex: {
+    tagIndex: {
       type: Number,
-      required: false,
-      default: null
+      default: null,
     },
-    index: {
-      type: Number,
-      required: false,
-      default: null
-    },
-    CardTagSizeIndex: {
-      type: Number,
-      required: false,
-      default: null
-    }
   },
   computed: {
     Button() {
       return Button;
-    }
+    },
   },
   methods: {
     selectTag() {
-      this.$emit("select", this.index);
-      this.$emit("TheBarTagindex", this.theBarTagIndex);
-      this.$emit("selectCardTag", this.CardTagTypeIndex);
-      this.$emit("selectCardSizeTag", this.CardTagSizeIndex);
-    }
-  }
+      this.$emit("selectTag", this.tagIndex);
+    },
+  },
 };
 </script>

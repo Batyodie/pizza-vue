@@ -1,4 +1,4 @@
-import { ADD_PIZZA_CART } from "../../mutation-types";
+import { ADD_PIZZA_CART, ADD_PIZZA_CART_ERROR } from "../../mutation-types";
 import basket from "./basket";
 import getCartData from "@/func/getCartData";
 export default {
@@ -8,6 +8,7 @@ export default {
     pizzaItemsCount: 0,
     pizzaItemID: null,
     groupPizzasTotalPrice: null,
+    addPizzaCartError: null,
   },
   mutations: {
     [ADD_PIZZA_CART](state, payLoad) {
@@ -16,17 +17,30 @@ export default {
       state.totalPrice = payLoad.totalPrice;
       state.BasketItems = true;
     },
+    [ADD_PIZZA_CART_ERROR](state, error) {
+      state.addPizzaCartError = error;
+    },
   },
   actions: {
     addPizzaToCart({ commit, state }, pizzaObj) {
-      const payLoad = getCartData(state, pizzaObj);
-      payLoad.getAllPayLoad.contextObjID = pizzaObj.id;
-      commit("ADD_PIZZA_CART", payLoad.getAllPayLoad);
+      try {
+        const payLoad = getCartData(state, pizzaObj);
+        payLoad.getAllPayLoad.contextObjID = pizzaObj.id;
+        commit("ADD_PIZZA_CART", payLoad.getAllPayLoad);
+      } catch (err) {
+        commit("ADD_PIZZA_CART_ERROR", err);
+      }
     },
   },
   getters: {
     getCart: ({ pizzaItems }) => pizzaItems,
-    getMap: ({ pizzaItems }) =>
+    getCartItem: ({ pizzaItems }) => (id) => {
+      return pizzaItems[id] ? pizzaItems[id] : null;
+    },
+    getCartItemType: ({ pizzaItems }, { getCartItem }) => (id, type) => {
+      return getCartItem(id) ? pizzaItems[id][type] : null;
+    },
+    getPizzaItem: ({ pizzaItems }) =>
       Object.keys(pizzaItems).map((key) => {
         return pizzaItems[key];
       }),

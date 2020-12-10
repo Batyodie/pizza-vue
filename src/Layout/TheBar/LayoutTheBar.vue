@@ -5,10 +5,8 @@
         v-for="tag in getTags"
         :key="tag.id"
         :class="[getSelected(tag.id), TheBarStyle.TagMargin, BtnTag.Tag]"
-        :index="tag.id"
-        :TagStyleBody="BtnTag.Body"
-        @TheBarTagindex="getSelectTagIndex"
-        @select="getSelectTag"
+        :tagIndex="tag.id"
+        @selectTag="getSelectTag"
       >
         <template slot="ButtonText">
           {{ tag.text }}
@@ -17,40 +15,7 @@
     </div>
 
     <div v-else :class="TheBarStyle.TagGroup">
-      <div ref="DropDownBlock2" :class="DropDownStyle.DropDown">
-        <div style="display: flex; align-items: center;">
-          <span :class="DropDownStyle.Label">
-            Сортировка по:
-          </span>
-          <button @click="DropDownTagsOpen" :class="DropDownStyle.Btn">
-            Категориям
-          </button>
-        </div>
-        <div
-          v-show="DropDownTagsIsOpen"
-          :class="DropDownStyle.PopUp"
-          style="max-width: 180px"
-        >
-          <div
-            :class="DropDownStyle.List"
-            style="padding-left: 10px; padding-right: 10px;"
-          >
-            <Button
-              v-for="tag in getTags"
-              :key="tag.id"
-              :class="[getSelected(tag.id), TheBarStyle.TagMargin, BtnTag.Tag]"
-              :index="tag.id"
-              :TagStyleBody="BtnTag.Body"
-              @TheBarTagindex="getSelectTagIndex"
-              @select="getSelectTag"
-            >
-              <template slot="ButtonText">
-                {{ tag.text }}
-              </template>
-            </Button>
-          </div>
-        </div>
-      </div>
+      <TagGroupMobile :getTags="getTags" :activeTag="activeTag" />
     </div>
     <div>
       <DropDown />
@@ -59,6 +24,7 @@
 </template>
 
 <script>
+import TagGroupMobile from "./TagGroupMobile/TagGroupMobile.vue";
 import { Button, DropDown } from "@/components";
 import { BtnTag, DropDownStyle } from "@/components/style";
 
@@ -66,12 +32,11 @@ import { mapGetters, mapActions } from "vuex";
 
 import { TheBarStyle } from "@/Layout/style";
 export default {
-  components: { DropDown, Button },
+  components: { DropDown, Button, TagGroupMobile },
   name: "SortingSideBar",
   data() {
     return {
       DropDownTagsIsOpen: false,
-      TheBarTagIndex: null,
     };
   },
   computed: {
@@ -98,18 +63,15 @@ export default {
   methods: {
     ...mapActions({
       selectedTag: "TheBarSelectedTag",
-      sortPizzas: "fetchPizzas",
+      filterPizzas: "fetchProducts",
       closeGlobal: "DropDownGlobalClosed",
     }),
     getSelectTag(TagIndex) {
       this.selectedTag(TagIndex);
-      this.sortPizzas();
+      this.filterPizzas();
     },
     DropDownTagsOpen() {
       this.DropDownTagsIsOpen = !this.DropDownTagsIsOpen;
-    },
-    getSelectTagIndex(index) {
-      this.TheBarTagIndex = index;
     },
   },
 };
