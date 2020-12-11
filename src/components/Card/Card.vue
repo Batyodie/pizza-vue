@@ -37,6 +37,7 @@ export default {
         cardItems: "items",
         activeBtn: "activeBtn"
       },
+
       cardsTypeTags: ["тонкое", "традиционное"],
       cardsSizesTags: [26, 30, 40]
     };
