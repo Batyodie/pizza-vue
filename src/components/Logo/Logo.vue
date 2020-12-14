@@ -6,7 +6,7 @@ export default {
   name: "Logo",
 
   props: {
-    title: {
+    sloganText: {
       type: String,
       required: true
     }
@@ -38,8 +38,8 @@ export default {
       />
       <div :class="LogoStyle.Slogan">
         <h1 :class="LogoStyle.SloganTitle">VUE PIZZA</h1>
-        <template v-if="title">
-          <p :class="LogoStyle.SloganText">{{ title }}</p>
+        <template v-if="sloganText">
+          <p :class="LogoStyle.SloganText">{{ sloganText }}</p>
         </template>
         <template v-else>
           <p :class="LogoStyle.SloganText">

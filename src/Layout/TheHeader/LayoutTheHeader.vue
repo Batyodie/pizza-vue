@@ -16,7 +16,7 @@ export default {
       required: true
     },
 
-    title: {
+    sloganText: {
       type: String,
       required: true,
       default: ""
@@ -27,7 +27,7 @@ export default {
     return {
       icon: iconfinder,
       IsActiveButton: this.HeaderButton,
-      LogoTitle: this.title
+      LogoTitle: this.sloganText
     };
   },
 
@@ -51,9 +51,9 @@ export default {
 <template>
   <header :class="LayoutTheHeader.Wrapper">
     <div :class="LayoutTheHeader.BorderBottom"></div>
-    <Logo :title="title" :class="LayoutTheHeader.LogoMargin" />
+    <Logo :sloganText="sloganText" :class="LayoutTheHeader.LogoMargin" />
     <template v-if="IsActiveButton">
-      <router-link to="/basket" style="text-decoration: none">
+      <router-link name="basket" to="/basket" style="text-decoration: none">
         <Button :class="[BtnStyle.Basket, LayoutTheHeader.ButtonMargin]">
           <template slot="Icon">
             <img

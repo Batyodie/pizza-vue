@@ -1,6 +1,6 @@
 <template>
   <div>
-    <LayoutTheHeader :title="title" :HeaderButton="HeaderButton" />
+    <LayoutTheHeader :sloganText="sloganText" :HeaderButton="HeaderButton" />
     <LayoutTheShopList />
   </div>
 </template>
@@ -14,7 +14,7 @@ export default {
   data() {
     return {
       HeaderButton: false,
-      title: "Самая реактивная пицца"
+      sloganText: "Самая реактивная пицца"
     };
   }
 };
