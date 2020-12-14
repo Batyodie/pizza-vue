@@ -49,7 +49,12 @@ export default {
 
     getShopCartType() {
       return () =>
-        this.shopCart[0].type === 0 ? " тонкое " : " традиционное ";
+        this.shopCart[this.getLastItem].type === 0
+          ? " тонкое "
+          : " традиционное ";
+    },
+    getLastItem() {
+      return this.shopCart.length - 1;
     }
   },
 
@@ -121,7 +126,7 @@ export default {
       <h3 :class="ShopCartStyle.Title">{{ shopCart[0].name }}</h3>
       <p :class="ShopCartStyle.SubTitle">
         {{ getShopCartType() }}
-        тесто, {{ shopCart[0].size }} см.
+        тесто, {{ shopCart[getLastItem].size }} см.
       </p>
     </div>
     <div :class="ShopCartStyle.Counter">

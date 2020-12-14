@@ -46,9 +46,9 @@ export default {
       sortPizzas: "fetchProducts"
     }),
 
-    DropDownOpened(label) {
+    DropDownOpened() {
       // open DropDown
-      this.open(label);
+      this.open();
     },
 
     DropDownGlobalWindowClosed(e) {

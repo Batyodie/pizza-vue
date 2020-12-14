@@ -91,10 +91,8 @@ export default {
           v-for="tag in getTags"
           :key="tag.id"
           :class="[getSelected(tag.id), TheBarStyle.TagMargin, BtnTag.Tag]"
-          :index="tag.id"
-          :TagStyleBody="BtnTag.Body"
-          @TheBarTagindex="getSelectTagIndex"
-          @select="getSelectTag"
+          :tagIndex="tag.id"
+          @selectTag="getSelectTag"
         >
           <template slot="ButtonText">
             {{ tag.text }}

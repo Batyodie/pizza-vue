@@ -8,8 +8,7 @@ export default {
       { id: 3, text: "Острые", type: "sharp" },
       { id: 4, text: "Закрытые", type: "closed" }
     ],
-    isActiveTag: null,
-    TheBarTagIndex: undefined
+    isActiveTag: null
   },
   mutations: {
     changesActiveTag(state, TagIndex) {

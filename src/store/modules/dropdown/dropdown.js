@@ -13,14 +13,11 @@ export default {
     }
   },
   mutations: {
-    DropDownOpened(state, label) {
+    DropDownOpened(state) {
       state.DropDownIsOpen = !state.DropDownIsOpen;
-      state.DropDownLabel = label.target;
     },
     DropDownSelected(state, DropDownItem) {
-      state.DropDownItemIsActive.text = DropDownItem.text;
-      state.DropDownItemIsActive.type = DropDownItem.type;
-      state.DropDownItemIsActive.order = DropDownItem.order;
+      state.DropDownItemIsActive = DropDownItem;
       state.DropDownIsOpen = false;
     },
     DropDownGlobalClose(state) {
@@ -28,11 +25,11 @@ export default {
     }
   },
   actions: {
-    DropDownOpened(ctx, label) {
-      ctx.commit("DropDownOpened", label);
+    DropDownOpened({ commit }) {
+      commit("DropDownOpened");
     },
-    DropDownGlobalClosed(ctx) {
-      ctx.commit("DropDownGlobalClose");
+    DropDownGlobalClosed({ commit }) {
+      commit("DropDownGlobalClose");
     },
     DropDownSelected({ commit }, DropDownItem) {
       commit("DropDownSelected", DropDownItem);

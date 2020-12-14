@@ -52,9 +52,9 @@ class Data {
   }
 }
 
-const getPizzaCartData2 = function(state, pizzaObj) {
+const getCartData = function(state, pizzaObj) {
   const payLoad = new Data(state, pizzaObj);
   return payLoad;
 };
 
-export default getPizzaCartData2;
+export default getCartData;

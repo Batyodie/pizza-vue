@@ -6,8 +6,6 @@ export default {
     pizzaItems: {},
     totalPrice: 0,
     pizzaItemsCount: 0,
-    pizzaItemID: null,
-    groupPizzasTotalPrice: null,
     addPizzaCartError: null
   },
   mutations: {

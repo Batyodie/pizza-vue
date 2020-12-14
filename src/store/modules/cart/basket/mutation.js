@@ -10,9 +10,8 @@ import {
 } from "../../../mutation-types";
 export default {
   mutations: {
-    [CLEAR_PIZZA_ITEMS](state, rootState) {
-      state;
-      const _s = rootState;
+    [CLEAR_PIZZA_ITEMS](state, payLoad) {
+      const _s = payLoad;
       _s.pizzaItems = {};
       _s.pizzaItemsCount = 0;
       _s.totalPrice = 0;
@@ -22,7 +21,6 @@ export default {
       state.itemsError = error;
     },
     [CLEAR_PIZZA_ITEM](state, payLoad) {
-      state;
       const _s = payLoad.rootState;
       const _update = payLoad.updateCart;
 
@@ -34,7 +32,6 @@ export default {
       state.itemError = error;
     },
     [PLUS_CART_ITEM](state, payLoad) {
-      state;
       const _s = payLoad.rootState;
       const _update = payLoad.addItem;
       const _updateStats = payLoad.cartStatsUpdate;
@@ -48,7 +45,6 @@ export default {
     },
 
     [MINUS_CART_ITEM](state, payLoad) {
-      state;
       const _s = payLoad.rootState;
       const _update = payLoad.removeItem;
       const _updateStats = payLoad.cartStatsUpdate;
