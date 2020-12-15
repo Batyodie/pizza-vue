@@ -7,20 +7,20 @@ import router from "@/router";
 const localVue = createLocalVue();
 localVue.use(VueRouter);
 
-// fake props
-const sloganText = "Some fake title";
-const HeaderButton = true;
-
-const itemsCount = 0;
-const totalPrice = 0;
-
 describe("Unit tests for LayoutTheHeader component", () => {
+  // fake props
+  const sloganText = "Some fake title";
+  const HeaderButton = true;
+
+  const itemsCount = 0;
+  const totalPrice = 0;
+
   const wrapper = mount(TheHeader, {
     localVue,
     router,
     propsData: {
       sloganText,
-      HeaderButton,
+      HeaderButton
     },
     computed: {
       totalPrice() {
@@ -28,8 +28,8 @@ describe("Unit tests for LayoutTheHeader component", () => {
       },
       itemsCount() {
         return itemsCount;
-      },
-    },
+      }
+    }
   });
 
   it("should initialize correctly", () => {
@@ -62,6 +62,32 @@ describe("Unit tests for LayoutTheHeader component", () => {
     expect(bodyBtnAll.at(0).text()).toEqual("0");
     expect(bodyBtnAll.at(1).text()).toEqual("0");
   });
+
+  it("should render correctly basket button to be false", () => {
+    const HeaderButton = false;
+    const wrapper = mount(TheHeader, {
+      localVue,
+      router,
+      propsData: {
+        sloganText,
+        HeaderButton
+      },
+      computed: {
+        totalPrice() {
+          return totalPrice;
+        },
+        itemsCount() {
+          return itemsCount;
+        }
+      }
+    });
+    expect(wrapper.find(".Basket").exists()).toBe(false);
+  });
+
+  // it("should route push correctly to be click basket button", async () => {
+  //   await router.push("/basket");
+  //   console.log(wrapper.html());
+  // });
 
   it("Should match the snapshot", () => {
     expect(wrapper.html()).toMatchSnapshot();

@@ -5,7 +5,7 @@ export default {
 
   props: {
     tagIndex: {
-      type: Number,
+      type: [Number, null],
       default: null
     }
   },
