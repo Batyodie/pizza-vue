@@ -18,12 +18,12 @@ describe("Unit tests for Button component", () => {
     localVue,
     router,
     propsData: {
-      tagIndex,
+      tagIndex
     },
     slots: {
       ButtonText: buttonText,
-      Icon: img,
-    },
+      Icon: img
+    }
   });
 
   it("should initialize correctly", () => {
@@ -46,23 +46,18 @@ describe("Unit tests for Button component", () => {
     expect(wrapper.find(".Body").text()).toEqual(buttonText);
     expect(wrapper.find("button > img").html()).toEqual(img);
   });
-  // it("should render correctly logo title to be false", () => {
-  //   const sloganText = "";
-  //   const wrapper = mount(Logo, {
-  //     localVue,
-  //     router,
-  //     propsData: {
-  //       sloganText,
-  //     },
-  //   });
-  //   const renderSloganShallow = "самая вкусная пицца во вселенной";
-  //   // Expect the wrapper to be the slogan shallow  text render
-  //   expect(wrapper.text(renderSloganShallow)).toBeTruthy();
-  //   // Expect thatrender SloganText in Slogan selector equal to shallow slogan
-  //   expect(wrapper.find(".Slogan > p").text()).toEqual(renderSloganShallow);
-  // });
 
-  // it("Should match the snapshot", () => {
-  //   expect(wrapper.html()).toMatchSnapshot();
-  // });
+  it("Should match the snapshot Button component", () => {
+    expect(wrapper.html()).toMatchSnapshot();
+  });
+
+  it("must return the event correctly", async () => {
+    const btn = wrapper.find(".Btn");
+    await btn.trigger("click");
+
+    // expect checking that the event was triggered
+    expect(wrapper.emitted("selectTag")).toBeTruthy();
+    // expect checking that certain data was transmitted with the event
+    expect(wrapper.emitted("selectTag")[0]).toEqual([tagIndex]);
+  });
 });
