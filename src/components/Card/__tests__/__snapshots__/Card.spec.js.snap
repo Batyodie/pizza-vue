@@ -1,0 +1,20 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Unit tests for Card component unit test render correctly Card component should match the snapshot Card component 1`] = `
+<div class="Card">
+  <picture class="Image">
+    <source> <img src="https://dodopizza.azureedge.net/static/Img/Products/Pizza/ru-RU/d48003cd-902c-420d-9f28-92d9dc5f73b4.jpg" alt="Pizza">
+  </picture>
+  <h3 class="Title">
+    Маргарита
+  </h3>
+  <div class="Tags"><button type="button" class="Btn TagsItemActive TagsItem Tag"><span class="Body"> тонкое </span> </button><button type="button" class="Btn TagsItem Tag"><span class="Body"> традиционное </span> </button> <button type="button" class="Btn TagsItemActive TagsItem Tag"><span class="Body"> 26 см. </span> </button><button type="button" class="Btn TagsItem Tag"><span class="Body"> 30 см. </span> </button><button type="button" class="Btn TagsItem Tag"><span class="Body"> 40 см. </span> </button></div>
+  <div class="PizzaAdd">
+    <h3 class="PizzaPrice">от 450 ₽</h3> <button type="button" class="Btn AddBtn"><span class="Body">
+          Добавить
+        <!----></span> <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg" class="AddBtnIcon">
+        <path d="M10.8 4.8H7.2V1.2C7.2 0.5373 6.6627 0 6 0C5.3373 0 4.8 0.5373 4.8 1.2V4.8H1.2C0.5373 4.8 0 5.3373 0 6C0 6.6627 0.5373 7.2 1.2 7.2H4.8V10.8C4.8 11.4627 5.3373 12 6 12C6.6627 12 7.2 11.4627 7.2 10.8V7.2H10.8C11.4627 7.2 12 6.6627 12 6C12 5.3373 11.4627 4.8 10.8 4.8Z" fill="white"></path>
+      </svg></button>
+  </div>
+</div>
+`;
