@@ -37,6 +37,7 @@ export default {
       return pizzaItems[id] ? pizzaItems[id] : null;
     },
     getCartItemType: ({ pizzaItems }, { getCartItem }) => (id, type) => {
+      // console.log(pizzaItems[id][type]);
       return getCartItem(id) ? pizzaItems[id][type] : null;
     },
     getPizzaItem: ({ pizzaItems }) =>

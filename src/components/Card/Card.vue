@@ -14,7 +14,8 @@ export default {
     },
 
     cardIndex: {
-      type: Number
+      type: Number,
+      required: true
     },
 
     onClickAddPizza: {
@@ -97,6 +98,7 @@ export default {
 
     handlerCardItemCounter(cardIndex, objType) {
       const count = this.getCartItemType(cardIndex, objType.cardItems);
+
       const flag = this.getCartItemType(cardIndex, objType.activeBtn);
 
       this.cardCount = count !== null ? count.length : count;

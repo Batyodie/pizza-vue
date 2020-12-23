@@ -26,7 +26,7 @@ describe("Unit tests for Button component", () => {
     }
   });
 
-  it("should initialize correctly", () => {
+  it("should initialize correctly Button component", () => {
     // correctly Vue instance
     expect(wrapper.exists()).toBeTruthy();
     // We expect the wrapper to be the Button component
@@ -37,9 +37,9 @@ describe("Unit tests for Button component", () => {
   });
 
   it("should render correctly button component", () => {
-    const btn = `<button type="button" class="Btn"><span class="Body">${buttonText}</span> ${img}</button>`;
+    const btn = `<span class="Body">${buttonText}</span> ${img}`;
     // Expect wrapper html to have btn
-    expect(wrapper.html()).toEqual(btn);
+    expect(wrapper.html()).toContain(btn);
     // Expect the wrapper to be the slots text render
     expect(wrapper.text(buttonText)).toBeTruthy();
     // Expect that render slot text in Body selector equal to buttonText

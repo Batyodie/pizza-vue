@@ -2,10 +2,16 @@ import { createLocalVue, mount } from "@vue/test-utils";
 // dropdwons componens files
 import TheHeader from "@/Layout/TheHeader/LayoutTheHeader";
 import VueRouter from "vue-router";
+import Vuex from "vuex";
+// import { mapGetters } from "vuex";
+import getters from "@/store/modules/cart/cart";
 import router from "@/router";
 
 const localVue = createLocalVue();
 localVue.use(VueRouter);
+localVue.use(Vuex);
+
+const createStore = () => new Vuex.Store(getters);
 
 describe("Unit tests for LayoutTheHeader component", () => {
   // fake props
@@ -91,5 +97,38 @@ describe("Unit tests for LayoutTheHeader component", () => {
 
   it("Should match the snapshot", () => {
     expect(wrapper.html()).toMatchSnapshot();
+  });
+});
+
+describe("testing vues getters from header button basket", () => {
+  let store = createStore();
+  // console.log(getters);
+
+  // fake props
+  const sloganText = "Some fake title";
+  const HeaderButton = true;
+
+  const wrapper = mount(TheHeader, {
+    localVue,
+    store,
+    router,
+    propsData: {
+      HeaderButton,
+      sloganText
+    }
+  });
+  it("should correctly render data in button basket header", async () => {
+    const basketBody = wrapper.findAll(".Basket > .Body");
+    const renderPrice = "500";
+    const renderCount = "10";
+    const renderCounts = `${renderPrice}   ${renderCount}`;
+
+    store.state.totalPrice = renderPrice;
+    store.state.pizzaItemsCount = renderCount;
+    await wrapper.vm.$nextTick();
+
+    expect(wrapper.find(".Basket").text()).toEqual(renderCounts);
+    expect(basketBody.at(0).text()).toEqual(renderPrice);
+    expect(basketBody.at(1).text()).toEqual(renderCount);
   });
 });
