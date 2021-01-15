@@ -1,0 +1,10 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Unit tests for DropDown component should match the snapshot DropDown component 1`] = `
+<div class="DropDown">
+  <div style="display: flex; align-items: center;"><img width="10" height="6" src="" alt="Arrow top" class="IconImage"> <span class="Label">Сортировка по:</span> <button class="Btn">
+      популярности
+    </button></div>
+  <!---->
+</div>
+`;

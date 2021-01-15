@@ -1,6 +1,6 @@
 import { createLocalVue, mount, shallowMount } from "@vue/test-utils";
 // dropdwons componens files
-import { Card, Button } from "@/components";
+import { Card } from "@/components";
 
 import Vuex from "vuex";
 import CardState from "@/store/modules/cart/cart";
@@ -57,9 +57,6 @@ describe("Unit tests for Card component", () => {
         tags,
         onClickAddPizza,
         ...propsData
-      },
-      stubs: {
-        Button
       }
     });
   };

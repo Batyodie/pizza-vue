@@ -7,9 +7,6 @@ import { TheGridStyle } from "@/Layout/style";
 export default {
   name: "LayoutTheGrid",
   components: { Card, ContentLoader },
-  data() {
-    return {};
-  },
 
   computed: {
     TheGridStyle() {

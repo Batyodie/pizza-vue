@@ -1,0 +1,28 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Unit tests for ShopCart component should match the snapshot ShopCart component 1`] = `
+<div class="ShopCart">
+  <picture>
+    <source srcset="https://dodopizza.azureedge.net/static/Img/Products/Pizza/ru-RU/d48003cd-902c-420d-9f28-92d9dc5f73b4.jpg" width="80" height="80" type="image/svg"> <img src="https://dodopizza.azureedge.net/static/Img/Products/Pizza/ru-RU/d48003cd-902c-420d-9f28-92d9dc5f73b4.jpg" width="80" height="80" alt="ShopCart pizza image">
+  </picture>
+  <div class="Typh">
+    <h3 class="Title">Маргарита</h3>
+    <p class="SubTitle">
+      тонкое тесто, 26 см.
+    </p>
+  </div>
+  <div class="Counter">
+    <button-stub class="CounterBtn"><template></template></button-stub> <span style="margin: 0px 12px 0px 12px;">
+      1
+    </span>
+    <button-stub class="CounterBtn"><template></template></button-stub>
+  </div>
+  <div class="TotalContainer">
+    <div class="TotalPrice"><span> 450 ₽ </span></div>
+  </div>
+  <div class="Reset">
+    <button-stub class="ResetBtn"><template></template></button-stub>
+    <v-dialog-stub width="400" clicktoclose="true"></v-dialog-stub>
+  </div>
+</div>
+`;

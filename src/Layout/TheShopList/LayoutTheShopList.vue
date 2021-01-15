@@ -88,7 +88,11 @@ export default {
       <v-dialog />
       <header :class="TheShopListStyle.Header">
         <div :class="TheShopListStyle.Inner">
-          <img :src="CartIcon" alt="Trash icon" />
+          <img
+            :src="CartIcon"
+            :class="TheShopListStyle.CartICON"
+            alt="Trash icon"
+          />
           <h2 :class="TheShopListStyle.Title">Корзина</h2>
         </div>
         <Button

@@ -71,12 +71,18 @@ export default {
 <template>
   <div ref="DropDownBlock" :class="DropDownStyle.DropDown">
     <div style="display: flex; align-items: center;">
-      <img width="10" height="6" :src="icon" alt="Arrow top" />
+      <img
+        width="10"
+        height="6"
+        :src="icon"
+        class="IconImage"
+        alt="Arrow top"
+      />
 
       <span :class="DropDownStyle.Label">
         <slot name="DropdownBtnLabel">Сортировка по:</slot>
       </span>
-      <button @click="DropDownOpened" :class="DropDownStyle.Btn">
+      <button @click="DropDownOpened()" :class="DropDownStyle.Btn">
         <slot name="DropdownBtnText">
           {{ getState.DropDownItemIsActive.text }}
         </slot>
