@@ -10,23 +10,23 @@ export default {
   props: {
     card: {
       type: Object,
-      required: true
+      required: true,
     },
 
     cardIndex: {
       type: Number,
-      required: true
+      required: true,
     },
 
     onClickAddPizza: {
       type: Function,
       required: true,
-      default: () => Object
+      default: () => Object,
     },
     tags: {
       type: Object,
-      default: null
-    }
+      default: null,
+    },
   },
   data() {
     return {
@@ -36,17 +36,17 @@ export default {
       activeBtnFlag: false,
       cardTypeData: {
         cardItems: "items",
-        activeBtn: "activeBtn"
+        activeBtn: "activeBtn",
       },
 
       cardsTypeTags: ["тонкое", "традиционное"],
-      cardsSizesTags: [26, 30, 40]
+      cardsSizesTags: [26, 30, 40],
     };
   },
 
   computed: {
     ...mapGetters({
-      getCartItemType: "getCartItemType"
+      getCartItemType: "getCartItemType",
     }),
 
     CardStyles() {
@@ -64,7 +64,7 @@ export default {
         imageUrl: this.card.imageUrl,
         price: this.card.price,
         size: this.activeSize,
-        type: this.activeType
+        type: this.activeType,
       };
     },
 
@@ -80,7 +80,7 @@ export default {
 
     getAddBtnSelected() {
       return () => (this.activeBtnFlag ? [this.CardStyles.AddBtnSelected] : "");
-    }
+    },
   },
 
   mounted() {
@@ -103,8 +103,8 @@ export default {
 
       this.cardCount = count !== null ? count.length : count;
       this.activeBtnFlag = flag !== null ? flag : false;
-    }
-  }
+    },
+  },
 };
 </script>
 
@@ -128,7 +128,7 @@ export default {
           getTagItemActive(activeType, index),
           getTagDisable(card.types, index),
           CardStyles.TagsItem,
-          BtnTag.Tag
+          BtnTag.Tag,
         ]"
       >
         <template slot="ButtonText"> {{ TagType }} </template>
@@ -142,7 +142,7 @@ export default {
           getTagItemActive(activeSize, tagSize),
           getTagDisable(card.sizes, tagSize),
           CardStyles.TagsItem,
-          BtnTag.Tag
+          BtnTag.Tag,
         ]"
       >
         <template slot="ButtonText"> {{ tagSize }} см. </template>
@@ -155,7 +155,7 @@ export default {
           @click.native="
             [
               onClickAddPizza(pizzaObj),
-              handlerCardItemCounter(cardIndex, cardTypeData)
+              handlerCardItemCounter(cardIndex, cardTypeData),
             ]
           "
           :class="[CardStyles.AddBtn, getAddBtnSelected()]"

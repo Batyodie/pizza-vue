@@ -6,7 +6,7 @@ import {
   PLUS_CART_ITEM,
   PLUS_PIZZA_CART_ITEM_ERROR,
   MINUS_CART_ITEM,
-  MINUS_PIZZA_CART_ITEM_ERROR
+  MINUS_PIZZA_CART_ITEM_ERROR,
 } from "../../../mutation-types";
 export default {
   mutations: {
@@ -55,6 +55,6 @@ export default {
     },
     [MINUS_PIZZA_CART_ITEM_ERROR](state, error) {
       state.plusItemError = error;
-    }
-  }
+    },
+  },
 };

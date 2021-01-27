@@ -9,7 +9,7 @@ export default {
 
   data() {
     return {
-      icon: arrowTop
+      icon: arrowTop,
     };
   },
 
@@ -19,15 +19,15 @@ export default {
     },
 
     ...mapGetters({
-      getState: "getStateDropdown"
+      getState: "getStateDropdown",
     }),
 
     getDropDownActive() {
-      return type =>
+      return (type) =>
         this.getState.DropDownItemIsActive.type === type
           ? DropDownStyle.ItemActive
           : "";
-    }
+    },
   },
 
   mounted() {
@@ -43,7 +43,7 @@ export default {
       open: "DropDownOpened",
       closeGlobal: "DropDownGlobalClosed",
       selection: "DropDownSelected",
-      sortPizzas: "fetchProducts"
+      sortPizzas: "fetchProducts",
     }),
 
     DropDownOpened() {
@@ -63,8 +63,8 @@ export default {
       // select DropDown item
       this.selection(DropDownItem);
       this.sortPizzas();
-    }
-  }
+    },
+  },
 };
 </script>
 

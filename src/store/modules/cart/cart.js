@@ -6,7 +6,7 @@ export default {
     pizzaItems: {},
     totalPrice: 0,
     pizzaItemsCount: 0,
-    addPizzaCartError: null
+    addPizzaCartError: null,
   },
   mutations: {
     [ADD_PIZZA_CART](state, payLoad) {
@@ -17,7 +17,7 @@ export default {
     },
     [ADD_PIZZA_CART_ERROR](state, error) {
       state.addPizzaCartError = error;
-    }
+    },
   },
 
   actions: {
@@ -29,26 +29,25 @@ export default {
       } catch (err) {
         commit("ADD_PIZZA_CART_ERROR", err);
       }
-    }
+    },
   },
   getters: {
     getCart: ({ pizzaItems }) => pizzaItems,
-    getCartItem: ({ pizzaItems }) => id => {
+    getCartItem: ({ pizzaItems }) => (id) => {
       return pizzaItems[id] ? pizzaItems[id] : null;
     },
     getCartItemType: ({ pizzaItems }, { getCartItem }) => (id, type) => {
-      // console.log(pizzaItems[id][type]);
       return getCartItem(id) ? pizzaItems[id][type] : null;
     },
     getPizzaItem: ({ pizzaItems }) =>
-      Object.keys(pizzaItems).map(key => {
+      Object.keys(pizzaItems).map((key) => {
         return pizzaItems[key];
       }),
     getBasketFlag: ({ totalPrice }) => (totalPrice === 0 ? false : true),
     getTotalPrice: ({ totalPrice }) => totalPrice,
-    getItemsCount: ({ pizzaItemsCount }) => pizzaItemsCount
+    getItemsCount: ({ pizzaItemsCount }) => pizzaItemsCount,
   },
   modules: {
-    basket
-  }
+    basket,
+  },
 };
