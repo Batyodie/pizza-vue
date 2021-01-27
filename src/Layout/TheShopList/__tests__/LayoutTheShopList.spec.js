@@ -122,9 +122,10 @@ describe("Unit test from LayoutTheShopList components", () => {
     const wrapper = wrapperFactory(mount);
     let index = 0;
     const shopCards = wrapper.findAll(".ShopCart");
+    // render fake data
     const renderTotalPrice = `Сумма заказа: ${totalPrice}`;
     const renderTotalCount = `Всего пицц: ${pizzaItemsCount}`;
-
+    //   shopcards correctly render foreach
     shopCards.wrappers.forEach((e, i) => {
       const dataURL = pizzaItems[index].items[index];
       const renderCardTitle = `${dataURL.name}`;
@@ -137,18 +138,23 @@ describe("Unit test from LayoutTheShopList components", () => {
 
       if (index === i) {
         const elem = shopCards.at(index);
-
+        // expect shopcard title to equal render title
         expect(elem.find(".Title").text()).toEqual(renderCardTitle);
+        // expect shopcard sub-title to equal render sub-title
         expect(elem.find(".SubTitle").text()).toEqual(renderCardSubtitle);
+        // expect shopcard img url to equal render url
         expect(
           elem.find(".ShopCart > picture > img").attributes("src")
         ).toEqual(renderCardImg);
+        // expect shopcard price to equal render price
         expect(elem.find(".TotalPrice").text()).toEqual(renderCardPrice);
+        // expect shopcard counter to equal render counter
         expect(elem.find(".Counter > span").text()).toBe(
           String(pizzaItems[index].items.length)
         );
       }
     });
+    // expect global counter stats to equal render counter
     expect(wrapper.find(".FooterAllPizas").text()).toEqual(renderTotalCount);
     expect(wrapper.find(".FooterAllSum").text()).toEqual(renderTotalPrice);
   });
@@ -159,46 +165,62 @@ describe("Unit test from LayoutTheShopList components", () => {
   });
   it("should correctly call action removePizzaItem in layoutTheGrid component", async () => {
     const wrapper = wrapperFactory(mount);
+    //  reset btn
     const removeItemBtn = wrapper.findAll(".ResetBtn");
+    //   click reset btn
     await removeItemBtn.at(0).trigger("click");
+    //   accept modal button
     await wrapper
       .findAll(".vue-dialog-buttons > button")
       .at(1)
       .trigger("click");
+    //   expect to call remove pizza item
     expect(actions.removePizzaItem).toHaveBeenCalled();
   });
   it("should correctly call action removePizzaItems in layoutTheGrid component", async () => {
     const wrapper = wrapperFactory(mount);
+    //   remove all pizzas btn
     const removeItemsBtn = wrapper.find(".HeaderBtn");
+    //  click to remove all pizzas btn
     await removeItemsBtn.trigger("click");
+    //   accept modal button
     await wrapper
       .findAll(".vue-dialog-buttons > button")
       .at(1)
       .trigger("click");
+    //   expect to call remove all pizzas items
     expect(actions.removePizzaItems).toHaveBeenCalled();
   });
   it("should correctly call action plusCartItem in layoutTheGrid component", async () => {
     const wrapper = wrapperFactory(mount);
+    //   plus btn
     const plusBtn = wrapper.findAll(".CounterBtn").at(1);
+    //   click plus btn
     await plusBtn.trigger("click");
-
+    //   expect to call plus cart item actions
     expect(actions.plusCartItem).toHaveBeenCalled();
   });
   it("should correctly call action minusCartItem in layoutTheGrid component", async () => {
     const wrapper = wrapperFactory(mount);
+    //   minus pizza item btn
     const minusBtn = wrapper.findAll(".CounterBtn").at(0);
+    //   click minus pizza item btn
     await minusBtn.trigger("click");
-
+    //   expect to call action minus pizza item
     expect(actions.minusCartItem).toHaveBeenCalled();
   });
   it("should correctly call action pay pizzas in layoutTheGrid component", async () => {
     const wrapper = wrapperFactory(mount);
+    //   accept buy pizzas items btn
     const btnPay = wrapper.find(".FooterBtnPay");
+    //   click accept buy btn
     await btnPay.trigger("click");
+    //   accept modal btn
     await wrapper
       .findAll(".vue-dialog-buttons > button")
       .at(0)
       .trigger("click");
+    //   expect to call remove all pizzas items to accept modal btn
     expect(actions.removePizzaItems).toHaveBeenCalled();
   });
 });
