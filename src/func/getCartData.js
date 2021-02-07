@@ -54,6 +54,7 @@ class Data {
 
 const getCartData = function(state, pizzaObj) {
   const payLoad = new Data(state, pizzaObj);
+
   return payLoad;
 };
 
