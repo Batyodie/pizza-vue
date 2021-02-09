@@ -19,7 +19,7 @@ describe("unit test for cart module store", () => {
     name: "Маргарита",
     price: 450,
     size: 26,
-    type: 0,
+    type: 0
   };
 
   const fakePayLoad = {
@@ -33,13 +33,13 @@ describe("unit test for cart module store", () => {
               "https://dodopizza.azureedge.net/static/Img/Products/Pizza/ru-RU/d48003cd-902c-420d-9f28-92d9dc5f73b4.jpg",
             price: 450,
             size: 26,
-            type: 0,
-          },
+            type: 0
+          }
         ],
         totalPrice: 450,
         activeBtn: true,
-        tags: { type: 0, size: 26 },
-      },
+        tags: { type: 0, size: 26 }
+      }
     },
     allPizzasCount: [
       {
@@ -49,8 +49,8 @@ describe("unit test for cart module store", () => {
           "https://dodopizza.azureedge.net/static/Img/Products/Pizza/ru-RU/d48003cd-902c-420d-9f28-92d9dc5f73b4.jpg",
         price: 450,
         size: 26,
-        type: 0,
-      },
+        type: 0
+      }
     ],
     allPizzas: [
       {
@@ -62,15 +62,15 @@ describe("unit test for cart module store", () => {
               "https://dodopizza.azureedge.net/static/Img/Products/Pizza/ru-RU/d48003cd-902c-420d-9f28-92d9dc5f73b4.jpg",
             price: 450,
             size: 26,
-            type: 0,
-          },
+            type: 0
+          }
         ],
         totalPrice: 450,
         activeBtn: true,
-        tags: { type: 0, size: 26 },
-      },
+        tags: { type: 0, size: 26 }
+      }
     ],
-    totalPrice: 450,
+    totalPrice: 450
   };
   it("Check add pizza action addPizzaToCart", async () => {
     const state = store.state;

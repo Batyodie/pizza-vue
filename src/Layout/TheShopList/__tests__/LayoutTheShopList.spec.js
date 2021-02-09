@@ -27,7 +27,7 @@ describe("Unit test from LayoutTheShopList components", () => {
             "https://dodopizza.azureedge.net/static/Img/Products/Pizza/ru-RU/d48003cd-902c-420d-9f28-92d9dc5f73b4.jpg",
           price: 450,
           size: 26,
-          type: 0,
+          type: 0
         },
         {
           id: 7,
@@ -36,12 +36,12 @@ describe("Unit test from LayoutTheShopList components", () => {
             "https://dodopizza.azureedge.net/static/Img/Products/Pizza/ru-RU/d48003cd-902c-420d-9f28-92d9dc5f73b4.jpg",
           price: 450,
           size: 26,
-          type: 0,
-        },
+          type: 0
+        }
       ],
       totalPrice: 900,
       activeBtn: true,
-      tags: { type: 0, size: 26 },
+      tags: { type: 0, size: 26 }
     },
     {
       items: [
@@ -52,7 +52,7 @@ describe("Unit test from LayoutTheShopList components", () => {
             "https://dodopizza.azureedge.net/static/Img/Products/Pizza/ru-RU/ec29465e-606b-4a04-a03e-da3940d37e0e.jpg",
           price: 395,
           size: 26,
-          type: 0,
+          type: 0
         },
         {
           id: 8,
@@ -61,13 +61,13 @@ describe("Unit test from LayoutTheShopList components", () => {
             "https://dodopizza.azureedge.net/static/Img/Products/Pizza/ru-RU/ec29465e-606b-4a04-a03e-da3940d37e0e.jpg",
           price: 395,
           size: 26,
-          type: 0,
-        },
+          type: 0
+        }
       ],
       totalPrice: 790,
       activeBtn: true,
-      tags: { type: 0, size: 26 },
-    },
+      tags: { type: 0, size: 26 }
+    }
   ];
   const totalPrice = 1690;
   const pizzaItemsCount = pizzaItems.length;
@@ -81,19 +81,19 @@ describe("Unit test from LayoutTheShopList components", () => {
       removePizzaItems: jest.fn(),
       removePizzaItem: jest.fn(),
       plusCartItem: jest.fn(),
-      minusCartItem: jest.fn(),
+      minusCartItem: jest.fn()
     };
     getters = {
       getCart: () => pizzaItems,
       getTotalPrice: () => totalPrice,
       getItemsCount: () => pizzaItemsCount,
       getPizzaItem: () => pizzaItems,
-      getBasketFlag: () => (totalPrice === 0 ? false : true),
+      getBasketFlag: () => (totalPrice === 0 ? false : true)
     };
 
     store = new Vuex.Store({
       actions,
-      getters,
+      getters
     });
   });
 
@@ -103,9 +103,9 @@ describe("Unit test from LayoutTheShopList components", () => {
       localVue,
       store,
       propsData: {
-        ...propsData,
+        ...propsData
       },
-      router,
+      router
     });
   };
 

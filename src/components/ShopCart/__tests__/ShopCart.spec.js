@@ -25,8 +25,8 @@ describe("Unit tests for ShopCart component", () => {
         "https://dodopizza.azureedge.net/static/Img/Products/Pizza/ru-RU/d48003cd-902c-420d-9f28-92d9dc5f73b4.jpg",
       price: 450,
       size: 26,
-      type: 0,
-    },
+      type: 0
+    }
   ];
 
   const groupCartItems = [
@@ -37,8 +37,8 @@ describe("Unit tests for ShopCart component", () => {
         "https://dodopizza.azureedge.net/static/Img/Products/Pizza/ru-RU/d48003cd-902c-420d-9f28-92d9dc5f73b4.jpg",
       price: 450,
       size: 26,
-      type: 0,
-    },
+      type: 0
+    }
   ];
   const groupCartItemsPrice = groupCartItems.reduce(
     (sum, obj) => obj.price + sum,
@@ -55,12 +55,12 @@ describe("Unit tests for ShopCart component", () => {
       plusCartItem: jest.fn(),
       minusCartItem: jest.fn(),
       removePizzaItem: jest.fn(),
-      removePizzaItems: jest.fn(),
+      removePizzaItems: jest.fn()
     };
     store = new Vuex.Store({
       state: basket.state,
       getters: basket.getters,
-      actions,
+      actions
       // mutations,
     });
   });
@@ -75,8 +75,8 @@ describe("Unit tests for ShopCart component", () => {
         groupCartItems,
         groupCartItemsPrice,
         index,
-        ...propsData,
-      },
+        ...propsData
+      }
     });
   };
   it("should initialize correctly shopcart component", () => {

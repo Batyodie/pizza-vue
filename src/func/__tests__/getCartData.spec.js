@@ -3,7 +3,7 @@ import getCartData from "@/func/getCartData";
 describe("unit test from func getCartData", () => {
   it("should correctly new pizza obj payLoad in getAllPayLoad()", () => {
     const fakeState = {
-      pizzaItems: {},
+      pizzaItems: {}
     };
     const fakePizzaObj = {
       id: 7,
@@ -12,7 +12,7 @@ describe("unit test from func getCartData", () => {
       name: "Маргарита",
       price: 450,
       size: 26,
-      type: 0,
+      type: 0
     };
     const result = {
       newPizzaObj: {
@@ -25,16 +25,16 @@ describe("unit test from func getCartData", () => {
                 "https://dodopizza.azureedge.net/static/Img/Products/Pizza/ru-RU/d48003cd-902c-420d-9f28-92d9dc5f73b4.jpg",
               price: 450,
               size: 26,
-              type: 0,
-            },
+              type: 0
+            }
           ],
           totalPrice: 450,
           activeBtn: true,
           tags: {
             type: 0,
-            size: 26,
-          },
-        },
+            size: 26
+          }
+        }
       },
       allPizzasCount: [
         {
@@ -44,8 +44,8 @@ describe("unit test from func getCartData", () => {
             "https://dodopizza.azureedge.net/static/Img/Products/Pizza/ru-RU/d48003cd-902c-420d-9f28-92d9dc5f73b4.jpg",
           price: 450,
           size: 26,
-          type: 0,
-        },
+          type: 0
+        }
       ],
       allPizzas: [
         {
@@ -57,18 +57,18 @@ describe("unit test from func getCartData", () => {
                 "https://dodopizza.azureedge.net/static/Img/Products/Pizza/ru-RU/d48003cd-902c-420d-9f28-92d9dc5f73b4.jpg",
               price: 450,
               size: 26,
-              type: 0,
-            },
+              type: 0
+            }
           ],
           totalPrice: 450,
           activeBtn: true,
           tags: {
             type: 0,
-            size: 26,
-          },
-        },
+            size: 26
+          }
+        }
       ],
-      totalPrice: 450,
+      totalPrice: 450
     };
     const func = getCartData(fakeState, fakePizzaObj);
 
@@ -77,7 +77,7 @@ describe("unit test from func getCartData", () => {
 
   it("should correctly new pizza obj in getNewObj()", () => {
     const fakeState = {
-      pizzaItems: {},
+      pizzaItems: {}
     };
     const fakePizzaObj = {
       id: 8,
@@ -86,7 +86,7 @@ describe("unit test from func getCartData", () => {
       name: "Четыре сезона",
       price: 395,
       size: 26,
-      type: 0,
+      type: 0
     };
     const result = {
       "8": {
@@ -98,13 +98,13 @@ describe("unit test from func getCartData", () => {
               "https://dodopizza.azureedge.net/static/Img/Products/Pizza/ru-RU/ec29465e-606b-4a04-a03e-da3940d37e0e.jpg",
             price: 395,
             size: 26,
-            type: 0,
-          },
+            type: 0
+          }
         ],
         totalPrice: 395,
         activeBtn: true,
-        tags: { type: 0, size: 26 },
-      },
+        tags: { type: 0, size: 26 }
+      }
     };
 
     const func = getCartData(fakeState, fakePizzaObj);
@@ -123,13 +123,13 @@ describe("unit test from func getCartData", () => {
               "https://dodopizza.azureedge.net/static/Img/Products/Pizza/ru-RU/ec29465e-606b-4a04-a03e-da3940d37e0e.jpg",
             price: 395,
             size: 26,
-            type: 0,
-          },
+            type: 0
+          }
         ],
         totalPrice: 395,
         activeBtn: true,
-        tags: { type: 0, size: 26 },
-      },
+        tags: { type: 0, size: 26 }
+      }
     };
     const result = [
       {
@@ -141,13 +141,13 @@ describe("unit test from func getCartData", () => {
               "https://dodopizza.azureedge.net/static/Img/Products/Pizza/ru-RU/ec29465e-606b-4a04-a03e-da3940d37e0e.jpg",
             price: 395,
             size: 26,
-            type: 0,
-          },
+            type: 0
+          }
         ],
         totalPrice: 395,
         activeBtn: true,
-        tags: { type: 0, size: 26 },
-      },
+        tags: { type: 0, size: 26 }
+      }
     ];
     const func = getCartData();
     // expect this func return [].concat.apply([], obj.values(obj arg))
@@ -165,16 +165,16 @@ describe("unit test from func getCartData", () => {
               "https://dodopizza.azureedge.net/static/Img/Products/Pizza/ru-RU/ec29465e-606b-4a04-a03e-da3940d37e0e.jpg",
             price: 395,
             size: 26,
-            type: 0,
-          },
+            type: 0
+          }
         ],
         totalPrice: 395,
         activeBtn: true,
         tags: {
           type: 0,
-          size: 26,
-        },
-      },
+          size: 26
+        }
+      }
     };
     const result = [
       {
@@ -184,8 +184,8 @@ describe("unit test from func getCartData", () => {
           "https://dodopizza.azureedge.net/static/Img/Products/Pizza/ru-RU/ec29465e-606b-4a04-a03e-da3940d37e0e.jpg",
         price: 395,
         size: 26,
-        type: 0,
-      },
+        type: 0
+      }
     ];
     const func = getCartData();
     // expect to getTotalCount return newObj to format obj[key].items and finish return call getAllPizzas(newObj)
@@ -203,13 +203,13 @@ describe("unit test from func getCartData", () => {
               "https://dodopizza.azureedge.net/static/Img/Products/Pizza/ru-RU/ec29465e-606b-4a04-a03e-da3940d37e0e.jpg",
             price: 395,
             size: 26,
-            type: 0,
-          },
+            type: 0
+          }
         ],
         totalPrice: 395,
         activeBtn: true,
-        tags: { type: 0, size: 26 },
-      },
+        tags: { type: 0, size: 26 }
+      }
     ];
     const result = 395;
 

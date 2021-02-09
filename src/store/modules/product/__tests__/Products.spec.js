@@ -6,7 +6,7 @@ import { getProducts } from "@/api/products.api";
 import mockProducts from "public/db.json";
 
 jest.mock("@/api/products.api", () => ({
-  getProducts: jest.fn(() => Promise.resolve({ data: mockProducts.pizzas })),
+  getProducts: jest.fn(() => Promise.resolve({ data: mockProducts.pizzas }))
 }));
 
 import { cloneDeep } from "lodash";

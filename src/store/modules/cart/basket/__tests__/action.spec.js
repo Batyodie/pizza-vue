@@ -15,12 +15,12 @@ describe("unit test from actions basket module", () => {
                   "https://dodopizza.azureedge.net/static/Img/Products/Pizza/ru-RU/d48003cd-902c-420d-9f28-92d9dc5f73b4.jpg",
                 price: 450,
                 size: 26,
-                type: 0,
-              },
+                type: 0
+              }
             ],
             totalPrice: 450,
             activeBtn: true,
-            tags: { type: 0, size: 26 },
+            tags: { type: 0, size: 26 }
           },
           "8": {
             items: [
@@ -31,19 +31,19 @@ describe("unit test from actions basket module", () => {
                   "https://dodopizza.azureedge.net/static/Img/Products/Pizza/ru-RU/ec29465e-606b-4a04-a03e-da3940d37e0e.jpg",
                 price: 395,
                 size: 26,
-                type: 0,
-              },
+                type: 0
+              }
             ],
             totalPrice: 395,
             activeBtn: true,
-            tags: { type: 0, size: 26 },
-          },
+            tags: { type: 0, size: 26 }
+          }
         },
         totalPrice: 845,
         pizzaItemsCount: 2,
         addPizzaCartError: null,
-        BasketItems: true,
-      },
+        BasketItems: true
+      }
     };
 
     const commit = jest.fn();
@@ -73,7 +73,7 @@ describe("unit test from actions basket module", () => {
                   "https://dodopizza.azureedge.net/static/Img/Products/Pizza/ru-RU/d48003cd-902c-420d-9f28-92d9dc5f73b4.jpg",
                 price: 450,
                 size: 26,
-                type: 0,
+                type: 0
               },
               {
                 id: 7,
@@ -82,12 +82,12 @@ describe("unit test from actions basket module", () => {
                   "https://dodopizza.azureedge.net/static/Img/Products/Pizza/ru-RU/d48003cd-902c-420d-9f28-92d9dc5f73b4.jpg",
                 price: 450,
                 size: 26,
-                type: 0,
-              },
+                type: 0
+              }
             ],
             totalPrice: 900,
             activeBtn: true,
-            tags: { type: 0, size: 26 },
+            tags: { type: 0, size: 26 }
           },
           "8": {
             items: [
@@ -98,19 +98,19 @@ describe("unit test from actions basket module", () => {
                   "https://dodopizza.azureedge.net/static/Img/Products/Pizza/ru-RU/ec29465e-606b-4a04-a03e-da3940d37e0e.jpg",
                 price: 395,
                 size: 26,
-                type: 0,
-              },
+                type: 0
+              }
             ],
             totalPrice: 395,
             activeBtn: true,
-            tags: { type: 0, size: 26 },
-          },
+            tags: { type: 0, size: 26 }
+          }
         },
         totalPrice: 1295,
         pizzaItemsCount: 3,
         addPizzaCartError: null,
-        BasketItems: true,
-      },
+        BasketItems: true
+      }
     };
     const updateCart = {
       pizzaItems: {
@@ -123,26 +123,26 @@ describe("unit test from actions basket module", () => {
                 "https://dodopizza.azureedge.net/static/Img/Products/Pizza/ru-RU/ec29465e-606b-4a04-a03e-da3940d37e0e.jpg",
               price: 395,
               size: 26,
-              type: 0,
-            },
+              type: 0
+            }
           ],
           totalPrice: 395,
           activeBtn: true,
-          tags: { type: 0, size: 26 },
-        },
+          tags: { type: 0, size: 26 }
+        }
       },
       // the numbers are such, because in the mutation we subtract rootState from these numbers and get the final result
       totalPrice: 900,
       pizzaItemsCount: 2,
       addPizzaCartError: null,
-      BasketItems: true,
+      BasketItems: true
     };
 
     const commit = jest.fn();
     action.actions.removePizzaItem({ commit, rootState }, deleteItemID);
     expect(commit).toHaveBeenCalledWith("CLEAR_PIZZA_ITEM", {
       rootState: rootState.cart,
-      updateCart,
+      updateCart
     });
   });
 
@@ -167,7 +167,7 @@ describe("unit test from actions basket module", () => {
                   "https://dodopizza.azureedge.net/static/Img/Products/Pizza/ru-RU/d48003cd-902c-420d-9f28-92d9dc5f73b4.jpg",
                 price: 450,
                 size: 26,
-                type: 0,
+                type: 0
               },
               {
                 id: 7,
@@ -176,12 +176,12 @@ describe("unit test from actions basket module", () => {
                   "https://dodopizza.azureedge.net/static/Img/Products/Pizza/ru-RU/d48003cd-902c-420d-9f28-92d9dc5f73b4.jpg",
                 price: 450,
                 size: 26,
-                type: 0,
-              },
+                type: 0
+              }
             ],
             totalPrice: 900,
             activeBtn: true,
-            tags: { type: 0, size: 26 },
+            tags: { type: 0, size: 26 }
           },
           "8": {
             items: [
@@ -192,22 +192,22 @@ describe("unit test from actions basket module", () => {
                   "https://dodopizza.azureedge.net/static/Img/Products/Pizza/ru-RU/ec29465e-606b-4a04-a03e-da3940d37e0e.jpg",
                 price: 395,
                 size: 26,
-                type: 0,
-              },
+                type: 0
+              }
             ],
             totalPrice: 395,
             activeBtn: true,
-            tags: { type: 0, size: 26 },
-          },
+            tags: { type: 0, size: 26 }
+          }
         },
         totalPrice: 1295,
         pizzaItemsCount: 3,
         addPizzaCartError: null,
-        BasketItems: true,
-      },
+        BasketItems: true
+      }
     };
     const payLoad = {
-      ID: 8,
+      ID: 8
     };
     const addItem = {
       "7": {
@@ -219,7 +219,7 @@ describe("unit test from actions basket module", () => {
               "https://dodopizza.azureedge.net/static/Img/Products/Pizza/ru-RU/d48003cd-902c-420d-9f28-92d9dc5f73b4.jpg",
             price: 450,
             size: 26,
-            type: 0,
+            type: 0
           },
           {
             id: 7,
@@ -228,12 +228,12 @@ describe("unit test from actions basket module", () => {
               "https://dodopizza.azureedge.net/static/Img/Products/Pizza/ru-RU/d48003cd-902c-420d-9f28-92d9dc5f73b4.jpg",
             price: 450,
             size: 26,
-            type: 0,
-          },
+            type: 0
+          }
         ],
         totalPrice: 900,
         activeBtn: true,
-        tags: { type: 0, size: 26 },
+        tags: { type: 0, size: 26 }
       },
       "8": {
         items: [
@@ -244,7 +244,7 @@ describe("unit test from actions basket module", () => {
               "https://dodopizza.azureedge.net/static/Img/Products/Pizza/ru-RU/ec29465e-606b-4a04-a03e-da3940d37e0e.jpg",
             price: 395,
             size: 26,
-            type: 0,
+            type: 0
           },
           {
             id: 8,
@@ -253,13 +253,13 @@ describe("unit test from actions basket module", () => {
               "https://dodopizza.azureedge.net/static/Img/Products/Pizza/ru-RU/ec29465e-606b-4a04-a03e-da3940d37e0e.jpg",
             price: 395,
             size: 26,
-            type: 0,
-          },
+            type: 0
+          }
         ],
         totalPrice: 790,
         activeBtn: true,
-        tags: { type: 0, size: 26 },
-      },
+        tags: { type: 0, size: 26 }
+      }
     };
 
     const commit = jest.fn();
@@ -267,9 +267,9 @@ describe("unit test from actions basket module", () => {
       getUpdateStatsCart: jest.fn(() => {
         return {
           pizzaItemsCount: 4,
-          totalPrice: 1690,
+          totalPrice: 1690
         };
-      }),
+      })
     };
     const cartStatsUpdate = getters.getUpdateStatsCart();
 
@@ -277,7 +277,7 @@ describe("unit test from actions basket module", () => {
     expect(commit).toHaveBeenCalledWith("PLUS_CART_ITEM", {
       rootState: rootState.cart,
       addItem,
-      cartStatsUpdate,
+      cartStatsUpdate
     });
   });
 
@@ -296,7 +296,7 @@ describe("unit test from actions basket module", () => {
                   "https://dodopizza.azureedge.net/static/Img/Products/Pizza/ru-RU/d48003cd-902c-420d-9f28-92d9dc5f73b4.jpg",
                 price: 450,
                 size: 26,
-                type: 0,
+                type: 0
               },
               {
                 id: 7,
@@ -305,12 +305,12 @@ describe("unit test from actions basket module", () => {
                   "https://dodopizza.azureedge.net/static/Img/Products/Pizza/ru-RU/d48003cd-902c-420d-9f28-92d9dc5f73b4.jpg",
                 price: 450,
                 size: 26,
-                type: 0,
-              },
+                type: 0
+              }
             ],
             totalPrice: 900,
             activeBtn: true,
-            tags: { type: 0, size: 26 },
+            tags: { type: 0, size: 26 }
           },
           "8": {
             items: [
@@ -321,27 +321,27 @@ describe("unit test from actions basket module", () => {
                   "https://dodopizza.azureedge.net/static/Img/Products/Pizza/ru-RU/ec29465e-606b-4a04-a03e-da3940d37e0e.jpg",
                 price: 395,
                 size: 26,
-                type: 0,
-              },
+                type: 0
+              }
             ],
             totalPrice: 395,
             activeBtn: true,
-            tags: { type: 0, size: 26 },
-          },
+            tags: { type: 0, size: 26 }
+          }
         },
         totalPrice: 1295,
         pizzaItemsCount: 3,
         addPizzaCartError: null,
-        BasketItems: true,
-      },
+        BasketItems: true
+      }
     };
     const getters = {
       getUpdateStatsCart: jest.fn(() => {
         return {
           pizzaItemsCount: 4,
-          totalPrice: 1690,
+          totalPrice: 1690
         };
-      }),
+      })
     };
 
     action.actions.plusCartItem({ commit, rootState, getters }, {});
@@ -361,7 +361,7 @@ describe("unit test from actions basket module", () => {
                   "https://dodopizza.azureedge.net/static/Img/Products/Pizza/ru-RU/d48003cd-902c-420d-9f28-92d9dc5f73b4.jpg",
                 price: 450,
                 size: 26,
-                type: 0,
+                type: 0
               },
               {
                 id: 7,
@@ -370,12 +370,12 @@ describe("unit test from actions basket module", () => {
                   "https://dodopizza.azureedge.net/static/Img/Products/Pizza/ru-RU/d48003cd-902c-420d-9f28-92d9dc5f73b4.jpg",
                 price: 450,
                 size: 26,
-                type: 0,
-              },
+                type: 0
+              }
             ],
             totalPrice: 900,
             activeBtn: true,
-            tags: { type: 0, size: 26 },
+            tags: { type: 0, size: 26 }
           },
           "8": {
             items: [
@@ -386,25 +386,25 @@ describe("unit test from actions basket module", () => {
                   "https://dodopizza.azureedge.net/static/Img/Products/Pizza/ru-RU/ec29465e-606b-4a04-a03e-da3940d37e0e.jpg",
                 price: 395,
                 size: 26,
-                type: 0,
-              },
+                type: 0
+              }
             ],
             totalPrice: 395,
             activeBtn: true,
-            tags: { type: 0, size: 26 },
-          },
+            tags: { type: 0, size: 26 }
+          }
         },
         totalPrice: 1295,
         pizzaItemsCount: 3,
         addPizzaCartError: null,
-        BasketItems: true,
-      },
+        BasketItems: true
+      }
     };
     const commit = jest.fn();
     const getters = {
       getUpdateStatsCart: jest.fn(() => {
         return { pizzaItemsCount: 2, totalPrice: 845 };
-      }),
+      })
     };
     const cartStatsUpdate = getters.getUpdateStatsCart();
     const removeItem = {
@@ -417,12 +417,12 @@ describe("unit test from actions basket module", () => {
               "https://dodopizza.azureedge.net/static/Img/Products/Pizza/ru-RU/d48003cd-902c-420d-9f28-92d9dc5f73b4.jpg",
             price: 450,
             size: 26,
-            type: 0,
-          },
+            type: 0
+          }
         ],
         totalPrice: 450,
         activeBtn: true,
-        tags: { type: 0, size: 26 },
+        tags: { type: 0, size: 26 }
       },
       "8": {
         items: [
@@ -433,16 +433,16 @@ describe("unit test from actions basket module", () => {
               "https://dodopizza.azureedge.net/static/Img/Products/Pizza/ru-RU/ec29465e-606b-4a04-a03e-da3940d37e0e.jpg",
             price: 395,
             size: 26,
-            type: 0,
-          },
+            type: 0
+          }
         ],
         totalPrice: 395,
         activeBtn: true,
-        tags: { type: 0, size: 26 },
-      },
+        tags: { type: 0, size: 26 }
+      }
     };
     const payLoad = {
-      ID: 7,
+      ID: 7
     };
 
     action.actions.minusCartItem({ commit, rootState, getters }, payLoad);
@@ -450,7 +450,7 @@ describe("unit test from actions basket module", () => {
     expect(commit).toHaveBeenCalledWith("MINUS_CART_ITEM", {
       rootState: rootState.cart,
       removeItem,
-      cartStatsUpdate,
+      cartStatsUpdate
     });
   });
 
@@ -469,7 +469,7 @@ describe("unit test from actions basket module", () => {
                   "https://dodopizza.azureedge.net/static/Img/Products/Pizza/ru-RU/d48003cd-902c-420d-9f28-92d9dc5f73b4.jpg",
                 price: 450,
                 size: 26,
-                type: 0,
+                type: 0
               },
               {
                 id: 7,
@@ -478,12 +478,12 @@ describe("unit test from actions basket module", () => {
                   "https://dodopizza.azureedge.net/static/Img/Products/Pizza/ru-RU/d48003cd-902c-420d-9f28-92d9dc5f73b4.jpg",
                 price: 450,
                 size: 26,
-                type: 0,
-              },
+                type: 0
+              }
             ],
             totalPrice: 900,
             activeBtn: true,
-            tags: { type: 0, size: 26 },
+            tags: { type: 0, size: 26 }
           },
           "8": {
             items: [
@@ -494,24 +494,24 @@ describe("unit test from actions basket module", () => {
                   "https://dodopizza.azureedge.net/static/Img/Products/Pizza/ru-RU/ec29465e-606b-4a04-a03e-da3940d37e0e.jpg",
                 price: 395,
                 size: 26,
-                type: 0,
-              },
+                type: 0
+              }
             ],
             totalPrice: 395,
             activeBtn: true,
-            tags: { type: 0, size: 26 },
-          },
+            tags: { type: 0, size: 26 }
+          }
         },
         totalPrice: 1295,
         pizzaItemsCount: 3,
         addPizzaCartError: null,
-        BasketItems: true,
-      },
+        BasketItems: true
+      }
     };
     const getters = {
       getUpdateStatsCart: jest.fn(() => {
         return { pizzaItemsCount: 2, totalPrice: 845 };
-      }),
+      })
     };
 
     action.actions.minusCartItem({ commit, rootState, getters }, {});

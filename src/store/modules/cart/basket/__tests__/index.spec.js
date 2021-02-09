@@ -13,13 +13,13 @@ describe("unit test from getter in index.js", () => {
               "https://dodopizza.azureedge.net/static/Img/Products/Pizza/ru-RU/d48003cd-902c-420d-9f28-92d9dc5f73b4.jpg",
             price: 450,
             size: 26,
-            type: 0,
-          },
+            type: 0
+          }
         ],
         totalPrice: 450,
         activeBtn: true,
-        tags: { type: 0, size: 26 },
-      },
+        tags: { type: 0, size: 26 }
+      }
     };
     //   result
     const result = { pizzaItemsCount: 1, totalPrice: 450 };

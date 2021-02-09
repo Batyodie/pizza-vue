@@ -14,7 +14,7 @@ describe("unit test for dropdown module store", () => {
     const DropDownItems = [
       { id: 5, text: "популярности", type: "rating", order: "desc" },
       { id: 6, text: "по цене", type: "price", order: "desc" },
-      { id: 7, text: "по алфавиту", type: "name", order: "asc" },
+      { id: 7, text: "по алфавиту", type: "name", order: "asc" }
     ];
     expect(store.state.DropDownItems).toEqual(DropDownItems);
     expect(store.state.DropDownItemIsActive).toEqual(DropDownItems[0]);
@@ -31,13 +31,13 @@ describe("unit test for dropdown module store", () => {
       id: 7,
       text: "по алфавиту",
       type: "name",
-      order: "asc",
+      order: "asc"
     };
     const DropDownItemIsActive = {
       id: 5,
       text: "популярности",
       type: "rating",
-      order: "desc",
+      order: "desc"
     };
     // expected to DropDownItemIsActive to euaual fake data
     expect(store.state.DropDownItemIsActive).toEqual(DropDownItemIsActive);
@@ -71,7 +71,7 @@ describe("unit test for dropdown module store", () => {
       id: 7,
       text: "по алфавиту",
       type: "name",
-      order: "asc",
+      order: "asc"
     };
     // call actions
     store.dispatch("DropDownSelected", newDropItem);

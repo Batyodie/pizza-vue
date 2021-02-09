@@ -16,8 +16,8 @@ describe("Unit tests for Logo component", () => {
     localVue,
     router,
     propsData: {
-      sloganText,
-    },
+      sloganText
+    }
   });
   wrapper.setData({ logo: LOGO });
 
@@ -47,8 +47,8 @@ describe("Unit tests for Logo component", () => {
       localVue,
       router,
       propsData: {
-        sloganText,
-      },
+        sloganText
+      }
     });
     const renderSloganShallow = "самая вкусная пицца во вселенной";
     // Expect the wrapper to be the slogan shallow  text render

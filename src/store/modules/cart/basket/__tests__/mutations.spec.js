@@ -3,7 +3,7 @@ import {
   CLEAR_PIZZA_ITEMS,
   CLEAR_PIZZA_ITEM,
   PLUS_CART_ITEM,
-  MINUS_CART_ITEM,
+  MINUS_CART_ITEM
 } from "../../../../mutation-types";
 describe("unit test from mutations basket module", () => {
   //  this is a mutation stub, it will inject to the local state in the module basket inside cart.js
@@ -20,12 +20,12 @@ describe("unit test from mutations basket module", () => {
                 "https://dodopizza.azureedge.net/static/Img/Products/Pizza/ru-RU/d48003cd-902c-420d-9f28-92d9dc5f73b4.jpg",
               price: 450,
               size: 26,
-              type: 0,
-            },
+              type: 0
+            }
           ],
           totalPrice: 450,
           activeBtn: true,
-          tags: { type: 0, size: 26 },
+          tags: { type: 0, size: 26 }
         },
         "8": {
           items: [
@@ -36,24 +36,24 @@ describe("unit test from mutations basket module", () => {
                 "https://dodopizza.azureedge.net/static/Img/Products/Pizza/ru-RU/ec29465e-606b-4a04-a03e-da3940d37e0e.jpg",
               price: 395,
               size: 26,
-              type: 0,
-            },
+              type: 0
+            }
           ],
           totalPrice: 395,
           activeBtn: true,
-          tags: { type: 0, size: 26 },
-        },
+          tags: { type: 0, size: 26 }
+        }
       },
       totalPrice: 845,
       pizzaItemsCount: 2,
-      addPizzaCartError: null,
+      addPizzaCartError: null
     };
     const result = {
       pizzaItems: {},
       pizzaItemsCount: 0,
       totalPrice: 0,
       BasketItems: false,
-      addPizzaCartError: null,
+      addPizzaCartError: null
     };
     mutation.mutations[CLEAR_PIZZA_ITEMS](stub, state);
     expect(state).toEqual(result);
@@ -71,12 +71,12 @@ describe("unit test from mutations basket module", () => {
                 "https://dodopizza.azureedge.net/static/Img/Products/Pizza/ru-RU/d48003cd-902c-420d-9f28-92d9dc5f73b4.jpg",
               price: 450,
               size: 26,
-              type: 0,
-            },
+              type: 0
+            }
           ],
           totalPrice: 450,
           activeBtn: true,
-          tags: { type: 0, size: 26 },
+          tags: { type: 0, size: 26 }
         },
         "8": {
           items: [
@@ -87,18 +87,18 @@ describe("unit test from mutations basket module", () => {
                 "https://dodopizza.azureedge.net/static/Img/Products/Pizza/ru-RU/ec29465e-606b-4a04-a03e-da3940d37e0e.jpg",
               price: 395,
               size: 26,
-              type: 0,
-            },
+              type: 0
+            }
           ],
           totalPrice: 395,
           activeBtn: true,
-          tags: { type: 0, size: 26 },
-        },
+          tags: { type: 0, size: 26 }
+        }
       },
       totalPrice: 845,
       pizzaItemsCount: 2,
       addPizzaCartError: null,
-      BasketItems: true,
+      BasketItems: true
     };
     // delete pizzaItems item id 7
     const updateCart = {
@@ -112,18 +112,18 @@ describe("unit test from mutations basket module", () => {
                 "https://dodopizza.azureedge.net/static/Img/Products/Pizza/ru-RU/ec29465e-606b-4a04-a03e-da3940d37e0e.jpg",
               price: 395,
               size: 26,
-              type: 0,
-            },
+              type: 0
+            }
           ],
           totalPrice: 395,
           activeBtn: true,
-          tags: { type: 0, size: 26 },
-        },
+          tags: { type: 0, size: 26 }
+        }
       },
       totalPrice: 450,
       pizzaItemsCount: 1,
       addPizzaCartError: null,
-      BasketItems: true,
+      BasketItems: true
     };
     const result = {
       pizzaItems: {
@@ -136,23 +136,23 @@ describe("unit test from mutations basket module", () => {
                 "https://dodopizza.azureedge.net/static/Img/Products/Pizza/ru-RU/ec29465e-606b-4a04-a03e-da3940d37e0e.jpg",
               price: 395,
               size: 26,
-              type: 0,
-            },
+              type: 0
+            }
           ],
           totalPrice: 395,
           activeBtn: true,
-          tags: { type: 0, size: 26 },
-        },
+          tags: { type: 0, size: 26 }
+        }
       },
       totalPrice: 395,
       pizzaItemsCount: 1,
       addPizzaCartError: null,
-      BasketItems: true,
+      BasketItems: true
     };
     //  call mutation
     mutation.mutations[CLEAR_PIZZA_ITEM](stub, {
       rootState: state,
-      updateCart,
+      updateCart
     });
     expect(state).toEqual(result);
   });
@@ -169,12 +169,12 @@ describe("unit test from mutations basket module", () => {
                 "https://dodopizza.azureedge.net/static/Img/Products/Pizza/ru-RU/d48003cd-902c-420d-9f28-92d9dc5f73b4.jpg",
               price: 450,
               size: 26,
-              type: 0,
-            },
+              type: 0
+            }
           ],
           totalPrice: 450,
           activeBtn: true,
-          tags: { type: 0, size: 26 },
+          tags: { type: 0, size: 26 }
         },
         "8": {
           items: [
@@ -185,18 +185,18 @@ describe("unit test from mutations basket module", () => {
                 "https://dodopizza.azureedge.net/static/Img/Products/Pizza/ru-RU/ec29465e-606b-4a04-a03e-da3940d37e0e.jpg",
               price: 395,
               size: 26,
-              type: 0,
-            },
+              type: 0
+            }
           ],
           totalPrice: 395,
           activeBtn: true,
-          tags: { type: 0, size: 26 },
-        },
+          tags: { type: 0, size: 26 }
+        }
       },
       totalPrice: 845,
       pizzaItemsCount: 2,
       addPizzaCartError: null,
-      BasketItems: true,
+      BasketItems: true
     };
     const addItem = {
       "7": {
@@ -208,7 +208,7 @@ describe("unit test from mutations basket module", () => {
               "https://dodopizza.azureedge.net/static/Img/Products/Pizza/ru-RU/d48003cd-902c-420d-9f28-92d9dc5f73b4.jpg",
             price: 450,
             size: 26,
-            type: 0,
+            type: 0
           },
           {
             id: 7,
@@ -217,12 +217,12 @@ describe("unit test from mutations basket module", () => {
               "https://dodopizza.azureedge.net/static/Img/Products/Pizza/ru-RU/d48003cd-902c-420d-9f28-92d9dc5f73b4.jpg",
             price: 450,
             size: 26,
-            type: 0,
-          },
+            type: 0
+          }
         ],
         totalPrice: 900,
         activeBtn: true,
-        tags: { type: 0, size: 26 },
+        tags: { type: 0, size: 26 }
       },
       "8": {
         items: [
@@ -233,13 +233,13 @@ describe("unit test from mutations basket module", () => {
               "https://dodopizza.azureedge.net/static/Img/Products/Pizza/ru-RU/ec29465e-606b-4a04-a03e-da3940d37e0e.jpg",
             price: 395,
             size: 26,
-            type: 0,
-          },
+            type: 0
+          }
         ],
         totalPrice: 395,
         activeBtn: true,
-        tags: { type: 0, size: 26 },
-      },
+        tags: { type: 0, size: 26 }
+      }
     };
     const cartStatsUpdate = { pizzaItemsCount: 3, totalPrice: 1295 };
     const result = {
@@ -253,7 +253,7 @@ describe("unit test from mutations basket module", () => {
                 "https://dodopizza.azureedge.net/static/Img/Products/Pizza/ru-RU/d48003cd-902c-420d-9f28-92d9dc5f73b4.jpg",
               price: 450,
               size: 26,
-              type: 0,
+              type: 0
             },
             {
               id: 7,
@@ -262,12 +262,12 @@ describe("unit test from mutations basket module", () => {
                 "https://dodopizza.azureedge.net/static/Img/Products/Pizza/ru-RU/d48003cd-902c-420d-9f28-92d9dc5f73b4.jpg",
               price: 450,
               size: 26,
-              type: 0,
-            },
+              type: 0
+            }
           ],
           totalPrice: 900,
           activeBtn: true,
-          tags: { type: 0, size: 26 },
+          tags: { type: 0, size: 26 }
         },
         "8": {
           items: [
@@ -278,24 +278,24 @@ describe("unit test from mutations basket module", () => {
                 "https://dodopizza.azureedge.net/static/Img/Products/Pizza/ru-RU/ec29465e-606b-4a04-a03e-da3940d37e0e.jpg",
               price: 395,
               size: 26,
-              type: 0,
-            },
+              type: 0
+            }
           ],
           totalPrice: 395,
           activeBtn: true,
-          tags: { type: 0, size: 26 },
-        },
+          tags: { type: 0, size: 26 }
+        }
       },
       totalPrice: 1295,
       pizzaItemsCount: 3,
       addPizzaCartError: null,
-      BasketItems: true,
+      BasketItems: true
     };
 
     mutation.mutations[PLUS_CART_ITEM](stub, {
       rootState: state,
       addItem,
-      cartStatsUpdate,
+      cartStatsUpdate
     });
     expect(state).toEqual(result);
   });
@@ -312,7 +312,7 @@ describe("unit test from mutations basket module", () => {
                 "https://dodopizza.azureedge.net/static/Img/Products/Pizza/ru-RU/d48003cd-902c-420d-9f28-92d9dc5f73b4.jpg",
               price: 450,
               size: 26,
-              type: 0,
+              type: 0
             },
             {
               id: 7,
@@ -321,12 +321,12 @@ describe("unit test from mutations basket module", () => {
                 "https://dodopizza.azureedge.net/static/Img/Products/Pizza/ru-RU/d48003cd-902c-420d-9f28-92d9dc5f73b4.jpg",
               price: 450,
               size: 26,
-              type: 0,
-            },
+              type: 0
+            }
           ],
           totalPrice: 900,
           activeBtn: true,
-          tags: { type: 0, size: 26 },
+          tags: { type: 0, size: 26 }
         },
         "8": {
           items: [
@@ -337,18 +337,18 @@ describe("unit test from mutations basket module", () => {
                 "https://dodopizza.azureedge.net/static/Img/Products/Pizza/ru-RU/ec29465e-606b-4a04-a03e-da3940d37e0e.jpg",
               price: 395,
               size: 26,
-              type: 0,
-            },
+              type: 0
+            }
           ],
           totalPrice: 395,
           activeBtn: true,
-          tags: { type: 0, size: 26 },
-        },
+          tags: { type: 0, size: 26 }
+        }
       },
       totalPrice: 1295,
       pizzaItemsCount: 3,
       addPizzaCartError: null,
-      BasketItems: true,
+      BasketItems: true
     };
     const removeItem = {
       "7": {
@@ -360,12 +360,12 @@ describe("unit test from mutations basket module", () => {
               "https://dodopizza.azureedge.net/static/Img/Products/Pizza/ru-RU/d48003cd-902c-420d-9f28-92d9dc5f73b4.jpg",
             price: 450,
             size: 26,
-            type: 0,
-          },
+            type: 0
+          }
         ],
         totalPrice: 450,
         activeBtn: true,
-        tags: { type: 0, size: 26 },
+        tags: { type: 0, size: 26 }
       },
       "8": {
         items: [
@@ -376,13 +376,13 @@ describe("unit test from mutations basket module", () => {
               "https://dodopizza.azureedge.net/static/Img/Products/Pizza/ru-RU/ec29465e-606b-4a04-a03e-da3940d37e0e.jpg",
             price: 395,
             size: 26,
-            type: 0,
-          },
+            type: 0
+          }
         ],
         totalPrice: 395,
         activeBtn: true,
-        tags: { type: 0, size: 26 },
-      },
+        tags: { type: 0, size: 26 }
+      }
     };
     const result = {
       pizzaItems: {
@@ -395,12 +395,12 @@ describe("unit test from mutations basket module", () => {
                 "https://dodopizza.azureedge.net/static/Img/Products/Pizza/ru-RU/d48003cd-902c-420d-9f28-92d9dc5f73b4.jpg",
               price: 450,
               size: 26,
-              type: 0,
-            },
+              type: 0
+            }
           ],
           totalPrice: 450,
           activeBtn: true,
-          tags: { type: 0, size: 26 },
+          tags: { type: 0, size: 26 }
         },
         "8": {
           items: [
@@ -411,24 +411,24 @@ describe("unit test from mutations basket module", () => {
                 "https://dodopizza.azureedge.net/static/Img/Products/Pizza/ru-RU/ec29465e-606b-4a04-a03e-da3940d37e0e.jpg",
               price: 395,
               size: 26,
-              type: 0,
-            },
+              type: 0
+            }
           ],
           totalPrice: 395,
           activeBtn: true,
-          tags: { type: 0, size: 26 },
-        },
+          tags: { type: 0, size: 26 }
+        }
       },
       totalPrice: 845,
       pizzaItemsCount: 2,
       addPizzaCartError: null,
-      BasketItems: true,
+      BasketItems: true
     };
     const cartStatsUpdate = { pizzaItemsCount: 2, totalPrice: 845 };
     mutation.mutations[MINUS_CART_ITEM](stub, {
       rootState: state,
       removeItem,
-      cartStatsUpdate,
+      cartStatsUpdate
     });
     expect(state).toEqual(result);
   });

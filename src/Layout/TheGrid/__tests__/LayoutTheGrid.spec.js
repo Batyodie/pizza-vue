@@ -18,7 +18,7 @@ describe("Unit test from LayoutTheGrid components", () => {
       sizes: [26, 30],
       price: 450,
       category: 4,
-      rating: 10,
+      rating: 10
     },
     {
       id: 8,
@@ -29,7 +29,7 @@ describe("Unit test from LayoutTheGrid components", () => {
       sizes: [26, 40],
       price: 395,
       category: 5,
-      rating: 10,
+      rating: 10
     },
     {
       id: 6,
@@ -40,8 +40,8 @@ describe("Unit test from LayoutTheGrid components", () => {
       sizes: [30, 40],
       price: 675,
       category: 1,
-      rating: 9,
-    },
+      rating: 9
+    }
   ];
   const loadedProducts = true;
 
@@ -50,18 +50,18 @@ describe("Unit test from LayoutTheGrid components", () => {
   let getters;
   beforeEach(() => {
     actions = {
-      addPizzaToCart: jest.fn(),
+      addPizzaToCart: jest.fn()
     };
     getters = {
       getCards: () => products,
       getPizzasLoadedFlag: () => loadedProducts,
       getCartItem: () => () => null,
-      getCartItemType: () => () => null,
+      getCartItemType: () => () => null
     };
 
     store = new Vuex.Store({
       actions,
-      getters,
+      getters
     });
   });
   // create wrapper factory
@@ -70,8 +70,8 @@ describe("Unit test from LayoutTheGrid components", () => {
       localVue,
       store,
       propsData: {
-        ...propsData,
-      },
+        ...propsData
+      }
     });
   };
   it("should initialize correctly layoutTheGrid component", () => {

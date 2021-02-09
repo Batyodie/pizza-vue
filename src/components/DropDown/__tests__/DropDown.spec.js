@@ -10,16 +10,16 @@ localVue.use(Vuex);
 
 describe("Unit tests for DropDown component", () => {
   // fake data
-  const DropDownIsOpen = false;
+  // const DropDownIsOpen = false;
   const DropDownItems = [
     { id: 5, text: "популярности", type: "rating", order: "desc" },
     { id: 6, text: "по цене", type: "price", order: "desc" },
-    { id: 7, text: "по алфавиту", type: "name", order: "asc" },
+    { id: 7, text: "по алфавиту", type: "name", order: "asc" }
   ];
   const DropDownItemIsActive = {
     text: "популярности",
     type: "rating",
-    order: "desc",
+    order: "desc"
   };
   let store;
   let actions;
@@ -29,13 +29,13 @@ describe("Unit tests for DropDown component", () => {
       fetchProducts: product.actions.fetchProducts,
       DropDownOpened: dropDown.actions.DropDownOpened,
       DropDownGlobalClosed: dropDown.actions.DropDownGlobalClosed,
-      DropDownSelected: dropDown.actions.DropDownSelected,
+      DropDownSelected: dropDown.actions.DropDownSelected
     };
     store = new Vuex.Store({
       state: dropDown.state,
       actions,
       mutations: dropDown.mutations,
-      getters: dropDown.getters,
+      getters: dropDown.getters
     });
   });
 
@@ -45,8 +45,8 @@ describe("Unit tests for DropDown component", () => {
       localVue,
       store,
       propsData: {
-        ...propsData,
-      },
+        ...propsData
+      }
     });
   };
 

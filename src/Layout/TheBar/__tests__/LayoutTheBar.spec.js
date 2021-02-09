@@ -14,7 +14,7 @@ describe("Unit test from LayoutTheBar components", () => {
       return {
         matches: true,
         addListener: function() {},
-        removeListener: function() {},
+        removeListener: function() {}
       };
     };
   // store data
@@ -24,7 +24,7 @@ describe("Unit test from LayoutTheBar components", () => {
     { id: 1, text: "Вегетарианская", type: "vengry" },
     { id: 2, text: "Гриль", type: "grill" },
     { id: 3, text: "Острые", type: "sharp" },
-    { id: 4, text: "Закрытые", type: "closed" },
+    { id: 4, text: "Закрытые", type: "closed" }
   ];
   const activeTag = null;
 
@@ -32,12 +32,12 @@ describe("Unit test from LayoutTheBar components", () => {
   const DropDownItems = [
     { id: 5, text: "популярности", type: "rating", order: "desc" },
     { id: 6, text: "по цене", type: "price", order: "desc" },
-    { id: 7, text: "по алфавиту", type: "name", order: "asc" },
+    { id: 7, text: "по алфавиту", type: "name", order: "asc" }
   ];
   const DropDownItemIsActive = {
     text: "популярности",
     type: "rating",
-    order: "desc",
+    order: "desc"
   };
   let store;
   let actions;
@@ -48,7 +48,7 @@ describe("Unit test from LayoutTheBar components", () => {
       fetchProducts: jest.fn(),
       DropDownGlobalClosed: jest.fn(),
       DropDownOpened: jest.fn(),
-      DropDownSelected: jest.fn(),
+      DropDownSelected: jest.fn()
     };
     getters = {
       getTags: () => tags,
@@ -57,14 +57,14 @@ describe("Unit test from LayoutTheBar components", () => {
         return {
           DropDownIsOpen,
           DropDownItems,
-          DropDownItemIsActive,
+          DropDownItemIsActive
         };
-      },
+      }
     };
 
     store = new Vuex.Store({
       actions,
-      getters,
+      getters
     });
   });
   // create wrapper factory
@@ -73,8 +73,8 @@ describe("Unit test from LayoutTheBar components", () => {
       localVue,
       store,
       propsData: {
-        ...propsData,
-      },
+        ...propsData
+      }
     });
   };
   it("should initialize correctly layout the bar component", () => {

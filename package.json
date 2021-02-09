@@ -5,28 +5,13 @@
   "scripts": {
     "serve": "vue-cli-service serve --open",
     "build": "vue-cli-service build",
-    "test:unit": "vue-cli-service test:unit  --watch ",
+    "test:unit": "vue-cli-service test:unit ",
     "lint": "vue-cli-service lint",
     "json-server": "json-server --watch public/db.json --port=3001",
     "dev": "concurrently \"npm run serve\" \"npm run json-server\"",
-    "lint-staged": "lint-staged"
+    "postinstall": "husky install"
   },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged",
-      "post-commit": "git push"
-    }
-  },
-  "lint-staged": {
-    "*.vue": [
-      "eslint --fix",
-      "git add ."
-    ],
-    "*.js": [
-      "eslint --fix",
-      "git add ."
-    ]
-  },
+  
   "dependencies": {
     "core-js": "^3.6.5",
     "json-server": "^0.16.2",
