@@ -11,19 +11,21 @@ export default {
   },
 
   computed: {
+    // css modules syntax
     Button() {
       return Button;
     }
   },
 
   methods: {
+    // A simple emit event that returns a numeric value. Wherever the slot button template is used
     selectTag() {
       this.$emit("selectTag", this.tagIndex);
     }
   }
 };
+// slot tempalte
 </script>
-
 <template>
   <button @click="selectTag" type="button" :class="[Button.Btn]">
     <span :class="[Button.Body]">

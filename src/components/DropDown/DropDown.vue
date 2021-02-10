@@ -14,6 +14,7 @@ export default {
   },
 
   computed: {
+    // css modules syntax
     DropDownStyle() {
       return DropDownStyle;
     },
@@ -29,10 +30,11 @@ export default {
           : "";
     }
   },
-
+  // hook event globally close dropdown menu
   mounted() {
     document.body.addEventListener("click", this.DropDownGlobalWindowClosed);
   },
+  // elimination of wiretapping of the event when we leave the pizza menu
   destroyed() {
     document.body.removeEventListener("click", this.DropDownGlobalWindowClosed);
   },

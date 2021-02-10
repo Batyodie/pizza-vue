@@ -8,21 +8,26 @@ export default {
   components: { Button },
 
   props: {
+    // pizza map data that is the result of the v-for directive.
+    // We will transfer this data to the map template for rendering from LayoutTheGrid.
     card: {
       type: Object,
       required: true
     },
-
+    // cardIndex is a unique card key and is also a v-for key
     cardIndex: {
       type: Number,
       required: true
     },
-
+    // The function is responsible for adding a new pizza to the store.
+    //  We pass the Computed properties of pizzaObj to it
     onClickAddPizza: {
       type: Function,
       required: true,
       default: () => Object
     },
+    // We pass the object of the last tags that were used before going to the cart,
+    //  by default it is null
     tags: {
       type: Object,
       default: null
@@ -34,6 +39,8 @@ export default {
       activeSize: this.tags === null ? this.card.sizes[0] : this.tags.size,
       cardCount: null,
       activeBtnFlag: false,
+      // the keys of this object are used to search for a field in the pizzaitems item [field]
+      //for the subsequent replacement of old active tags with the last active ones
       cardTypeData: {
         cardItems: "items",
         activeBtn: "activeBtn"
@@ -48,7 +55,7 @@ export default {
     ...mapGetters({
       getCartItemType: "getCartItemType"
     }),
-
+    // Сss modules syntax
     CardStyles() {
       return CardStyle;
     },
@@ -56,7 +63,7 @@ export default {
     BtnTag() {
       return BtnTag;
     },
-
+    // the pizza object is passed to the onClickAddPizza function
     pizzaObj() {
       return {
         id: this.card.id,
@@ -67,7 +74,7 @@ export default {
         type: this.activeType
       };
     },
-
+    // computed properties responsible for styling buttons inside the card
     getTagItemActive() {
       return (btnType, options) =>
         btnType === options ? [this.CardStyles.TagsItemActive] : "";
@@ -82,12 +89,13 @@ export default {
       return () => (this.activeBtnFlag ? [this.CardStyles.AddBtnSelected] : "");
     }
   },
-
+  // hook that causes the active tags that were last pressed to update
   mounted() {
     this.handlerCardItemCounter(this.cardIndex, this.cardTypeData);
   },
 
   methods: {
+    // methods that get the unique id of the tag using the event of the button component and write the id to data
     setActiveTypeTag(CardTypeIndex) {
       this.activeType = CardTypeIndex;
     },
@@ -95,7 +103,9 @@ export default {
     setActiveSizeTag(CardSizeIndex) {
       this.activeSize = CardSizeIndex;
     },
-
+    //getCartItemType is a getter that returns the pizzaitem item if there is one.
+    // When a pizza is added to the cart using onClickAddPizza,
+    //the keys of the last active tags on the card are created in the pizza object
     handlerCardItemCounter(cardIndex, objType) {
       const count = this.getCartItemType(cardIndex, objType.cardItems);
 
@@ -133,6 +143,7 @@ export default {
       >
         <template slot="ButtonText"> {{ TagType }} </template>
       </Button>
+      <!-- getTagItemActive,getTagDisable define css styles depending on conditions   -->
       <Button
         v-for="tagSize in cardsSizesTags"
         :key="tagSize"
@@ -151,6 +162,7 @@ export default {
     <div :class="CardStyles.PizzaAdd">
       <h3 :class="CardStyles.PizzaPrice">от {{ card.price }} ₽</h3>
       <template>
+        <!-- We receive all the card data and send them to the function for adding pizza to the basket  -->
         <Button
           @click.native="
             [

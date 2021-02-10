@@ -33,9 +33,11 @@ export default {
   },
   getters: {
     getCart: ({ pizzaItems }) => pizzaItems,
+    // search pizzaItems item for id elem. If dont search him then return null
     getCartItem: ({ pizzaItems }) => id => {
       return pizzaItems[id] ? pizzaItems[id] : null;
     },
+    // if pizzaItems item is exist then return this item[id][type] or return null
     getCartItemType: ({ pizzaItems }, { getCartItem }) => (id, type) => {
       return getCartItem(id) ? pizzaItems[id][type] : null;
     },

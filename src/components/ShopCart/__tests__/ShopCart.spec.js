@@ -72,7 +72,6 @@ describe("Unit tests for ShopCart component", () => {
       store,
       propsData: {
         shopCart,
-        groupCartItems,
         groupCartItemsPrice,
         index,
         ...propsData
@@ -87,7 +86,6 @@ describe("Unit tests for ShopCart component", () => {
     expect(wrapper.is(ShopCart)).toBeTruthy();
     //  We expect the wrapper props to equal the fake props
     expect(wrapper.vm.shopCart).toEqual(shopCart);
-    expect(wrapper.vm.groupCartItems).toEqual(groupCartItems);
     expect(wrapper.vm.groupCartItemsPrice).toEqual(groupCartItemsPrice);
     expect(wrapper.vm.index).toEqual(index);
   });
@@ -107,7 +105,7 @@ describe("Unit tests for ShopCart component", () => {
     expect(wrapper.find(".SubTitle").text()).toEqual(renderSubTitle);
     // expect the shopcart to have correctly render count quantity to group pizzas
     expect(wrapper.find(".Counter > span").text()).toEqual(
-      String(groupCartItems.length)
+      String(shopCart.length)
     );
     // expect the shopcart to have correctly render total price count
     expect(wrapper.find(".TotalPrice").text()).toEqual(renerTotalPrice);

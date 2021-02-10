@@ -113,7 +113,6 @@ export default {
           :shopCart="shopCart.items"
           :key="shopCart.id"
           :index="index"
-          :groupCartItems="pizzaItem[index].items"
           :groupCartItemsPrice="pizzaItem[index].totalPrice"
         />
       </div>

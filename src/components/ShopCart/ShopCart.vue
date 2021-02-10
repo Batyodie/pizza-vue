@@ -10,24 +10,21 @@ export default {
   },
 
   props: {
+    // an array of pizza groups from the general card added from LayoutTheShopList
     shopCart: {
       type: Array,
       required: true,
       default: () => []
     },
-
-    groupCartItems: {
-      type: Array,
-      required: true,
-      default: () => []
-    },
-
+    // the total price of the pizza group which is taken from pizzaItem[index].totalPrice.
+    //Where pizzaItem is a store getter that returns all the pizzaitems keys and maps them.
+    // The index is an item in the v-for directive, it is located in the LayoutTheShopList
     groupCartItemsPrice: {
       type: Number,
       required: true,
       default: 0
     },
-
+    // The index is an item in the v-for directive
     index: {
       type: Number,
       required: true
@@ -38,7 +35,7 @@ export default {
     ShopCartStyle() {
       return ShopCartStyle;
     },
-
+    // Computed properties for getting the correct rendering of the subtitle text in ShopCart
     getShopCartType() {
       return () =>
         this.shopCart[this.getLastItem].type === 0
@@ -58,6 +55,7 @@ export default {
     }),
 
     removeGroupItem(id) {
+      // Third party modal library
       this.$modal.show("dialog", {
         title: "Удаление группы пиц",
         text: "Вы действительно хотите удалить группу пиц",
@@ -78,7 +76,7 @@ export default {
         ]
       });
     },
-
+    // we send the id of the object that will be added or removed from the pizza group
     handlerAddPizzaCartItem(data) {
       const payLoad = {
         ID: data,
@@ -130,7 +128,7 @@ export default {
         </template>
       </Button>
       <span style="margin: 0 12px 0 12px;">
-        {{ groupCartItems.length }}
+        {{ shopCart.length }}
       </span>
       <Button
         @click.native="handlerAddPizzaCartItem(shopCart[0].id)"
