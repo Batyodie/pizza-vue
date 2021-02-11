@@ -9,6 +9,7 @@ export default {
   components: { Card, ContentLoader },
 
   computed: {
+    // css modules syntax
     TheGridStyle() {
       return TheGridStyle;
     },
@@ -19,16 +20,19 @@ export default {
       getCartItem: "getCartItem",
       isLoaded: "getPizzasLoadedFlag"
     }),
+    // A computed property that returns the value of the last saved tags in cards,
+    // if any, and passes them to the props in Card
     getLastCardTags() {
       return id => (this.getCartItem(id) ? this.getCartItem(id).tags : null);
     }
   },
 
   methods: {
+    // action add to piiza obj to cart
     ...mapActions({
       addPizza: "addPizzaToCart"
     }),
-
+    // Pass the function as props to the Card component
     onClickAddPizza(obj) {
       this.addPizza(obj);
     }
@@ -42,6 +46,7 @@ export default {
       <h1 :class="TheGridStyle.Title">Все пиццы</h1>
     </div>
     <div :class="TheGridStyle.Layout">
+      <!-- Third-party library for displaying the physical content skeleton while it is not yet fully loaded  -->
       <template v-if="!isLoaded">
         <content-loader
           style="min-width: 280px"

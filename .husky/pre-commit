@@ -3,5 +3,5 @@
 
 npm run test:unit
 npm run lint
-git add --all
+git add . 
 git push
