@@ -1,9 +1,10 @@
+// postcss config
 module.exports = {
   plugins: {
     "postcss-import": {},
     "postcss-preset-env": {
-      stage: 0
+      stage: 0,
     },
-    "postcss-extend": {}
-  }
+    "postcss-extend": {},
+  },
 };

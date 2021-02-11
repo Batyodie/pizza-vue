@@ -1,4 +1,5 @@
 <template>
+  <!-- basket wiev -->
   <div>
     <LayoutTheHeader :sloganText="sloganText" :HeaderButton="HeaderButton" />
     <LayoutTheShopList />
@@ -14,8 +15,8 @@ export default {
   data() {
     return {
       HeaderButton: false,
-      sloganText: "Самая реактивная пицца"
+      sloganText: "Самая реактивная пицца",
     };
-  }
+  },
 };
 </script>

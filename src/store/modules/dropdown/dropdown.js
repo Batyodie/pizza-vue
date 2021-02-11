@@ -1,5 +1,6 @@
 export default {
   state: {
+    // dropdwon state
     DropDownIsOpen: false,
     DropDownItems: [
       { id: 5, text: "популярности", type: "rating", order: "desc" },

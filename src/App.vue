@@ -1,4 +1,5 @@
 <template>
+  <!-- root app -->
   <div id="app" :class="BaseApp.Container">
     <router-view :class="BaseView.Container" />
   </div>
@@ -10,8 +11,8 @@ import { mapActions } from "vuex";
 export default {
   methods: {
     ...mapActions({
-      fetchProducts: "fetchProducts"
-    })
+      fetchProducts: "fetchProducts",
+    }),
   },
   computed: {
     BaseApp() {
@@ -19,10 +20,10 @@ export default {
     },
     BaseView() {
       return BaseView;
-    }
+    },
   },
   created() {
     this.fetchProducts();
-  }
+  },
 };
 </script>

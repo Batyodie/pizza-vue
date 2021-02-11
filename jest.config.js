@@ -1,4 +1,5 @@
 // prettier-ignore
+// active options from jest unit test framework
 module.exports = {
   preset: "@vue/cli-plugin-unit-jest",
   modulePaths: ["<rootDir>"],

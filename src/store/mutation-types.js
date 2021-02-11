@@ -1,3 +1,4 @@
+// export constant
 export const SET_DISCHARGE = "SET_DISCHARGE";
 export const SET_LOADED = "SET_LOADED";
 

@@ -1,4 +1,5 @@
 <template>
+  <!-- main wievs -->
   <div>
     <LayoutTheHeader :sloganText="sloganText" :HeaderButton="HeaderButton" />
     <LayoutTheBar />
@@ -14,8 +15,8 @@ export default {
   data() {
     return {
       HeaderButton: true,
-      sloganText: "самая вкусная пицца во вселенной"
+      sloganText: "самая вкусная пицца во вселенной",
     };
-  }
+  },
 };
 </script>

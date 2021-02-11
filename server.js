@@ -1,8 +1,9 @@
+// server for full-fledged work application when deploying on heroku
 const jsonServer = require("json-server");
 const server = jsonServer.create();
 const router = jsonServer.router("./public/db.json");
 const middlewares = jsonServer.defaults({
-  static: "./dist"
+  static: "./dist",
 });
 
 const PORT = process.env.PORT || 3001;
