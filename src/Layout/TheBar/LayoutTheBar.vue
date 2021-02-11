@@ -17,6 +17,7 @@ export default {
   },
 
   computed: {
+    //css modules syntax
     TheBarStyle() {
       return TheBarStyle;
     },
@@ -28,13 +29,13 @@ export default {
     DropDownStyle() {
       return DropDownStyle;
     },
-
+    // vuex
     ...mapGetters({
       getTags: "getTags",
       activeTag: "getIsActiveTag",
       getState: "getStateDropdown"
     }),
-
+    // Computerized properties for adding a class of css by condition
     getSelected() {
       return tagID => {
         return this.activeTag === tagID ? [TheBarStyle.IsSelected] : "";
@@ -47,12 +48,14 @@ export default {
       filterPizzas: "fetchProducts",
       closeGlobal: "DropDownGlobalClosed"
     }),
-
+    // Getting the selected tag
     getSelectTag(TagIndex) {
+      // We pass the store index to the action, which will be used in the mutation
       this.selectedTag(TagIndex);
+      // Asynchronous store action which transmits data to the json server which returns the group of pizzas that we need
       this.filterPizzas();
     },
-
+    // DropDown tags flag
     DropDownTagsOpen() {
       this.DropDownTagsIsOpen = !this.DropDownTagsIsOpen;
     }
@@ -62,6 +65,8 @@ export default {
 
 <template>
   <div :class="TheBarStyle.SortingBar">
+    <!-- Third party library for responsive design in vue  -->
+    <!-- at 1300px the block changes  -->
     <div v-if="$mq.resize && $mq.above('1300px')" :class="TheBarStyle.TagGroup">
       <Button
         v-for="tag in getTags"
@@ -77,9 +82,11 @@ export default {
     </div>
 
     <div v-else :class="TheBarStyle.TagGroup">
+      <!-- tag group mobile component -->
       <TagGroupMobile :getTags="getTags" :activeTag="activeTag" />
     </div>
     <div>
+      <!-- Dropdown component -->
       <DropDown />
     </div>
   </div>
