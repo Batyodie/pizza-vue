@@ -12,7 +12,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "npm run lint && npm run test:unit && git add -A .",
+      "pre-commit": "npm run lint && npm run test:unit",
       "post-commit": "git push"
     }
   },

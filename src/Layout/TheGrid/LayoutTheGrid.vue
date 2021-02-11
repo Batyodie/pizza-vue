@@ -9,7 +9,7 @@ export default {
   components: { Card, ContentLoader },
 
   computed: {
-    // css modules syntax
+    // css modules syntax.
     TheGridStyle() {
       return TheGridStyle;
     },
