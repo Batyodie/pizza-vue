@@ -32,8 +32,10 @@
   &nbsp;&nbsp;
   <a href="#hammer-directory-structure">Directory Structure</a>&nbsp;&nbsp;&nbsp;|&nbsp;
   &nbsp;&nbsp;
-  <a href="#arrow_right_hook-how-to-use-pre-commit-hooks">How to use hooks</a>
-  <a href="#pushpin-scripts">Scripts</a>
+  <a href="#arrow_right_hook-Hooks">Hooks</a>&nbsp;&nbsp;&nbsp;|&nbsp;
+  &nbsp;&nbsp;
+  <a href="#pushpin-scripts">Scripts</a>&nbsp;&nbsp;&nbsp;|&nbsp;
+   &nbsp;&nbsp;
   <a href="https://pizza-vue.herokuapp.com/">Preview</a>
 </p>
 
