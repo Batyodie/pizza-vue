@@ -18,7 +18,7 @@
 
   <img alt="Github language count" src="https://img.shields.io/github/languages/count/Batyodie/pizza-vue">
   
-   <img alt="w3c validation" src="https://img.shields.io/w3c-validation/html?targetUrl=https%3A%2F%2Fpizza-vue.herokuapp.com">
+   <!-- <img alt="w3c validation" src="https://img.shields.io/w3c-validation/html?targetUrl=https%3A%2F%2Fpizza-vue.herokuapp.com"> -->
   
   
 </p>
