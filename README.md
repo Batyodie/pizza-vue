@@ -30,7 +30,7 @@
    &nbsp;
   <a href="#eyes-original-design">Original design</a>&nbsp;&nbsp;&nbsp;|&nbsp;
   &nbsp;
-  <a href="#hammer-directory-structure">Directory Structure</a>&nbsp;&nbsp;&nbsp;|&nbsp;
+  <a href="#hammer-structure">Structure</a>&nbsp;&nbsp;&nbsp;|&nbsp;
   &nbsp;
   <a href="#arrow_right_hook-Hooks">Hooks</a>&nbsp;&nbsp;&nbsp;|&nbsp;
   &nbsp;
@@ -172,7 +172,7 @@ $ npm run dev # simultaneous launch of vue application and back-end server for c
 
 ```
 
-## :hammer: Directory Structure
+## :hammer: Structure
 
 ```bash
 
