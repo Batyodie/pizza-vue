@@ -26,7 +26,9 @@
 <p align="center">
   <a href="#rocket-technologies">Technologies</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
   <a href="#information_source-how-to-use">How To Use</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-  <a href="#memo-license">License</a>&nbsp;&nbsp;&nbsp;|&nbsp;
+  <a href="#information_deploy">How to Deploy</a>&nbsp;&nbsp;&nbsp;|&nbsp;
+   &nbsp;&nbsp;
+  <a href="#original-design">Original design</a>&nbsp;&nbsp;&nbsp;|&nbsp;
   &nbsp;&nbsp;
   <a href="https://pizza-vue.herokuapp.com/">Preview</a>
 </p>
@@ -72,9 +74,56 @@ $ npm install
 $ npm run dev
 ```
 
-## :memo: License
+## :information_deploy: How to Deploy
 
-This project is under the MIT license. See the [LICENSE](https://github.com/lukemorales/gobarber-api/blob/master/LICENSE) for more information.
+The example deployment will take place on the [heroku](https://dashboard.heroku.com/) platform, because it has the ability to work with [node.js][nodejs] and for the application it is necessary.
+
+1. Register on [heroku](https://dashboard.heroku.com/)
+2. We create a new project (new-vue-pizza)
+3. Linking your github profile to a new project
+4. Add a cloned repository with a project
+   1. Choose which branch heroku will deploy (by default, this is master.)
+   2. Turn on automatic deployment
+5. Create a file called `bash server.js` at the root of the cloned project
+
+```bash
+# server.js
+
+# our back-end in the role of json-server
+const jsonServer = require("json-server");
+const server = jsonServer.create();
+
+# router path to our database
+const router = jsonServer.router("./public/db.json");
+
+# static files
+const middlewares = jsonServer.defaults({
+  static: "./dist"
+});
+
+# Port to which heroku will refer
+const PORT = process.env.PORT || 3001;
+
+server.use(middlewares);
+server.use(router);
+
+server.listen(PORT, () => {
+  console.log("Server is running");
+});
+
+```
+
+6. Create a file called `bash Procfile`. He explains to heroku what he needs to start to work correctly
+
+```bash
+# Procfile file
+
+#heroku run server.js file
+web: node server.js
+
+```
+
+## :original-design: Original design
 
 ---
 
