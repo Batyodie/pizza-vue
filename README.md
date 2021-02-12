@@ -5,7 +5,7 @@
 <h4 align="center">
   front-end app for pizza shopping.
 </h4>
-<p align="center">
+<p style="display: flex; justify-content: space-between;">
   <img alt="GitHub top language" src="https://img.shields.io/github/languages/top/Batyodie/pizza-vue">
   
   <img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/Batyodie/pizza-vue">
@@ -23,7 +23,7 @@
   
 </p>
 
-<p style="display: flex; justify-content: space-between;">
+<p align="center">
   <a href="#rocket-technologies">Technologies</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;
   <a href="#information_source-how-to-use">How To Use</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;
   <a href="#airplane-how-to-deploy">How to Deploy</a>&nbsp;&nbsp;&nbsp;|&nbsp;
