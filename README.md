@@ -131,7 +131,7 @@ web: node server.js
 
 7. Save changes and update master branch `git add . / git commit / git push`
 
-## :arrow_right_hook: How to use pre-commit hooks
+## :arrow_right_hook: Hooks
 
 Make some change in the files
 
