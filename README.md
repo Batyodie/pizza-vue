@@ -23,7 +23,7 @@
   
 </p>
 
-<p align="center">
+<p style="display: flex; justify-content: space-between;">
   <a href="#rocket-technologies">Technologies</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;
   <a href="#information_source-how-to-use">How To Use</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;
   <a href="#airplane-how-to-deploy">How to Deploy</a>&nbsp;&nbsp;&nbsp;|&nbsp;
