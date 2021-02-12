@@ -27,6 +27,8 @@
   <a href="#rocket-technologies">Technologies</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
   <a href="#information_source-how-to-use">How To Use</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
   <a href="#memo-license">License</a>
+  &nbsp;&nbsp;
+  <a href="https://pizza-vue.herokuapp.com/">Preview</a>
 </p>
 
 ![App Screenshot](https://res.cloudinary.com/pizza-vue/image/upload/v1613117898/vue-pizza-update_w99xbc.png)
@@ -54,8 +56,6 @@ This project was developed using the following technologies:
 
 ## :information_source: How To Use
 
-To clone and run this application, you'll need [Git](https://git-scm.com), [Node.js v10.16][nodejs] or higher + [Yarn v1.13][yarn] or higher installed on your computer and the [GoBarber API](https://github.com/lukemorales/gobarber-api). From your command line:
-
 To clone and run this application, you'll need [Git](https://git-scm.com), [Node.js v10.16][nodejs] or higher + [npm 6.14.8](https://www.npmjs.com/) or higher installed on your computer. From your command line:
 
 ```bash
@@ -77,3 +77,5 @@ $ npm run dev
 This project is under the MIT license. See the [LICENSE](https://github.com/lukemorales/gobarber-api/blob/master/LICENSE) for more information.
 
 ---
+
+[nodejs]: https://nodejs.org/
