@@ -1,5 +1,5 @@
 <template>
-  <!-- basket wiev -->
+  <!-- basket wievs -->
   <div>
     <LayoutTheHeader :sloganText="sloganText" :HeaderButton="HeaderButton" />
     <LayoutTheShopList />
