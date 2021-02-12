@@ -18,7 +18,7 @@ export default {
     removePizzaItem({ commit, rootState }, deleteItemID) {
       try {
         // Drafting with immer js.
-        const updateCart = produce(rootState.cart, (draft) => {
+        const updateCart = produce(rootState.cart, draft => {
           // Find the required pizza group to delete
           const cartItem = draft.pizzaItems[deleteItemID];
 
@@ -34,7 +34,7 @@ export default {
         // send existing repository and modified
         commit("CLEAR_PIZZA_ITEM", {
           rootState: rootState.cart,
-          updateCart,
+          updateCart
         });
       } catch (err) {
         const error = `An error occurred while deleting an item in the cart: ${err}`;
@@ -45,7 +45,7 @@ export default {
     plusCartItem({ commit, rootState, getters }, payLoad) {
       try {
         // inner draft
-        const addItem = produce(rootState.cart.pizzaItems, (draft) => {
+        const addItem = produce(rootState.cart.pizzaItems, draft => {
           // current additional group piiza
           const cartItem = draft[payLoad.ID];
           // last pizza in group
@@ -66,7 +66,7 @@ export default {
           // update state
           addItem,
           // update state stats global total price and total count
-          cartStatsUpdate,
+          cartStatsUpdate
         });
       } catch (err) {
         const error = `an error occurred while plus pizza item: ${err}`;
@@ -75,7 +75,7 @@ export default {
     },
     minusCartItem({ commit, rootState, getters }, payLoad) {
       try {
-        const removeItem = produce(rootState.cart.pizzaItems, (draft) => {
+        const removeItem = produce(rootState.cart.pizzaItems, draft => {
           const cartItem = draft[payLoad.ID];
           if (cartItem.items.length > 1) {
             cartItem.items.pop();
@@ -91,12 +91,12 @@ export default {
         commit("MINUS_CART_ITEM", {
           rootState: rootState.cart,
           removeItem,
-          cartStatsUpdate,
+          cartStatsUpdate
         });
       } catch (err) {
         const error = `an error occurred while minus pizza item: ${err}`;
         commit("MINUS_CART_ITEM_ERROR", error);
       }
-    },
-  },
+    }
+  }
 };

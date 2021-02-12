@@ -15,8 +15,8 @@ export default {
   data() {
     return {
       HeaderButton: false,
-      sloganText: "Самая реактивная пицца",
+      sloganText: "Самая реактивная пицца"
     };
-  },
+  }
 };
 </script>
