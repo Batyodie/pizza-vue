@@ -26,9 +26,9 @@
 <p align="center">
   <a href="#rocket-technologies">Technologies</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
   <a href="#information_source-how-to-use">How To Use</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-  <a href="#information_deploy">How to Deploy</a>&nbsp;&nbsp;&nbsp;|&nbsp;
+  <a href="#airplane-how-to-deploy">How to Deploy</a>&nbsp;&nbsp;&nbsp;|&nbsp;
    &nbsp;&nbsp;
-  <a href="#original-design">Original design</a>&nbsp;&nbsp;&nbsp;|&nbsp;
+  <a href="#eyes-original-design">Original design</a>&nbsp;&nbsp;&nbsp;|&nbsp;
   &nbsp;&nbsp;
   <a href="https://pizza-vue.herokuapp.com/">Preview</a>
 </p>
@@ -74,7 +74,7 @@ $ npm install
 $ npm run dev
 ```
 
-## :information_deploy: How to Deploy
+## :airplane: How to Deploy
 
 The example deployment will take place on the [heroku](https://dashboard.heroku.com/) platform, because it has the ability to work with [node.js][nodejs] and for the application it is necessary.
 
@@ -82,9 +82,9 @@ The example deployment will take place on the [heroku](https://dashboard.heroku.
 2. We create a new project (new-vue-pizza)
 3. Linking your github profile to a new project
 4. Add a cloned repository with a project
-   1. Choose which branch heroku will deploy (by default, this is master.)
-   2. Turn on automatic deployment
-5. Create a file called `bash server.js` at the root of the cloned project
+   Choose which branch heroku will deploy (by default, this is master.)
+   Turn on automatic deployment
+5. Create a file called `server.js` at the root of the cloned project
 
 ```bash
 # server.js
@@ -113,7 +113,7 @@ server.listen(PORT, () => {
 
 ```
 
-6. Create a file called `bash Procfile`. He explains to heroku what he needs to start to work correctly
+6. Create a file called `Procfile`. He explains to heroku what he needs to start to work correctly
 
 ```bash
 # Procfile file
@@ -123,7 +123,7 @@ web: node server.js
 
 ```
 
-## :original-design: Original design
+## :eyes: Original design
 
 ---
 
