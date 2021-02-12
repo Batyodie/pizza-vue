@@ -12,7 +12,7 @@
   
   <img alt ="Jest coverage badge-lines" src="https://res.cloudinary.com/pizza-vue/image/upload/v1613118114/badge-lines_ldwyxp.svg">
   
-  <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="182" height="20" role="img" aria-label="Coverage:statements: 83.39%"><title>Coverage:statements: 83.39%</title><linearGradient id="s" x2="0" y2="100%"><stop offset="0" stop-color="#bbb" stop-opacity=".1"/><stop offset="1" stop-opacity=".1"/></linearGradient><clipPath id="r"><rect width="182" height="20" rx="3" fill="#fff"/></clipPath><g clip-path="url(#r)"><rect width="129" height="20" fill="#555"/><rect x="129" width="53" height="20" fill="#dfb317"/><rect width="182" height="20" fill="url(#s)"/></g><g fill="#fff" text-anchor="middle" font-family="Verdana,Geneva,DejaVu Sans,sans-serif" text-rendering="geometricPrecision" font-size="110"><text aria-hidden="true" x="655" y="150" fill="#010101" fill-opacity=".3" transform="scale(.1)" textLength="1190">Coverage:statements</text><text x="655" y="140" transform="scale(.1)" fill="#fff" textLength="1190">Coverage:statements</text><text aria-hidden="true" x="1545" y="150" fill="#010101" fill-opacity=".3" transform="scale(.1)" textLength="430">83.39%</text><text x="1545" y="140" transform="scale(.1)" fill="#fff" textLength="430">83.39%</text></g></svg>
+  <img alt="Jest coverage bage-statements" src="https://res.cloudinary.com/pizza-vue/image/upload/v1613119606/badge-statements_cysexq.svg>
 
   <img alt="Code size" src="https://img.shields.io/github/languages/code-size/Batyodie/pizza-vue">
 
