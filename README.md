@@ -12,7 +12,7 @@
   
   <img alt ="Jest coverage badge-lines" src="https://res.cloudinary.com/pizza-vue/image/upload/v1613118114/badge-lines_ldwyxp.svg">
   
-  <img alt="Jest coverage bage-statements" src="https://res.cloudinary.com/pizza-vue/image/upload/v1613119606/badge-statements_cysexq.svg>
+  <img alt="Jest coverage bage-statements" src="https://res.cloudinary.com/pizza-vue/image/upload/v1613119606/badge-statements_cysexq.svg">
 
   <img alt="Code size" src="https://img.shields.io/github/languages/code-size/Batyodie/pizza-vue">
 
