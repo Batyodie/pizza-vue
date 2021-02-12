@@ -30,6 +30,8 @@
    &nbsp;&nbsp;
   <a href="#eyes-original-design">Original design</a>&nbsp;&nbsp;&nbsp;|&nbsp;
   &nbsp;&nbsp;
+  <a href="#hammer-directory-structure">Directory Structure</a>&nbsp;&nbsp;&nbsp;|&nbsp;
+  &nbsp;&nbsp;
   <a href="https://pizza-vue.herokuapp.com/">Preview</a>
 </p>
 
@@ -114,6 +116,7 @@ server.listen(PORT, () => {
 ```
 
 6. Create a file called `Procfile`. He explains to heroku what he needs to start to work correctly
+7. Save changes and update master branch `git add . / git commit / git push`
 
 ```bash
 # Procfile file
@@ -123,7 +126,87 @@ web: node server.js
 
 ```
 
+## :hammer: Directory Structure
+
+```bash
+
+├── src
+│   ├── api # api for communicate to fake json-server through axios
+│   │   ├── __tests__
+│   │   ├── **/*.api.js
+│   ├── assets # static asstes
+│   │   ├── fonts/img
+│   ├── components # component catalog
+│   │   ├── Button
+│   │   │    ├── __tests__
+│   │   │    │      ├── Button.spec.js
+│   │   │    │      ├── __snapshots__
+│   │   │    ├── Button.css
+│   │   │    ├── Button.vue
+│   ├── func # exported functions for working in the store
+│   │   ├── __tests__
+│   │   ├── getCardData.js
+│   ├── Layout # Layouts directory
+│   │   ├── TheGrid
+│   │   │    ├── __tests__
+│   │   │    │      ├── LayoutTheGrid.spec.js
+│   │   │    │      ├── __snapshots__
+│   │   │    ├── LayoutTheGrid.css
+│   │   │    ├── LayoutTheGrid.vue
+│   ├── router
+│   │   ├── index.js # master file for routers
+│   ├── store # Store catalog
+│   │   ├── modules # subsection with modules
+│   │   │    ├── cart
+│   │   │    │      ├── __tests__
+│   │   │    │      │      ├── cart.spec.js
+│   │   │    │      ├── basket # basket sub-module responsible for the basket   operation on the Basket page
+│   │   │    │      │      ├── action.js
+│   │   │    │      │      ├── index.js
+│   │   │    │      │      ├── mutation.js
+│   │   │    │      │      ├── __tests__.js
+│   │   │    │      ├── cart.js # basic basket module
+│   │   ├── index.js # main store file
+│   │   ├── mutation-types.js # imported mutation types
+│   ├── style
+│   │   ├── Base # base styles
+│   │   │    ├── App
+│   │   │    │   ├── BaseApp.css # basic styles for the application
+│   │   │    ├── Extend # styles for extend
+│   │   │    ├── Fonts # styles for fonts
+│   │   │    ├── Reset # styles to reset
+│   │   │    ├── Vars # styles for variables
+│   │   │    ├── import.css # file for importing base styles
+│   │   ├── main.css # main css file
+│   ├── views # directory where application pages are located
+│   │   ├── Basket
+│   │   │    ├── Basket.css
+│   │   │    ├── Basket.vue
+│   │   ├── Market
+│   ├── App.vue # root vue app
+│   └── Main.js # main js app
+├── dist (or build)
+├── node_modules
+├── public
+│   │   ├── db.json # database products
+│   │   ├── index.html
+├── .eslintrc.js
+├── README.md
+├── package.json
+├── babel.config.js
+├── jest.config.js
+├── postcss.config.js
+├── Procfile # heroku config
+├── server.js # node server for deploy
+├── vue.config.js
+├── .browserslistrc
+└── .gitignore
+
+```
+
 ## :eyes: Original design
+
+[Design in figma](https://www.figma.com/file/wWUnQwvRDWBfPx1v1pCAfO/React-Pizza?node-id=0%3A1)
 
 ---
 
