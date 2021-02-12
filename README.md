@@ -5,7 +5,7 @@
 <h4 align="center">
   front-end app for pizza shopping.
 </h4>
-<p style="display: flex; justify-content: space-between;">
+<p align="center" style="display: flex; justify-content: space-between;">
   <img alt="GitHub top language" src="https://img.shields.io/github/languages/top/Batyodie/pizza-vue">
   
   <img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/Batyodie/pizza-vue">
