@@ -1,9 +1,52 @@
+<script>
+import { Card } from "@/components";
+import { ContentLoader } from "vue-content-loader";
+import { mapGetters, mapActions } from "vuex";
+
+import { TheGridStyle } from "@/Layout/style";
+export default {
+  name: "LayoutTheGrid",
+  components: { Card, ContentLoader },
+
+  computed: {
+    // css modules syntax.
+    TheGridStyle() {
+      return TheGridStyle;
+    },
+
+    ...mapGetters({
+      cards: "getCards",
+      cart: "getCart",
+      getCartItem: "getCartItem",
+      isLoaded: "getPizzasLoadedFlag"
+    }),
+    // A computed property that returns the value of the last saved tags in cards,
+    // if any, and passes them to the props in Card
+    getLastCardTags() {
+      return id => (this.getCartItem(id) ? this.getCartItem(id).tags : null);
+    }
+  },
+
+  methods: {
+    // action add to piiza obj to cart
+    ...mapActions({
+      addPizza: "addPizzaToCart"
+    }),
+    // Pass the function as props to the Card component
+    onClickAddPizza(obj) {
+      this.addPizza(obj);
+    }
+  }
+};
+</script>
+
 <template>
   <main :class="TheGridStyle.TheGrid">
     <div style="margin-bottom: 35px;">
       <h1 :class="TheGridStyle.Title">Все пиццы</h1>
     </div>
     <div :class="TheGridStyle.Layout">
+      <!-- Third-party library for displaying the physical content skeleton while it is not yet fully loaded  -->
       <template v-if="!isLoaded">
         <content-loader
           style="min-width: 280px"
@@ -27,49 +70,12 @@
           v-for="card in cards"
           :key="card.id"
           :onClickAddPizza="onClickAddPizza"
-          :cardsTypeTags="cardsTypeTags"
-          :cardsSizesTags="cardsSizesTags"
           :card="card"
-          :pizzaCardCount="
-            pizzaCardCount[card.id] && pizzaCardCount[card.id].items.length
-          "
-          :ActiveBtnFlag="pizzaItems[card.id] && pizzaItems[card.id].activeBtn"
+          :cardIndex="card.id"
+          :tags="getLastCardTags(card.id)"
         >
         </Card>
       </template>
     </div>
   </main>
 </template>
-
-<script>
-import { Card } from "@/components";
-import { ContentLoader } from "vue-content-loader";
-import { mapGetters, mapActions } from "vuex";
-
-import { TheGridStyle } from "@/Layout/style";
-export default {
-  components: { Card, ContentLoader },
-  name: "LayoutBaseMarket",
-  computed: {
-    TheGridStyle() {
-      return TheGridStyle;
-    },
-    ...mapGetters({
-      cards: "getCards",
-      pizzaItems: "getCardsActiveBtn",
-      cardsTypeTags: "getCardsTags",
-      cardsSizesTags: "getCardsSizesTags",
-      isLoaded: "getPizzasLoadedFlag",
-      pizzaCardCount: "getPizzaItemsCount"
-    })
-  },
-  methods: {
-    ...mapActions({
-      addPizza: "addPizzaToCart"
-    }),
-    onClickAddPizza(obj) {
-      this.addPizza(obj);
-    }
-  }
-};
-</script>

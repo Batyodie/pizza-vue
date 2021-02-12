@@ -1,5 +1,7 @@
 // prettier-ignore
+// active options from jest unit test framework
 module.exports = {
+  coverageReporters: ["json-summary", "text", "lcov"],
   preset: "@vue/cli-plugin-unit-jest",
   modulePaths: ["<rootDir>"],
   transform: {

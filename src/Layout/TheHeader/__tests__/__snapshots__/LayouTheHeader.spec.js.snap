@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Unit tests for LayoutTheHeader component Should match the snapshot 1`] = `
+<header class="Wrapper">
+  <div class="BorderBottom"></div> <a href="/" aria-current="page" class="router-link-exact-active router-link-active LogoMargin" style="text-decoration: none;">
+    <div class="Inner"><img src="" width="38" height="38" alt="Main logo" class="Image">
+      <div class="Slogan">
+        <h1 class="SloganTitle">VUE PIZZA</h1>
+        <p class="SloganText">Some fake title</p>
+      </div>
+    </div>
+  </a> <a href="/basket" class="" name="basket" style="text-decoration: none;"><button type="button" class="Btn Basket ButtonMargin"><span class="Body"> 0</span> <span class="IconBorder"></span> <img src="" width="15" height="15" alt="icon basket" style="margin: 1px 0px 0px 13px;"> <span class="Body">0</span></button></a>
+</header>
+`;

@@ -1,3 +1,5 @@
+// convenient import of dependencies in one line, where necessary, without additional pollution
+
 import arrowTop from "@/assets/img/arrow-top.svg";
 import pizzaLogo from "@/assets/img/pizza-logo.svg";
 import pizzaSmall from "@/assets/img/pizza-small.svg";

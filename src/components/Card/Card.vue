@@ -1,3 +1,123 @@
+<script>
+import { Button } from "@/components";
+
+import { BtnTag, CardStyle } from "@/components/style";
+import { mapGetters } from "vuex";
+export default {
+  name: "Card",
+  components: { Button },
+
+  props: {
+    // pizza map data that is the result of the v-for directive.
+    // We will transfer this data to the map template for rendering from LayoutTheGrid.
+    card: {
+      type: Object,
+      required: true
+    },
+    // cardIndex is a unique card key and is also a v-for key
+    cardIndex: {
+      type: Number,
+      required: true
+    },
+    // The function is responsible for adding a new pizza to the store.
+    //  We pass the Computed properties of pizzaObj to it
+    onClickAddPizza: {
+      type: Function,
+      required: true,
+      default: () => Object
+    },
+    // We pass the object of the last tags that were used before going to the cart,
+    //  by default it is null
+    tags: {
+      type: Object,
+      default: null
+    }
+  },
+  data() {
+    return {
+      activeType: this.tags === null ? this.card.types[0] : this.tags.type,
+      activeSize: this.tags === null ? this.card.sizes[0] : this.tags.size,
+      cardCount: null,
+      activeBtnFlag: false,
+      // the keys of this object are used to search for a field in the pizzaitems item [field]
+      //for the subsequent replacement of old active tags with the last active ones
+      cardTypeData: {
+        cardItems: "items",
+        activeBtn: "activeBtn"
+      },
+
+      cardsTypeTags: ["тонкое", "традиционное"],
+      cardsSizesTags: [26, 30, 40]
+    };
+  },
+
+  computed: {
+    ...mapGetters({
+      getCartItemType: "getCartItemType"
+    }),
+    // Сss modules syntax
+    CardStyles() {
+      return CardStyle;
+    },
+
+    BtnTag() {
+      return BtnTag;
+    },
+    // the pizza object is passed to the onClickAddPizza function
+    pizzaObj() {
+      return {
+        id: this.card.id,
+        name: this.card.name,
+        imageUrl: this.card.imageUrl,
+        price: this.card.price,
+        size: this.activeSize,
+        type: this.activeType
+      };
+    },
+    // computed properties responsible for styling buttons inside the card
+    getTagItemActive() {
+      return (btnType, options) =>
+        btnType === options ? [this.CardStyles.TagsItemActive] : "";
+    },
+
+    getTagDisable() {
+      return (cardType, options) =>
+        !cardType.includes(options) ? [this.CardStyles.TagsDisable] : "";
+    },
+
+    getAddBtnSelected() {
+      return () => (this.activeBtnFlag ? [this.CardStyles.AddBtnSelected] : "");
+    }
+  },
+  // hook that causes the active tags that were last pressed to update
+  mounted() {
+    this.handlerCardItemCounter(this.cardIndex, this.cardTypeData);
+  },
+
+  methods: {
+    // methods that get the unique id of the tag using the event of the button component and write the id to data
+    setActiveTypeTag(CardTypeIndex) {
+      this.activeType = CardTypeIndex;
+    },
+
+    setActiveSizeTag(CardSizeIndex) {
+      this.activeSize = CardSizeIndex;
+    },
+    //getCartItemType is a getter that returns the pizzaitem item if there is one.
+    // When a pizza is added to the cart using onClickAddPizza,
+    //the keys of the last active tags on the card are created in the pizza object
+    handlerCardItemCounter(cardIndex, objType) {
+      const count = this.getCartItemType(cardIndex, objType.cardItems);
+
+      const flag = this.getCartItemType(cardIndex, objType.activeBtn);
+
+      this.cardCount = count !== null ? count.length : count;
+      this.activeBtnFlag = flag !== null ? flag : false;
+    }
+  }
+};
+</script>
+
 <template>
   <div :class="CardStyles.Card">
     <picture :class="CardStyles.Image">
@@ -12,25 +132,26 @@
       <Button
         v-for="(TagType, index) in cardsTypeTags"
         :key="index"
-        :CardTagTypeIndex="index"
-        @selectCardTag="setActiveTypeTag"
+        :tagIndex="index"
+        @selectTag="setActiveTypeTag"
         :class="[
-          activeType === index ? [CardStyles.TagsItemActive] : '',
-          !card.types.includes(index) ? [CardStyles.TagsDisable] : '',
+          getTagItemActive(activeType, index),
+          getTagDisable(card.types, index),
           CardStyles.TagsItem,
           BtnTag.Tag
         ]"
       >
         <template slot="ButtonText"> {{ TagType }} </template>
       </Button>
+      <!-- getTagItemActive,getTagDisable define css styles depending on conditions   -->
       <Button
         v-for="tagSize in cardsSizesTags"
         :key="tagSize"
-        :CardTagSizeIndex="tagSize"
-        @selectCardSizeTag="setActiveSizeTag"
+        :tagIndex="tagSize"
+        @selectTag="setActiveSizeTag"
         :class="[
-          activeSize === tagSize ? [CardStyles.TagsItemActive] : '',
-          !card.sizes.includes(tagSize) ? [CardStyles.TagsDisable] : '',
+          getTagItemActive(activeSize, tagSize),
+          getTagDisable(card.sizes, tagSize),
           CardStyles.TagsItem,
           BtnTag.Tag
         ]"
@@ -41,12 +162,15 @@
     <div :class="CardStyles.PizzaAdd">
       <h3 :class="CardStyles.PizzaPrice">от {{ card.price }} ₽</h3>
       <template>
+        <!-- We receive all the card data and send them to the function for adding pizza to the basket  -->
         <Button
-          @click.native="[onClickAddPizza(pizzaObj)]"
-          :class="[
-            CardStyles.AddBtn,
-            ActiveBtnFlag ? [CardStyles.AddBtnSelected] : ''
-          ]"
+          @click.native="
+            [
+              onClickAddPizza(pizzaObj),
+              handlerCardItemCounter(cardIndex, cardTypeData)
+            ]
+          "
+          :class="[CardStyles.AddBtn, getAddBtnSelected()]"
         >
           <template slot="Icon">
             <svg
@@ -67,10 +191,9 @@
             Добавить
           </template>
           <template slot="ButtonText">
-            <template v-if="this.pizzaCardCount === undefined"> </template>
-            <template v-else>
+            <template v-if="cardCount !== null">
               <i :class="CardStyles.AmountNumber">
-                {{ this.pizzaCardCount && this.pizzaCardCount }}
+                {{ cardCount }}
               </i>
             </template>
           </template>
@@ -79,71 +202,3 @@
     </div>
   </div>
 </template>
-
-<script>
-import { Button } from "@/components";
-
-import { BtnTag, CardStyle } from "@/components/style";
-export default {
-  components: { Button },
-  props: {
-    card: {
-      type: Object,
-      required: true
-    },
-    cardsTypeTags: {
-      type: Array,
-      required: true
-    },
-    cardsSizesTags: {
-      type: Array,
-      required: true
-    },
-    onClickAddPizza: {
-      type: Function,
-      rquired: false
-    },
-    ActiveBtnFlag: {
-      type: Boolean
-    },
-    pizzaCardCount: {
-      type: Number
-    }
-  },
-  name: "Card",
-  data() {
-    return {
-      cardItem: true,
-      activeType: this.card.types[0],
-      activeSize: this.card.sizes[0]
-    };
-  },
-  methods: {
-    setActiveTypeTag(CardTypeIndex) {
-      this.activeType = CardTypeIndex;
-    },
-    setActiveSizeTag(CardSizeIndex) {
-      this.activeSize = CardSizeIndex;
-    }
-  },
-  computed: {
-    CardStyles() {
-      return CardStyle;
-    },
-    BtnTag() {
-      return BtnTag;
-    },
-    pizzaObj() {
-      return {
-        id: this.card.id,
-        name: this.card.name,
-        imageUrl: this.card.imageUrl,
-        price: this.card.price,
-        size: this.activeSize,
-        type: this.activeType,
-        activeBtn: this.card.activeBtn
-      };
-    }
-  }
-};
-</script>

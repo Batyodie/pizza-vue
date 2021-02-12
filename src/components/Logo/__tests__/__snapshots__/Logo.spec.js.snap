@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Unit tests for Logo component Should match the snapshot 1`] = `
+<a href="/" aria-current="page" class="router-link-exact-active router-link-active" style="text-decoration: none;">
+  <div class="Inner"><img src="/img/pizza-logo.svg" width="38" height="38" alt="Main logo" class="Image">
+    <div class="Slogan">
+      <h1 class="SloganTitle">VUE PIZZA</h1>
+      <p class="SloganText">Some fake title</p>
+    </div>
+  </div>
+</a>
+`;

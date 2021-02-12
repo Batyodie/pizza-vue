@@ -1,0 +1,27 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Unit test from LayoutTheBar components should match the snapshot layout the bar component 1`] = `
+<div class="SortingBar">
+  <div class="TagGroup"><button type="button" class="Btn IsSelected TagMargin Tag"><span class="Body">
+        Все
+      </span> </button><button type="button" class="Btn TagMargin Tag"><span class="Body">
+        Мясные
+      </span> </button><button type="button" class="Btn TagMargin Tag"><span class="Body">
+        Вегетарианская
+      </span> </button><button type="button" class="Btn TagMargin Tag"><span class="Body">
+        Гриль
+      </span> </button><button type="button" class="Btn TagMargin Tag"><span class="Body">
+        Острые
+      </span> </button><button type="button" class="Btn TagMargin Tag"><span class="Body">
+        Закрытые
+      </span> </button></div>
+  <div>
+    <div class="DropDown">
+      <div style="display: flex; align-items: center;"><img width="10" height="6" src="" alt="Arrow top" class="IconImage"> <span class="Label">Сортировка по:</span> <button class="Btn">
+          популярности
+        </button></div>
+      <!---->
+    </div>
+  </div>
+</div>
+`;

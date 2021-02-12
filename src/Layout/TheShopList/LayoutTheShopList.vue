@@ -1,10 +1,102 @@
+<!-- Layout the shop list component -->
+<script>
+import { Button, ShopCart } from "@/components";
+import { mapGetters, mapActions } from "vuex";
+
+import { CartIcon, TrashIcon, arrow, EmptyCart } from "@/assets";
+import { TheShopListStyle } from "@/Layout/style";
+import LayoutTheShopListEmpty from "../TheShopList/LayoutTheShopListEmpty.vue";
+export default {
+  name: "LayoutTheShopList",
+  components: {
+    Button,
+    ShopCart,
+    LayoutTheShopListEmpty
+  },
+
+  data() {
+    return {
+      CartIcon: CartIcon,
+      TrashIcon: TrashIcon,
+      arrow: arrow,
+      EmptyCart: EmptyCart
+    };
+  },
+  computed: {
+    // сcs modules syntax
+    TheShopListStyle() {
+      return TheShopListStyle;
+    },
+
+    ...mapGetters({
+      cart: "getCart",
+      totalPrice: "getTotalPrice",
+      itemsCount: "getItemsCount",
+      pizzaItem: "getPizzaItem",
+      getBasketFlag: "getBasketFlag"
+    })
+  },
+
+  methods: {
+    // action for general removal of all pizzas from the basket
+    ...mapActions({
+      removeItems: "removePizzaItems"
+    }),
+    getClearPizzas() {
+      // Third party library for creating modal windows
+      this.$modal.show("dialog", {
+        title: "Очистить корзину пицц",
+        text: "Вы действительно хотите отчистить корзину",
+        buttons: [
+          {
+            title: "Нет",
+            handler: () => {
+              this.$modal.hide("dialog");
+            }
+          },
+          {
+            title: "Да",
+            handler: () => {
+              // call global remove items
+              this.removeItems();
+            }
+          }
+        ]
+      });
+    },
+
+    handlerPayOut() {
+      this.$modal.show("dialog", {
+        title: "Спасибо за покупку!",
+        text: `Вы приобрели ${this.itemsCount} пицц, по цене ${this.totalPrice} рублей.
+        \n Спасибо за покупку, приходите еще!`,
+        buttons: [
+          {
+            title: "Закрыть",
+            handler: () => {
+              this.$modal.hide("dialog");
+              // console.log(this.cart);
+              this.removeItems();
+            }
+          }
+        ]
+      });
+    }
+  }
+};
+</script>
+
 <template>
   <div :class="TheShopListStyle.TheShopList">
     <template v-if="getBasketFlag">
       <v-dialog />
       <header :class="TheShopListStyle.Header">
         <div :class="TheShopListStyle.Inner">
-          <img :src="CartIcon" alt="Trash icon" />
+          <img
+            :src="CartIcon"
+            :class="TheShopListStyle.CartICON"
+            alt="Trash icon"
+          />
           <h2 :class="TheShopListStyle.Title">Корзина</h2>
         </div>
         <Button
@@ -21,11 +113,11 @@
       </header>
       <div :class="TheShopListStyle.Content">
         <ShopCart
-          v-for="(shopCart, index) in groupPizzaItem"
-          :shopCart="shopCart"
+          v-for="(shopCart, index) in pizzaItem"
+          :shopCart="shopCart.items"
           :key="shopCart.id"
           :index="index"
-          :groupTotalPrice="groupTotalPrice[index]"
+          :groupCartItemsPrice="pizzaItem[index].totalPrice"
         />
       </div>
       <footer :class="TheShopListStyle.Footer">
@@ -68,106 +160,7 @@
       </footer>
     </template>
     <template v-else>
-      <div :class="TheShopListStyle.Content">
-        <div :class="TheShopListStyle.Empty">
-          <h2 :class="TheShopListStyle.EmptyTitle">
-            Корзина пустая 😕
-          </h2>
-          <p :class="TheShopListStyle.EmptyCopy">
-            Вероятней всего, вы не заказывали ещё пиццу. Для того, чтобы
-            заказать пиццу, перейди на главную страницу.
-          </p>
-          <img
-            :class="TheShopListStyle.EmptyLogo"
-            :src="EmptyCart"
-            alt="Empty image"
-          />
-          <router-link to="/">
-            <Button :class="TheShopListStyle.EmptyBtn">
-              <template slot="ButtonText">
-                Вернуться назад
-              </template>
-            </Button>
-          </router-link>
-        </div>
-      </div>
+      <LayoutTheShopListEmpty />
     </template>
   </div>
 </template>
-
-<script>
-import { Button, ShopCart } from "@/components";
-import { mapState, mapGetters, mapActions } from "vuex";
-
-import { CartIcon, TrashIcon, arrow, EmptyCart } from "@/assets";
-import { TheShopListStyle } from "@/Layout/style";
-export default {
-  name: "LayoutTheShopList",
-  components: { Button, ShopCart },
-  data() {
-    return {
-      CartIcon: CartIcon,
-      TrashIcon: TrashIcon,
-      arrow: arrow,
-      EmptyCart: EmptyCart
-    };
-  },
-  methods: {
-    ...mapActions({
-      removeItems: "removePizzaItems"
-    }),
-    getClearPizzas() {
-      this.$modal.show("dialog", {
-        title: "Очистить корзину пицц",
-        text: "Вы действительно хотите отчистить корзиону",
-        buttons: [
-          {
-            title: "Нет",
-            handler: () => {
-              this.$modal.hide("dialog");
-            }
-          },
-          {
-            title: "Да",
-            handler: () => {
-              this.removeItems();
-            }
-          }
-        ]
-      });
-    },
-    handlerPayOut() {
-      this.$modal.show("dialog", {
-        title: "Спасибо за покупку!",
-        text: `Вы приобрели ${this.itemsCount} пицц, по цене ${this.totalPrice} рублей.
-        \n Спасибо за покупку, приходите еще!`,
-        buttons: [
-          {
-            title: "Закрыть",
-            handler: () => {
-              this.$modal.hide("dialog");
-              console.log(this.items);
-              this.removeItems();
-            }
-          }
-        ]
-      });
-    }
-  },
-  computed: {
-    TheShopListStyle() {
-      return TheShopListStyle;
-    },
-    ...mapState({
-      totalPrice: "totalPrice",
-      itemsCount: "pizzaItemsCount",
-      items: "pizzaItems"
-    }),
-    ...mapGetters({
-      groupPizzaItem: "getGroupPizzas",
-      groupTotalPrice: "getGroupPizzasPrice",
-      getBasketFlag: "getBasketFlag"
-    })
-  }
-};
-</script>

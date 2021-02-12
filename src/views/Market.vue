@@ -1,6 +1,7 @@
 <template>
+  <!-- main wievs -->
   <div>
-    <LayoutTheHeader :title="title" :HeaderButton="HeaderButton" />
+    <LayoutTheHeader :sloganText="sloganText" :HeaderButton="HeaderButton" />
     <LayoutTheBar />
     <LayoutTheGrid />
   </div>
@@ -14,7 +15,7 @@ export default {
   data() {
     return {
       HeaderButton: true,
-      title: "самая вкусная пицца во вселенной"
+      sloganText: "самая вкусная пицца во вселенной"
     };
   }
 };
