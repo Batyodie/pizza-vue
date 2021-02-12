@@ -32,6 +32,8 @@
   &nbsp;&nbsp;
   <a href="#hammer-directory-structure">Directory Structure</a>&nbsp;&nbsp;&nbsp;|&nbsp;
   &nbsp;&nbsp;
+  <a href="#arrow_right_hook-how-to-use-pre-commit-hooks">How to use pre-commit hooks</a>
+  <a href="#pushpin-scripts">Scripts</a>
   <a href="https://pizza-vue.herokuapp.com/">Preview</a>
 </p>
 
@@ -116,13 +118,55 @@ server.listen(PORT, () => {
 ```
 
 6. Create a file called `Procfile`. He explains to heroku what he needs to start to work correctly
-7. Save changes and update master branch `git add . / git commit / git push`
 
 ```bash
 # Procfile file
 
 #heroku run server.js file
 web: node server.js
+
+```
+
+7. Save changes and update master branch `git add . / git commit / git push`
+
+## :arrow_right_hook: How to use pre-commit hooks
+
+Make some change in the files
+
+```bash
+$ git add . # add all the changes made
+
+$ git commit -m "keep clam and commit" # create commit
+
+# then there is a check and autofix with a linter. Next, run tests. If no errors are found, run a post-commit which will push the changes to github
+
+# if you want to send a commit without any checks use --no-verify
+$ git commit -m "keep clam and commit" --no-verify
+
+# Hooks can be changed or removed in package.json
+ "husky": {
+    "hooks": {
+      "pre-commit": "npm run lint && npm run test:unit",
+      "post-commit": "git push"
+    }
+  },
+
+```
+
+## :pushpin: Scripts
+
+```bash
+$ npm run serve # running vue app
+
+$ npm run build # starting application build
+
+$ npm run test:unit # running unit tests. If during separate work with tests, you will need to keep them on at all times. Add the --watch flag
+
+$ npm run lint # lint check runs
+
+$ npm run json-server # back-end server launch
+
+$ npm run dev # simultaneous launch of vue application and back-end server for convenient work and full-fledged application work
 
 ```
 
