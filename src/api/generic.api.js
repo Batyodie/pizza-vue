@@ -2,7 +2,7 @@ import axios from "axios";
 
 // url path on the port of which the json fake server with pizza data is located.
 // We make a request to it through the axios methods
-const API_URL = " http://localhost:3001/pizzas?";
+const API_URL = "/pizzas?";
 
 // We create and export a function that acts as a constructor,
 // where we pass data(url is a set of variables that we take from the store,
